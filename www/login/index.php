@@ -11,10 +11,10 @@
 <title>Gestor de Condomínios Index</title>
 
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/navbar.css" rel="stylesheet">
+<link href="../css/navbar.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. Don't actually copy this line! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -50,7 +50,8 @@
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Novo condónimo</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar condónimo</a></li>
-							</ul></li>
+							</ul>
+						</li>
 
 						<!-- Frações -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Frações <b class="caret"></b></a>
@@ -59,7 +60,8 @@
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Nova fração</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar fração</a></li>
-							</ul></li>
+							</ul>
+						</li>
 
 						<!-- Rubricas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Rubricas <b class="caret"></b></a>
@@ -68,7 +70,8 @@
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Nova rubrica</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar rubrica</a></li>
-							</ul></li>
+							</ul>
+						</li>
 
 						<!-- Receitas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Receitas <b class="caret"></b></a>
@@ -77,7 +80,8 @@
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Inserir receita</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar receita</a></li>
-							</ul></li>
+							</ul>
+						</li>
 
 						<!-- Despesas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Despesas <b class="caret"></b></a>
@@ -86,7 +90,8 @@
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Inserir Despesa</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar Despesa</a></li>
-							</ul></li>
+							</ul>
+						</li>
 
 						<!-- Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contas <b class="caret"></b></a>
@@ -95,7 +100,8 @@
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Registo de Conta</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-euro"></span> Transferências</a></li>
-							</ul></li>
+							</ul>
+						</li>
 
 						<!-- Prestação de Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestação de Contas <b class="caret"></b></a>
@@ -107,16 +113,38 @@
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Receitas</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Despesas</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Rubrica</a></li>
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
+					<!-- navbar left -->
 
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Utilizador <b class="caret"></b></a>
+						<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Login <b class="caret"></b></a>
+							
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Ver Profile</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-							</ul></li>
+								<li>
+									<a>
+										<form role="form">
+											 <div class="form-group">
+												<label>Email address</label> 
+												<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+											</div>
+											
+											 <div class="form-group">
+												<label>Password</label> 
+												<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+											</div>
+										</form>
+									</a>
+								</li>
+							</ul>
+							
+							
+						</li>
+
+						<li><a href="#"> Registar Conta</a></li>
 					</ul>
+					<!-- navbar right -->
 				</div>
 				<!--/.nav-collapse -->
 			</div>
@@ -136,7 +164,7 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
