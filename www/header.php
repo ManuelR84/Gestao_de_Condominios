@@ -6,18 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+<link rel="shortcut icon" href="#">
 
-<title>Gestor de Condomínios Index</title>
+<title><?php echo $title;?></title>
 
 <!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../css/navbar.css" rel="stylesheet">
-
-<!-- Just for debugging purposes. Don't actually copy this line! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<link href="/css/styles.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -27,9 +24,7 @@
 </head>
 
 <body>
-
 	<div class="container">
-
 		<!-- Static navbar -->
 		<div class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
@@ -39,70 +34,63 @@
 					</button>
 					<a href="http://localhost" class="navbar-brand">GCO</a>
 				</div>
-
+		
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-
+		
 						<!-- Condóminos -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Condóminos <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Listar condónimos</a></li>
+								<li><a href="/condominos/listar_condominos.php"><span class="glyphicon glyphicon-eye-open"></span> Listar condónimos</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Novo condónimo</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar condónimo</a></li>
-							</ul>
-						</li>
-
+								<li><a href="/condominos/novo_condomino.php"><span class="glyphicon glyphicon-plus-sign"></span> Novo condónimo</a></li>
+								<li><a href="/condominos/apagar_condomino.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar condónimo</a></li>
+							</ul></li>
+		
 						<!-- Frações -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Frações <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Listar frações</a></li>
+								<li><a href="/fracoes/listar_fracoes.php"><span class="glyphicon glyphicon-eye-open"></span> Listar frações</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Nova fração</a></li>
+								<li><a href="/fracoes/nova_fracao.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova fração</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar fração</a></li>
-							</ul>
-						</li>
-
+							</ul></li>
+		
 						<!-- Rubricas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Rubricas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Listar rubricas</a></li>
+								<li><a href="/rubricas/listar_rubricas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar rubricas</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Nova rubrica</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar rubrica</a></li>
-							</ul>
-						</li>
-
+								<li><a href="/rubricas/nova_rubrica.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova rubrica</a></li>
+							</ul></li>
+		
 						<!-- Receitas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Receitas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Listar receitas</a></li>
+								<li><a href="/receitas/listar_receitas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar receitas</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Inserir receita</a></li>
+								<li><a href="/receitas/inserir_receita.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir receita</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar receita</a></li>
-							</ul>
-						</li>
-
+							</ul></li>
+		
 						<!-- Despesas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Despesas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Listar Despesas</a></li>
+								<li><a href="/despesas/listar_despesas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Despesas</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Inserir Despesa</a></li>
+								<li><a href="/despesas/inserir_despesa.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir Despesa</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-minus-sign"></span> Apagar Despesa</a></li>
-							</ul>
-						</li>
-
+							</ul></li>
+		
 						<!-- Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Listar Contas</a></li>
+								<li><a href="/contas/listar_contas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Contas</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-plus-sign"></span> Registo de Conta</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-euro"></span> Transferências</a></li>
-							</ul>
-						</li>
-
+								<li><a href="/contas/registo_conta.php"><span class="glyphicon glyphicon-plus-sign"></span> Registo de Conta</a></li>
+								<li><a href="/contas/transferencias.php"><span class="glyphicon glyphicon-euro"></span> Transferências</a></li>
+							</ul></li>
+		
 						<!-- Prestação de Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestação de Contas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -112,59 +100,19 @@
 								<li class="divider"></li>
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Receitas</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Despesas</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Rubrica</a></li>
-							</ul>
-						</li>
+								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Rubricas</a></li>
+							</ul></li>
 					</ul>
-					<!-- navbar left -->
-
+		
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Login <b class="caret"></b></a>
-							
+						<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Utilizador <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li>
-									<a>
-										<form role="form">
-											 <div class="form-group">
-												<label>Email address</label> 
-												<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-											</div>
-											
-											 <div class="form-group">
-												<label>Password</label> 
-												<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-											</div>
-										</form>
-									</a>
-								</li>
-							</ul>
-							
-							
-						</li>
-
-						<li><a href="#"> Registar Conta</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Ver Profile</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+							</ul></li>
 					</ul>
-					<!-- navbar right -->
 				</div>
 				<!--/.nav-collapse -->
 			</div>
 			<!--/.container-fluid -->
 		</div>
-
-		<!-- Main component for a primary marketing message or call to action -->
-		<div class="jumbotron">
-			<h2>Gestor de Condomínios Online</h2>
-			<p>Bem-vindo ao nosso sistema de gestão de condomínios online.</p>
-		</div>
-
-	</div>
-	<!-- /container -->
-
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-</body>
-</html>
