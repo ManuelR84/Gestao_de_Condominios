@@ -6,34 +6,41 @@
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
 
-	<form role="form">
-	  <div class="form-group">
-	    <label for="exampleInputEmail1">Nome</label>
-	    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
-	  </div>
-	  
-	  <div class="form-group">
-	    <label for="exampleInputPassword1">CC</label>
-	    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CC">
-	  </div>
-	  
-	 <div class="form-group">
-	    <label for="exampleInputPassword1">Morada</label>
-	    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Morada">
-	  </div>
-	  
-	   <div class="form-group">
-	    <label for="exampleInputPassword1">Telefone</label>
-	    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefone">
-	  </div>
-	  
-	   <div class="form-group">
-	    <label for="exampleInputPassword1">Email</label>
-	    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
-	  </div>
-	  
-	  <button type="submit" class="btn btn-default">Submit</button>
-	</form>
+	<h2>Transferências Bancárias</h2>
+	<br />
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+
+				<form role="form">
+				  <div class="form-group">
+				    <label for="idcontaori">Número Conta Origem</label>
+				    <input type="number" class="form-control" placeholder="Número Conta Origem" name="idcontaori">
+				  </div>
+				  
+				 <div class="form-group">
+				    <label for="idcontades">Número Conta Destino</label>
+				    <input type="number" class="form-control" placeholder="Número Conta Destino" name="idcontades">
+				  </div>
+				  
+				 <div class="form-group">
+				    <label for="valortrans">Valor Transferência</label>
+				    <input type="text" class="form-control" placeholder="Valor Transferência" name="valortrans">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="datatrans">Data Transferência</label>
+				    <input type="date" class="form-control" name="datatrans">
+				  </div>
+				  
+				  <br />
+				  <button type="submit" class="btn btn-default">Transferir</button>
+				</form>
+	
+			</div>
+		</div>
+	</div>
 	
 </div>
 

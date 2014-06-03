@@ -5,37 +5,47 @@
 ?>
 
 <div class="jumbotron">
-	<div class="container">
+
+	<h2>Inserir Despesa</h2>
+	<br />
+
+<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
 	
 				<form role="form">
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Nome</label>
-				    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+				    <label for="dd">Descrição da Despesa</label>
+				    <input type="text" class="form-control" placeholder="Descrição" name="dd">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="exampleInputPassword1">CC</label>
-				    <input type="text" class="form-control" placeholder="CC">
+				    <label for="rub">Rubrica</label>
+				    <input type="text" class="form-control" placeholder="Rubrica" name="rub">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="exampleInputPassword1">Morada</label>
-				    <input type="text" class="form-control" placeholder="Morada">
+				    <label for="valordes">Valor da Despesa</label>
+				    <input type="text" class="form-control" placeholder="Valor da Despesa" name="valordes">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="datavendes">Data Vencimento</label>
+				    <input type="date" class="form-control" name="datavendes">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="datapagdes">Data Pagamento</label>
+				    <input type="date" class="form-control" name="datapagdes">
 				  </div>
 				  
 				   <div class="form-group">
-				    <label for="exampleInputPassword1">Telefone</label>
-				    <input type="text" class="form-control" placeholder="Telefone">
+				    <label for="contades">Conta destino</label>
+				    <input type="number" class="form-control" placeholder="ID Conta" name="contades">
 				  </div>
 				  
-				   <div class="form-group">
-				    <label for="exampleInputPassword1">Email</label>
-				    <input type="email" class="form-control" placeholder="Email">
-				  </div>
-				  
-				  <button type="submit" class="btn btn-default">Submit</button>
+				  <br />
+				  <button type="submit" class="btn btn-default">Inserir</button>
 				</form>
 		
 			</div>

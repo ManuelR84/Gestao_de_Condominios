@@ -5,37 +5,31 @@
 
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
+
+	<h2>Inserir Rubrica</h2>
+	<br />
+		
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
 	
 				<form role="form">
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Nome</label>
-				    <input type="text" class="form-control" placeholder="Nome">
+				    <label for="nomerub">Nome Rubrica</label>
+				    <input type="text" class="form-control" placeholder="Rubrica" name="nomerub">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="exampleInputPassword1">CC</label>
-				    <input type="text" class="form-control" placeholder="CC">
+				    <label for="tipo">Tipo de Rubrica</label>
+				    <select class="form-control" name="tipo">
+					    <option value="">Escolha tipo...</option>
+						<option value="Despesa">Despesa</option>
+						<option value="Receita">Receita</option>
+					</select>
 				  </div>
 				  
-				 <div class="form-group">
-				    <label for="exampleInputPassword1">Morada</label>
-				    <input type="text" class="form-control" placeholder="Morada">
-				  </div>
-				  
-				   <div class="form-group">
-				    <label for="exampleInputPassword1">Telefone</label>
-				    <input type="text" class="form-control" placeholder="Telefone">
-				  </div>
-				  
-				   <div class="form-group">
-				    <label for="exampleInputPassword1">Email</label>
-				    <input type="email" class="form-control" placeholder="Email">
-				  </div>
-				  
-				  <button type="submit" class="btn btn-default">Submit</button>
+				  <br />
+				  <button type="submit" class="btn btn-default">Inserir</button>
 				</form>
 		
 			</div>

@@ -4,37 +4,42 @@
 ?>
 
 <div class="jumbotron">
+
+	<h2>Inserir Receita</h2>
+	<br />
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
 	
 				<form role="form">
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Nome</label>
-				    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+				    <label for="dr">Descrição da Receita</label>
+				    <input type="text" class="form-control" placeholder="Descrição" name="dr">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="exampleInputPassword1">CC</label>
-				    <input type="text" class="form-control" placeholder="CC">
+				    <label for="rub">Rubrica</label>
+				    <input type="text" class="form-control" placeholder="Rubrica" name="rub">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="exampleInputPassword1">Morada</label>
-				    <input type="text" class="form-control" placeholder="Morada">
+				    <label for="valorres">Valor da Receita</label>
+				    <input type="text" class="form-control" placeholder="Valor da Receita" name="valorres">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="datapagrec">Data Pagamento</label>
+				    <input type="date" class="form-control" name="datapagrec">
 				  </div>
 				  
 				   <div class="form-group">
-				    <label for="exampleInputPassword1">Telefone</label>
-				    <input type="text" class="form-control" placeholder="Telefone">
+				    <label for="contades">Conta destino</label>
+				    <input type="number" class="form-control" placeholder="ID Conta" name="contades">
 				  </div>
 				  
-				   <div class="form-group">
-				    <label for="exampleInputPassword1">Email</label>
-				    <input type="email" class="form-control" placeholder="Email">
-				  </div>
-				  
-				  <button type="submit" class="btn btn-default">Submit</button>
+				  <br />
+				  <button type="submit" class="btn btn-default">Inserir</button>
 				</form>
 		
 			</div>

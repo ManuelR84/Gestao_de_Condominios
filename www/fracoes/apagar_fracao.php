@@ -1,17 +1,17 @@
 <?php
-//nova fração corresponde a listar condóminos que ainda nao tem sido registados com a sua fração
-	$title = "Listar Frações";
+	$title = "Apagar Fração";
 	include "../header.php";
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
 	<div class="jumbotron">
 
-		<h2>Lista de Frações</h2>
+		<h2>Apagar Frações</h2>
 		<br />
 		
-
 	</div>
+
+</div>
 <!-- /container -->
 
 <?php 
