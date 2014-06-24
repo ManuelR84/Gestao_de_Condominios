@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$title = "Nova Rubrica";
 	include "../header.php";
 ?>

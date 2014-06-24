@@ -1,4 +1,5 @@
-<?php 
+<?php
+	session_start();
 	$title = "Novo Utilizador";
 	include_once "../header.php";
 ?>

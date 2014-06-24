@@ -1,5 +1,6 @@
 <?php
 //nova fração corresponde a listar condóminos que ainda nao tem sido registados com a sua fração
+	session_start();
 	$title = "Listar Frações";
 	include "../header.php";
 ?>

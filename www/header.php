@@ -45,7 +45,8 @@
 								<li class="divider"></li>
 								<li><a href="/condominos/novo_condomino.php"><span class="glyphicon glyphicon-plus-sign"></span> Novo condónimo</a></li>
 								<li><a href="/condominos/apagar_condomino.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar condónimo</a></li>
-							</ul></li>
+							</ul>
+						</li>
 		
 						<!-- Frações -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Frações <b class="caret"></b></a>
@@ -54,7 +55,8 @@
 								<li class="divider"></li>
 								<li><a href="/fracoes/nova_fracao.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova fração</a></li>
 								<li><a href="/fracoes/apagar_fracao.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar fração</a></li>
-							</ul></li>
+							</ul>
+						</li>
 		
 						<!-- Rubricas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Rubricas <b class="caret"></b></a>
@@ -62,7 +64,8 @@
 								<li><a href="/rubricas/listar_rubricas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar rubricas</a></li>
 								<li class="divider"></li>
 								<li><a href="/rubricas/nova_rubrica.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova rubrica</a></li>
-							</ul></li>
+							</ul>
+						</li>
 		
 						<!-- Receitas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Receitas <b class="caret"></b></a>
@@ -71,7 +74,8 @@
 								<li class="divider"></li>
 								<li><a href="/receitas/inserir_receita.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir receita</a></li>
 								<li><a href="/receitas/apagar_receita.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar receita</a></li>
-							</ul></li>
+							</ul>
+						</li>
 		
 						<!-- Despesas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Despesas <b class="caret"></b></a>
@@ -80,7 +84,8 @@
 								<li class="divider"></li>
 								<li><a href="/despesas/inserir_despesa.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir Despesa</a></li>
 								<li><a href="/despesas/apagar_despesa.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar Despesa</a></li>
-							</ul></li>
+							</ul>
+						</li>
 		
 						<!-- Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contas <b class="caret"></b></a>
@@ -89,7 +94,8 @@
 								<li class="divider"></li>
 								<li><a href="/contas/registo_conta.php"><span class="glyphicon glyphicon-plus-sign"></span> Registo de Conta</a></li>
 								<li><a href="/contas/transferencias.php"><span class="glyphicon glyphicon-euro"></span> Transferências</a></li>
-							</ul></li>
+							</ul>
+						</li>
 		
 						<!-- Prestação de Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestação de Contas <b class="caret"></b></a>
@@ -101,15 +107,16 @@
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Receitas</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Despesas</a></li>
 								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Rubricas</a></li>
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 		
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Utilizador <b class="caret"></b></a>
+						<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo "Nome"; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Ver Profile</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-							</ul></li>
+								<?php include "/login/login.php"; ?>
+							</ul>
+						</li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->

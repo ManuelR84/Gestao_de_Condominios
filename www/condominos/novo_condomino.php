@@ -1,4 +1,5 @@
-<?php 
+<?php
+	session_start();
 	$title = "Novo Condomino";
 	include "../header.php";
 ?>

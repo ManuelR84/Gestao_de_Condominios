@@ -1,6 +1,8 @@
 <?php 
+	session_start();
+	$_SESSION["login"] = false;
 	$title = "Gestor de Condomínios";
-	include_once "header.php";
+	include "header.php";
 ?>
 
 	<!-- Main component for a primary marketing message or call to action -->
@@ -11,4 +13,5 @@
 	
 <?php 
 	include_once "footer.php";
+	new PDO($dsn, $username, $passwd, $options);
 ?>

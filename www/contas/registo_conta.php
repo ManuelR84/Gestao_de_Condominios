@@ -1,4 +1,5 @@
-<?php 
+<?php
+	session_start();
 	$title = "Registo de Conta";
 	include_once "../header.php";
 ?>

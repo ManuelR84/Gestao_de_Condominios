@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$title = "Inserir Receita";
 	include "../header.php";
 ?>
