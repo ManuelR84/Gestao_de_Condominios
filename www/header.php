@@ -100,13 +100,13 @@
 						<!-- Prestação de Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestação de Contas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Resumo Financeiro</a></li>
+								<li><a href="/prestacao_de_contas/resumo_financeiro.php"><span class="glyphicon glyphicon-eye-open"></span> Resumo Financeiro</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Saldo de Contas</a></li>
+								<li><a href="/prestacao_de_contas/saldo.php"><span class="glyphicon glyphicon-eye-open"></span> Saldo de Contas</a></li>
 								<li class="divider"></li>
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Receitas</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Despesas</a></li>
-								<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Por Rubricas</a></li>
+								<li><a href="/prestacao_de_contas/receitas.php"><span class="glyphicon glyphicon-eye-open"></span> Por Receitas</a></li>
+								<li><a href="/prestacao_de_contas/despesas.php"><span class="glyphicon glyphicon-eye-open"></span> Por Despesas</a></li>
+								<li><a href="/prestacao_de_contas/rubricas.php"><span class="glyphicon glyphicon-eye-open"></span> Por Rubricas</a></li>
 							</ul>
 						</li>
 					</ul>
