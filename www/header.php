@@ -1,3 +1,21 @@
+<?php
+	//Classes
+	include "classes/db_connect.php";
+	include "classes/condominos.php";
+	include "classes/despesas.php";
+	include "classes/fracoes.php";
+	include "classes/receitas.php";
+	include "classes/registocontas.php";
+	include "classes/rubricas.php";
+	include "classes/transferencias.php";
+	
+	$dbhost = "localhost";
+	$dbusername = "root";
+	$dbpassword = "root";
+	$dbname = "gestao_condominios";
+	
+	$dblink = new DBConnect($dbhost, $dbusername, $dbpassword, $dbname);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

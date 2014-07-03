@@ -1,10 +1,9 @@
 <?php 
 	session_start();
-	$_SESSION["login"] = false;
+	$_SESSION["login"] = false;	
 	$title = "Gestor de Condomínios";
 	include "header.php";
 ?>
-
 	<!-- Main component for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<h2>Gestor de Condomínios Online</h2>
@@ -13,5 +12,4 @@
 	
 <?php 
 	include_once "footer.php";
-	new PDO($dsn, $username, $passwd, $options);
 ?>

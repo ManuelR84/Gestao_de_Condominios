@@ -14,7 +14,7 @@
 		<div class="row">
 			<div class="col-xs-4">
 			
-				<form role="form">
+				<form method="post">
 				  <div class="form-group">
 				    <label for="nomecondo">Nome do condómino</label>
 				    <input type="text" class="form-control" placeholder="Nome" name="nomecondo">
@@ -52,4 +52,6 @@
 
 <?php 
 	include_once "../footer.php";
+	
+	
 ?>
