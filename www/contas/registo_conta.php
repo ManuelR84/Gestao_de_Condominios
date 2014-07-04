@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	$title = "Registo de Conta";
-	include_once "../header.php";
+	include "../header.php";
 ?>
 
 <div class="jumbotron">
@@ -40,5 +40,5 @@
 <!-- /container -->
 
 <?php 
-	include_once "../footer.php";
+	include "../footer.php";
 ?>

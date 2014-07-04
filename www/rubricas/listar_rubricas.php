@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$title = "Listar Rubricas";
 	include "../header.php";
 ?>
@@ -14,5 +15,5 @@
 <!-- /container -->
 
 <?php 
-	include_once "../footer.php";
+	include "../footer.php";
 ?>

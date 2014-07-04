@@ -1,6 +1,6 @@
 <?php 
 	$title = "Transferências";
-	include_once "../header.php";
+	include "../header.php";
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -45,5 +45,5 @@
 </div>
 
 <?php 
-	include_once "../footer.php";
+	include "../footer.php";
 ?>
