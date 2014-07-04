@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$title = "Listar Receita";
 	include "../header.php";
 ?>
@@ -13,5 +14,5 @@
 <!-- /container -->
 
 <?php 
-	include_once "../footer.php";
+	include "../footer.php";
 ?>

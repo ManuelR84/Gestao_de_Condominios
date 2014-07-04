@@ -69,6 +69,13 @@
 </div>
 <!-- /container -->
 
+<<<<<<< HEAD
 <?php
 	include_once "../footer.php";
+=======
+<?php 
+	include "../footer.php";
+	
+	
+>>>>>>> origin/master
 ?>
