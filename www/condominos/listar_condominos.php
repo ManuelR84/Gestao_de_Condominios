@@ -9,6 +9,7 @@
 	<h2>Lista de Condóminos</h2>
 	<br />
 	
+	<!--
 	<table class="table table table-hover">
 		<tr>
 			<th>Id</th>
@@ -21,7 +22,7 @@
 			<th></th>
 		</tr>
 		
-		<?php
+		<?php /*
 		$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 			or die("Error1: ".mysqli_error($con));
 		
@@ -40,14 +41,14 @@
 			echo "<td>" . $row['morada'] . "</td>";
 			echo "<td>" . $row['contacto'] . "</td>";
 			echo "<td>" . $row['email'] . "</td>";
-			echo "<td><a href=#" . $row['idcond'] . ">Alterar</a></td>";
-			echo "<td><a href=#" . $row['idcond'] . ">Eliminar</a></td>";
+			echo "<td><a href=alterar_condomino.php?id=" . $row['idcond'] . ">Alterar</a></td>";
+			echo "<td><a href=apagar_condomino.php?id=" . $row['idcond'] . ">Apagar</a></td>";
 		}
-		?>
+		*/ ?>
 		
-		</tr>
-	</table>
-
+			</tr>
+		</table>
+		-->
 </div>
 
 <?php 
