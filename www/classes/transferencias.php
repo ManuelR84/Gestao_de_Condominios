@@ -7,7 +7,7 @@ class Transferencias {
 	private $transfer;
 	private $data;
 	
-	function Transferencias(){
+	function __construct(){
 		
 	}
 

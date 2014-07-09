@@ -5,7 +5,7 @@ class Rubricas {
 	private $nome;
 	private $tipo;
 	
-	function Rubricas(){
+	function __construct(){
 		
 	}
 

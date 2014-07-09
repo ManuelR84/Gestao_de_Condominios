@@ -7,7 +7,7 @@ class Registocontas {
 	private $saldo_inicial;
 	
 	
-	function Registocontas(){
+	function __construct(){
 		
 	}
 

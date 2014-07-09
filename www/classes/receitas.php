@@ -8,54 +8,54 @@ class Receitas {
 	private $data_pagamento;
 	private $conta_destino;
 	
-	function Receitas(){
+	function __construct(){
 		
 	}
 
 	
 	function get_descricao(){
-		return $descricao;
+		return $this->descricao;
 	}
 
-	function set_descricao(){
-		
+	function set_descricao($descricao){
+		$this->descricao = $descricao;
 	}
 
 	
 	function get_rubrica(){
-		return $rubrica;
+		return $this->rubrica;
 	}
 	
-	function set_rubrica(){
-	
+	function set_rubrica($rubrica){
+		$this->rubrica = $rubrica;
 	}
 	
 	
-	function get_valor(){
-		return $valor;
+	function get_valor($valor){
+		return $this->valor;
 	}
 	
-	function set_valor(){
-	
+	function set_valor($valor){
+		$this->valor = $valor;
 	}
 
 	
 	function get_data_pagamento(){
-		return $data_pagamento;
+		return $this->data_pagamento;
 	}
 	
 	
-	function set_data_pagamento(){
-	
+	function set_data_pagamento($data_pagamento){
+		$this->data_pagamento = $data_pagamento;
 	}
 	
 	
 	function get_conta_destino(){
-		return $conta_destino;
+		return $this->conta_destino;
 	}
 	
-	function set_conta_destino(){
-	
+	function set_conta_destino($conta_destino){
+		$this->conta_destino = conta_destino;
 	}
 	
 }

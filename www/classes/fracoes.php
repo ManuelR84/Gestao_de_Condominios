@@ -9,40 +9,40 @@ class Fracoes {
 	private $tipo_fracao;
 	private $observacoes;
 	
-	function Fracoes(){
+	function __construct(){
 		
 	}
 
 	
 	function get_titular(){
-		return $titular;
+		return $this->titular;
 	}
 
-	function set_titular(){
-		
+	function set_titular($titular){
+		$this->titular = $titular;
 	}
 
 	
 	function get_identificacao(){
-		return $identificacao;
+		return $this->identificacao;
 	}
 	
-	function set_identificacao(){
+	function set_identificacao($identificacao){
 	
 	}
 	
 	
 	function get_permilagem(){
-		return $permilagem;
+		return $this->permilagem;
 	}
 	
-	function set_permilagem(){
+	function set_permilagem($permilagem){
 	
 	}
 
 	
 	function get_designacao(){
-		return $designacao;
+		return $this->designacao;
 	}
 	
 	
@@ -52,7 +52,7 @@ class Fracoes {
 	
 	
 	function get_tipo_fracao(){
-		return $tipo_fracao;
+		return $this->tipo_fracao;
 	}
 	
 	function set_tipo_fracao(){
@@ -61,7 +61,7 @@ class Fracoes {
 
 
 	function get_observacoes(){
-		return $observacoes;
+		return $this->observacoes;
 	}
 	
 	function set_observacoes(){

@@ -8,13 +8,13 @@ class Prestacaodecontas {
 	private $pordespesas;
 	private $porrubricas;
 	
-	function Prestacaodecontas(){
+	function __construct(){
 		
 	}
 
 	
 	function get_resumo(){
-		return $resumo;
+		return $this->resumo;
 	}
 
 	function set_resumo(){
@@ -23,7 +23,7 @@ class Prestacaodecontas {
 
 	
 	function get_saldo(){
-		return $saldo;
+		return $this->saldo;
 	}
 	
 	function set_saldo(){
@@ -32,7 +32,7 @@ class Prestacaodecontas {
 	
 	
 	function get_porreceitas(){
-		return $sporreceitas;
+		return $this->porreceitas;
 	}
 	
 	function set_porreceitas(){
@@ -41,7 +41,7 @@ class Prestacaodecontas {
 	
 	
 	function get_pordespesas(){
-		return $spordespesas;
+		return $this->pordespesas;
 	}
 	
 	function set_pordespesas(){
@@ -50,7 +50,7 @@ class Prestacaodecontas {
 	
 	
 	function get_porrubricas(){
-		return $porrubricas;
+		return $this->porrubricas;
 	}
 	
 	function set_porrubricas(){

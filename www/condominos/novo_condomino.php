@@ -10,23 +10,23 @@
 	elseif(isset($_POST["email"]))
 	{
 		$novocondo = new Condominos($_POST["nome"], $_POST["cc"], $_POST["morada"], $_POST["tele"], $_POST["email"]);
-		
 	}
 	else
 	{
 		?>
 		<div class='error_message'>
-		<?php echo $_POST['123']; ?>
 		Faltam campos por preencher
 		</div>
 		<?php 
 	}
+	$novocondo = new Condominos();
+	$novocondo.insert();
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
 
-	<h2>Inserir Condómino</h2>
+	<h2>Inserir Condómino</h2><?php echo $_POST['123']; ?>
 	<br />
 	
 	<div class="container">
