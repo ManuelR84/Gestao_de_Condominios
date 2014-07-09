@@ -4,57 +4,67 @@ class Prestacaodecontas {
 
 	private $resumo;
 	private $saldo;
-	private $porreceitas;
-	private $pordespesas;
-	private $porrubricas;
+	private $por_receitas;
+	private $por_despesas;
+	private $por_rubricas;
 	
-	function __construct(){
-		
+	function __construct($resumo="", $saldo="", $por_receitas="", $por_despesas="", $por_rubricas="")
+	{
+		$this->resumo = $resumo;
+		$this->saldo = $saldo;
+		$this->por_receitas = $por_receitas;
+		$this->por_despesas = $por_despesas;
+		$this->por_rubricas = $por_rubricas;
 	}
-
 	
-	function get_resumo(){
+	function get_resumo()
+	{
 		return $this->resumo;
 	}
 
-	function set_resumo(){
-		
+	function set_resumo($resumo)
+	{
+		$this->resumo = $resumo;
 	}
-
 	
-	function get_saldo(){
+	function get_saldo()
+	{
 		return $this->saldo;
 	}
 	
-	function set_saldo(){
-	
+	function set_saldo($saldo)
+	{
+		$this->saldo = $saldo;
 	}
 	
-	
-	function get_porreceitas(){
-		return $this->porreceitas;
+	function get_por_receitas()
+	{
+		return $this->por_receitas;
 	}
 	
-	function set_porreceitas(){
-	
+	function set_por_receitas($por_receitas)
+	{
+		$this->por_receitas = $por_receitas;
 	}
 	
-	
-	function get_pordespesas(){
-		return $this->pordespesas;
+	function get_por_despesas()
+	{
+		return $this->por_despesas;
 	}
 	
-	function set_pordespesas(){
-	
+	function set_por_despesas($por_despesas)
+	{
+		$this->por_despesas = $por_despesas;
 	}
 	
-	
-	function get_porrubricas(){
-		return $this->porrubricas;
+	function get_por_rubricas()
+	{
+		return $this->por_rubricas;
 	}
 	
-	function set_porrubricas(){
-	
+	function set_por_rubricas($por_rubricas)
+	{
+		$this->por_rubricas = $por_rubricas;
 	}
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-class Condominos extends DBConnect {
+class Condominos {
 
 	private $nome;
 	private $cc;
@@ -8,7 +8,8 @@ class Condominos extends DBConnect {
 	private $contato;
 	private $email;
 	
-	function __construct($nome="", $cc="", $morada="", $contato="", $email=""){
+	function __construct($nome="", $cc="", $morada="", $contato="", $email="")
+	{
 		$this->nome = $nome;
 		$this->cc = $cc;
 		$this->morada = $morada;
@@ -16,7 +17,7 @@ class Condominos extends DBConnect {
 		$this->email = $email;
 	}
 	
-	function insert(){
+	private function insert(){
 		query("INSERT INTO condominos (nome, cc, morada, contacto, email)
 		VALUES ('nome teste', '123455', 'rua de teste', '123456789', 'email@dominio.com');");
 	}
@@ -28,7 +29,6 @@ class Condominos extends DBConnect {
 	function set_nome($nome){
 		$this->nome = $nome;
 	}
-
 	
 	function get_cc(){
 		return $this->cc;
@@ -38,7 +38,6 @@ class Condominos extends DBConnect {
 		$this->cc = $cc;
 	}
 	
-	
 	function get_morada(){
 		return $this->morada;
 	}
@@ -46,17 +45,14 @@ class Condominos extends DBConnect {
 	function set_morada($morada){
 		$this->morada = $morada;
 	}
-
 	
 	function get_contato(){
 		return $this->contato;
 	}
 	
-	
 	function set_contato($contato){
 		$this->contato = $contato;
 	}
-	
 	
 	function get_email(){
 		return $this->email;

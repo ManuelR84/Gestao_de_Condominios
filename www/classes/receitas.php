@@ -8,10 +8,14 @@ class Receitas {
 	private $data_pagamento;
 	private $conta_destino;
 	
-	function __construct(){
-		
+	function __construct($descricao="", $rubrica="", $valor="", $data_pagamento="", $conta_destino="")
+	{
+		$this->descricao = $descricao;
+		$this->rubrica = $rubrica;
+		$this->valor = $valor;
+		$this->data_pagamento = $data_pagamento;
+		$this->conta_destino = $conta_destino;
 	}
-
 	
 	function get_descricao(){
 		return $this->descricao;
@@ -21,7 +25,6 @@ class Receitas {
 		$this->descricao = $descricao;
 	}
 
-	
 	function get_rubrica(){
 		return $this->rubrica;
 	}
@@ -57,6 +60,5 @@ class Receitas {
 	function set_conta_destino($conta_destino){
 		$this->conta_destino = conta_destino;
 	}
-	
 }
 ?>

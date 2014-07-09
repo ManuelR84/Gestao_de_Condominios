@@ -5,27 +5,30 @@ class Rubricas {
 	private $nome;
 	private $tipo;
 	
-	function __construct(){
-		
+	function __construct($nome="", $tipo="")
+	{
+		$this->nome = $nome;
+		$this->tipo = $tipo;
+	}
+	
+	function get_nome()
+	{
+		return $this->$nome;
 	}
 
-	
-	function get_nome(){
-		return $nome;
-	}
-
-	function set_nome(){
-		
-	}
-
-	
-	function get_tipo(){
-		return $tipo;
+	function set_nome($nome)
+	{
+		$this->nome = $nome;
 	}
 	
-	function set_tipo(){
-	
+	function get_tipo()
+	{
+		return $this->$tipo;
 	}
 	
+	function set_tipo($tipo)
+	{
+		$this->tipo = $tipo;
+	}
 }
 ?>
