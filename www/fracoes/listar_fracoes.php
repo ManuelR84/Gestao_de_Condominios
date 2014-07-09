@@ -11,7 +11,7 @@
 		<h2>Lista de Frações</h2>
 		<br />
 		
-		<!--
+		
 		<table class="table table table-hover">
 		<tr>
 			<th>Id</th>
@@ -25,7 +25,7 @@
 			<th></th>
 		</tr>
 		
-		<?php /*
+		<?php
 		$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 			or die("Error1: ".mysqli_error($con));
 		
@@ -50,14 +50,12 @@
 			echo "<td><a href=alterar_fracao.php?id=" . $row['idfrac'] . ">Alterar</a></td>";
 			echo "<td><a href=apagar_fracao.php?id=" . $row['idfrac'] . ">Apagar</a></td>";
 		}
-		*/ ?>
+		?>
 		
 			</tr>
 		</table>
-	-->
 		
 	</div>
-<!-- /container -->
 
 <?php 
 	include "../footer.php";
