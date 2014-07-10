@@ -62,7 +62,6 @@
 								<li><a href="/condominos/listar_condominos.php"><span class="glyphicon glyphicon-eye-open"></span> Listar condónimos</a></li>
 								<li class="divider"></li>
 								<li><a href="/condominos/novo_condomino.php"><span class="glyphicon glyphicon-plus-sign"></span> Novo condónimo</a></li>
-								<li><a href="/condominos/apagar_condomino.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar condónimo</a></li>
 							</ul>
 						</li>
 		
@@ -72,7 +71,6 @@
 								<li><a href="/fracoes/listar_fracoes.php"><span class="glyphicon glyphicon-eye-open"></span> Listar frações</a></li>
 								<li class="divider"></li>
 								<li><a href="/fracoes/nova_fracao.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova fração</a></li>
-								<li><a href="/fracoes/apagar_fracao.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar fração</a></li>
 							</ul>
 						</li>
 		
@@ -91,7 +89,6 @@
 								<li><a href="/receitas/listar_receitas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar receitas</a></li>
 								<li class="divider"></li>
 								<li><a href="/receitas/inserir_receita.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir receita</a></li>
-								<li><a href="/receitas/apagar_receita.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar receita</a></li>
 							</ul>
 						</li>
 		
@@ -101,7 +98,6 @@
 								<li><a href="/despesas/listar_despesas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Despesas</a></li>
 								<li class="divider"></li>
 								<li><a href="/despesas/inserir_despesa.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir Despesa</a></li>
-								<li><a href="/despesas/apagar_despesa.php"><span class="glyphicon glyphicon-minus-sign"></span> Apagar Despesa</a></li>
 							</ul>
 						</li>
 		

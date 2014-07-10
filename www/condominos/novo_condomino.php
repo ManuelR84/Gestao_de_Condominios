@@ -3,24 +3,25 @@
 	$title = "Novo Condomino";
 	include "../header.php";
 
-	if(isset($_POST["nome"])){echo $_POST["nome"];}
-	elseif(isset($_POST["cc"])){}
-	elseif(isset($_POST["morada"])){}
-	elseif(isset($_POST["tele"])){}
-	elseif(isset($_POST["email"]))
+	if(isset($_POST['submit']))
 	{
-		$novocondo = new Condominos($_POST["nome"], $_POST["cc"], $_POST["morada"], $_POST["tele"], $_POST["email"]);
+		if(isset($_POST["nome"])){}
+		elseif(isset($_POST["cc"])){}
+		elseif(isset($_POST["morada"])){}
+		elseif(isset($_POST["telefone"])){}
+		elseif(isset($_POST["email"]))
+		{
+			$novocondo = new Condominos($_POST["nome"], $_POST["cc"], $_POST["morada"], $_POST["tele"], $_POST["email"]);
+		}
+		else
+		{
+			?>
+			<div class='error_message'>
+			Faltam campos por preencher
+			</div>
+			<?php
+		}
 	}
-	else
-	{
-		?>
-		<div class='error_message'>
-		Faltam campos por preencher
-		</div>
-		<?php 
-	}
-	$novocondo = new Condominos();
-	$novocondo.insert();
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
