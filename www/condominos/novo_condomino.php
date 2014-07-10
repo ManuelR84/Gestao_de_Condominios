@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if(!isset($_SESSION["login"]))
+		header("Location: ../index.php");
+	
 	$title = "Novo Condomino";
 	include "../header.php";
 
@@ -27,7 +30,7 @@
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
 
-	<h2>Inserir Condómino</h2><?php echo $_POST['123']; ?>
+	<h2>Inserir Condómino</h2>
 	<br />
 	
 	<div class="container">
@@ -61,7 +64,7 @@
 				  </div>
 				  
 				  <br />
-				  <button type="submit" name="123" value="111" class="btn btn-default">Inserir</button>
+				  <button type="submit" name="submit" class="btn btn-default">Inserir</button>
 				</form>
 				
 			</div>

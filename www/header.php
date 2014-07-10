@@ -14,7 +14,7 @@
 	$dbpassword = "root";
 	$dbname = "gestao_condominios";
 	
-	$dblink = new DBConnect($dbhost, $dbusername, $dbpassword, $dbname);
+	$con = new DBConnect($dbhost, $dbusername, $dbpassword, $dbname);
 ?>
 <!DOCTYPE html>
 <html lang="en">
