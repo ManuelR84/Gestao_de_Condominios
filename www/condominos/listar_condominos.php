@@ -26,6 +26,8 @@
 			<th></th>
 			<th></th>
 		</tr>
+		
+		<tr>
 			<?php
 				$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 					or die("Error1: ".mysqli_error($con));
@@ -37,8 +39,8 @@
 				$result = mysqli_query($con, "SELECT * FROM condominos")
 				or die("Error2: ".mysqli_error($con));
 				
-				while($row = mysqli_fetch_array($result)) {
-			  		echo "<tr>";
+				while($row = mysqli_fetch_array($result)) 
+				{
 			  		echo "<td>" . $row['idcond'] . "</td>";
 					echo "<td>" . $row['nome'] . "</td>";
 					echo "<td>" . $row['cc'] . "</td>";

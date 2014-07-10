@@ -5,7 +5,6 @@
 		header("Location: ../index.php");
 	}
 
-	session_start();
 	$title = "Inserir Despesa";
 	include "../header.php";
 ?>
