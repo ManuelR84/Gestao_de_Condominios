@@ -1,6 +1,10 @@
 <?php
-//saldo de contas
 	session_start();
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+	{
+		header("Location: ../index.php");
+	}
+
 	$title = "Saldo de Contas";
 	include "../header.php";
 ?>

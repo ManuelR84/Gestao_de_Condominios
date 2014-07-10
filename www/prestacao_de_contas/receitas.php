@@ -1,6 +1,10 @@
 <?php
-//receitas
 	session_start();
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+	{
+		header("Location: ../index.php");
+	}
+
 	$title = "Receitas";
 	include "../header.php";
 ?>

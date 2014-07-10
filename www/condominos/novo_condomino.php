@@ -1,28 +1,26 @@
 <?php
 	session_start();
-	if(!isset($_SESSION["login"]))
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+	{
 		header("Location: ../index.php");
+	}
 	
 	$title = "Novo Condomino";
 	include "../header.php";
 
 	if(isset($_POST['submit']))
 	{
-		if(isset($_POST["nome"])){}
-		elseif(isset($_POST["cc"])){}
-		elseif(isset($_POST["morada"])){}
-		elseif(isset($_POST["telefone"])){}
-		elseif(isset($_POST["email"]))
-		{
+		if(!isset($_POST["nome"])){}
+		elseif(!isset($_POST["cc"])){}
+		elseif(!isset($_POST["morada"])){}
+		elseif(!isset($_POST["telefone"])){}
+		elseif(!isset($_POST["email"]))
+		{	echo "teste";
 			$novocondo = new Condominos($_POST["nome"], $_POST["cc"], $_POST["morada"], $_POST["tele"], $_POST["email"]);
 		}
 		else
 		{
-			?>
-			<div class='error_message'>
-			Faltam campos por preencher
-			</div>
-			<?php
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
 		}
 	}
 ?>

@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+	{
+		header("Location: ../index.php");
+	}
+	
 	$title = "Listar Contas";
 	include "../header.php";
 ?>

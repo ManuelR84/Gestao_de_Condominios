@@ -1,5 +1,11 @@
 <?php
 	session_start();
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+	{
+		header("Location: ../index.php");
+	}
+
+	session_start();
 	$title = "Inserir Despesa";
 	include "../header.php";
 ?>

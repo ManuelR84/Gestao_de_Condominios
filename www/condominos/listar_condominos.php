@@ -1,7 +1,9 @@
 <?php
 	session_start();
-	if(!isset($_SESSION["login"]))
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+	{
 		header("Location: ../index.php");
+	}
 	
 	$title = "Listar Condominos";
 	include "../header.php";
