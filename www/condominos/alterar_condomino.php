@@ -32,27 +32,27 @@
 				<form method="post">
 				  <div class="form-group">
 				    <label for="nomecondo">Nome do condómino</label>
-				    <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo $row['nome'] ?>" maxlength="45">
+				    <input type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo $row['nome']; ?>" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="cccondo">Cartão de cidadão</label>
-				    <input type="text" class="form-control" placeholder="CC" name="cc" value="<?php echo $row['cc'] ?>" maxlength="8">
+				    <input type="text" class="form-control" placeholder="CC" name="cc" value="<?php echo $row['cc']; ?>" maxlength="8">
 				  </div>
 				  
 				 <div class="form-group">
 				    <label for="moradacondo">Morada do condómino</label>
-				    <input type="text" class="form-control" placeholder="Morada" name="morada" value="<?php echo $row['morada'] ?>" maxlength="45">
+				    <input type="text" class="form-control" placeholder="Morada" name="morada" value="<?php echo $row['morada']; ?>" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="telecondo">Telefone</label>
-				    <input type="text" class="form-control" placeholder="Telefone" name="tele" value="<?php echo $row['contacto'] ?>" maxlength="9">
+				    <input type="text" class="form-control" placeholder="Telefone" name="tele" value="<?php echo $row['contacto']; ?>" maxlength="9">
 				  </div>
 				  
 				   <div class="form-group">
 				    <label for="emailcondo">E-mail</label>
-				    <input type="email" class="form-control" placeholder="E-mail" name="email" value="<?php echo $row['email'] ?>" maxlength="50">
+				    <input type="email" class="form-control" placeholder="E-mail" name="email" value="<?php echo $row['email']; ?>" maxlength="50">
 				  </div>
 				  
 				  <br />

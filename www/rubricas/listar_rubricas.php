@@ -10,17 +10,17 @@
 		<h2>Lista de Rubricas</h2>
 		<br />
 
-		<!--
+		
 		<table class="table table table-hover">
 		<tr>
-			<th>Id Rubrica</th>
+			<th>Id</th>
 			<th>Rubrica</th>
 			<th>Tipo</th>
 			<th></th>
 			<th></th>
 		</tr>
 		
-		<?php /*
+		<?php
 		$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 			or die("Error1: ".mysqli_error($con));
 		
@@ -39,10 +39,10 @@
 			echo "<td><a href=alterar_rubrica.php?id=" . $row['idrub'] . ">Alterar</a></td>";
 			echo "<td><a href=apagar_rubrica.php?id=" . $row['idrub'] . ">Apagar</a></td>";
 		}
-		*/?>
+		?>
 		
 			</tr>
-		</table>-->
+		</table>
 
 	</div>
 <!-- /container -->

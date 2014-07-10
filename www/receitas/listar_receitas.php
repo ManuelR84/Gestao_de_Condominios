@@ -10,7 +10,7 @@
 		<h2>Lista de Receitas</h2>
 		<br />
 
-		<!--
+		
 		<table class="table table table-hover">
 		<tr>
 			<th>Id</th>
@@ -23,7 +23,7 @@
 			<th></th>
 		</tr>
 		
-		<?php /*
+		<?php
 		$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 			or die("Error1: ".mysqli_error($con));
 		
@@ -47,11 +47,11 @@
 			echo "<td><a href=alterar_receita.php?id=" . $row['idreceita'] . ">Alterar</a></td>";
 			echo "<td><a href=apagar_receita.php?id=" . $row['idreceita'] . ">Apagar</a></td>";
 		}
-		*/?>
+		?>
 		
 			</tr>
 		</table>
-		-->
+		
 	</div>
 <!-- /container -->
 
