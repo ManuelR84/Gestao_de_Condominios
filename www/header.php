@@ -126,7 +126,20 @@
 					</ul>
 		
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo "Nome"; ?><b class="caret"></b></a>
+						<li class="active dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								
+								<?php 
+									if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+									{
+										echo "Login";
+									}else{
+										echo '<span class="glyphicon glyphicon-user"></span> ';
+										echo "Nome"; //nome do user enquanto o login
+									}
+								?>
+								<b class="caret"></b>
+							</a>
 							<ul class="dropdown-menu">
 								<?php include "/login/login.php"; ?>
 							</ul>
