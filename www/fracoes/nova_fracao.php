@@ -18,8 +18,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
+			
+				<?php
+					$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
+						or die("Error1: ".mysqli_error($con));
+					
+					if (mysqli_connect_errno()) {
+						echo "Failed to connect to MySQL: " . mysqli_connect_error();
+					}
+				?>
 		
-				<form role="form">
+				<form method="post">
 				  <div class="form-group">
 				    <label for="ctf">Condómino Titular da Fração</label>
 				    <input type="text" class="form-control" placeholder="Nome" name="ctf">
@@ -55,7 +64,7 @@
 				  </div>
 				  
 				  <br />
-				  <button type="submit" class="btn btn-default">Inserir</button>
+				  <button type="submit" name="submit" class="btn btn-default">Inserir</button>
 				</form>
 
 			</div>
@@ -65,5 +74,15 @@
 <!-- /container -->
 
 <?php 
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+				"INSERT INTO fracoes (idcond, iuf, permilagem, andar, tipo, observacoes)
+				VALUES ('" . $_POST['ctf'] ."', '" . $_POST['iuf'] ."','" . $_POST['permi'] ."', '" . $_POST['du'] ."', '" . $_POST['tipo'] ."', '" . $_POST['obs'] ."');")
+				or die("Error4: ".mysqli_error($con));
+	}
+	
+
+	mysqli_close($con);
 	include "../footer.php";
 ?>

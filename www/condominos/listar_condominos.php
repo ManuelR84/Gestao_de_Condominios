@@ -27,7 +27,6 @@
 			<th></th>
 		</tr>
 		
-		<tr>
 			<?php
 				$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 					or die("Error1: ".mysqli_error($con));
@@ -41,6 +40,7 @@
 				
 				while($row = mysqli_fetch_array($result)) 
 				{
+					echo "<tr>";
 			  		echo "<td>" . $row['idcond'] . "</td>";
 					echo "<td>" . $row['nome'] . "</td>";
 					echo "<td>" . $row['cc'] . "</td>";
@@ -49,9 +49,10 @@
 					echo "<td>" . $row['email'] . "</td>";
 					echo "<td><a href=alterar_condomino.php?id=" . $row['idcond'] . ">Alterar</a></td>";
 					echo "<td><a href=apagar_condomino.php?id=" . $row['idcond'] . ">Apagar</a></td>";
+					echo "</tr>";
 				}
 			?>
-			</tr>
+			
 		</table>
 </div>
 

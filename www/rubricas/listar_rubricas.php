@@ -25,7 +25,6 @@
 				<th></th>
 			</tr>
 		
-			<tr>
 				<?php
 					$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 						or die("Error1: ".mysqli_error($con));
@@ -38,14 +37,15 @@
 					
 					while($row = mysqli_fetch_array($result))
 					{
+						echo "<tr>";
 				  		echo "<td>" . $row['idrub'] . "</td>";
 						echo "<td>" . $row['rubrica'] . "</td>";
 						echo "<td>" . $row['tipo'] . "</td>";
 						echo "<td><a href=alterar_rubrica.php?id=" . $row['idrub'] . ">Alterar</a></td>";
 						echo "<td><a href=apagar_rubrica.php?id=" . $row['idrub'] . ">Apagar</a></td>";
+						echo "</tr>";
 					}
 				?>
-			</tr>
 		</table>
 	</div>
 <!-- /container -->

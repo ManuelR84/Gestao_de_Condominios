@@ -28,7 +28,6 @@
 				<th></th>
 			</tr>
 			
-			<tr>
 			<?php 
 				$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 					or die("Error1: ".mysqli_error($con));
@@ -40,11 +39,12 @@
 				$result = mysqli_query($con,
 						"SELECT a.iddespesa, b.rubrica, a.descricao, a.valor, a.datavencimento, a.datapagamento, c.descricaoconta
 						FROM despesas a, rubricas b, contas c
-						WHERE a.idrub = b.idrub && a.idcontadestino = c.idconta;")
+						WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta;")
 						or die("Error2: ".mysqli_error($con));
 				
 				while($row = mysqli_fetch_array($result)) 
 				{
+					echo "<tr>";
 			  		echo "<td>" . $row['iddespesa'] . "</td>";
 					echo "<td>" . $row['rubrica'] . "</td>";
 					echo "<td>" . $row['descricao'] . "</td>";
@@ -54,9 +54,9 @@
 					echo "<td>" . $row['descricaoconta'] . "</td>";
 					echo "<td><a href=alterar_despesa.php?id=" . $row['iddespesa'] . ">Alterar</a></td>";
 					echo "<td><a href=apagar_despesa.php?id=" . $row['iddespesa'] . ">Apagar</a></td>";
+					echo "</tr>";
 				}
 				?>
-			</tr>
 		</table>
 </div>
 <!-- /container -->

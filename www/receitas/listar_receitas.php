@@ -27,7 +27,6 @@
 				<th></th>
 			</tr>
 		
-			<tr>
 			<?php
 				$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 					or die("Error1: ".mysqli_error($con));
@@ -42,7 +41,9 @@
 						WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta;")
 						or die("Error2: ".mysqli_error($con));
 				
-				while($row = mysqli_fetch_array($result)) {
+				while($row = mysqli_fetch_array($result)) 
+				{
+					echo "<tr>";
 			  		echo "<td>" . $row['idreceita'] . "</td>";
 					echo "<td>" . $row['rubrica'] . "</td>";
 					echo "<td>" . $row['descricao'] . "</td>";
@@ -51,9 +52,9 @@
 					echo "<td>" . $row['descricaoconta'] . "</td>";
 					echo "<td><a href=alterar_receita.php?id=" . $row['idreceita'] . ">Alterar</a></td>";
 					echo "<td><a href=apagar_receita.php?id=" . $row['idreceita'] . ">Apagar</a></td>";
+					echo "</tr>";
 				}
 			?>
-			</tr>
 		</table>
 	</div>
 <!-- /container -->
