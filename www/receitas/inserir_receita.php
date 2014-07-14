@@ -7,6 +7,19 @@
 
 	$title = "Inserir Receita";
 	include "../header.php";
+	
+	//Validação do formulário sobre os campos vazios
+	if(isset($_POST['submit']))
+	{
+		if(!isset($_POST["descricao"])){
+		}elseif(!isset($_POST["rubrica"])){
+		}elseif(!isset($_POST["valor"])){
+		}elseif(!isset($_POST["data"])){
+			//codigo para enviar para a db
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
+	}
 ?>
 
 <div class="jumbotron">
@@ -18,34 +31,34 @@
 		<div class="row">
 			<div class="col-xs-4">
 	
-				<form role="form">
+				<form method="post">
 				  <div class="form-group">
 				    <label for="dr">Descrição da Receita</label>
-				    <input type="text" class="form-control" placeholder="Descrição" name="dr">
+				    <input type="text" class="form-control" placeholder="Descrição" name="descricao">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="rub">Rubrica</label>
-				    <input type="text" class="form-control" placeholder="Rubrica" name="rub">
+				    <input type="text" class="form-control" placeholder="Rubrica" name="rubrica">
 				  </div>
 				  
 				 <div class="form-group">
 				    <label for="valorres">Valor da Receita</label>
-				    <input type="text" class="form-control" placeholder="Valor da Receita" name="valorres">
+				    <input type="text" class="form-control" placeholder="Valor da Receita" name="valor">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="datapagrec">Data Pagamento</label>
-				    <input type="date" class="form-control" name="datapagrec">
+				    <input type="date" class="form-control" name="data">
 				  </div>
 				  
 				   <div class="form-group">
 				    <label for="contades">Conta destino</label>
-				    <input type="number" class="form-control" placeholder="ID Conta" name="contades">
+				    <input type="number" class="form-control" placeholder="ID Conta" name="destino">
 				  </div>
 				  
 				  <br />
-				  <button type="submit" class="btn btn-default">Inserir</button>
+				  <button type="submit" name="submit" class="btn btn-default">Inserir</button>
 				</form>
 		
 			</div>

@@ -1,7 +1,6 @@
 <?php 
-	if(isset($_SESSION["login"]))
-		if($_SESSION["login"])
-		{ ?>
+	if(isset($_SESSION["login"]) && $_SESSION["login"])
+	{ ?>
 	
 			<li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> Ver Profile</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
@@ -9,7 +8,7 @@
 <?php 	}else{ ?>
 
 		<div class="login">
-			<form role="form">
+			<form method="post">
 			  <div class="form-group">
 			    <label for="nomerub">Nome</label>
 			    <input type="text" class="form-control" placeholder="Nome" name="nome">

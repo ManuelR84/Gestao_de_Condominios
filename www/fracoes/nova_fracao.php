@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+	//Validação da sessão
 	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
 	{
 		header("Location: ../index.php");
@@ -7,6 +8,26 @@
 
 	$title = "Nova Fração";
 	include "../header.php";
+	
+	//Validação do formulário sobre os campos vazios
+	if(isset($_POST['submit']))
+	{echo "bp0";
+		if(!isset($_POST["condomino"])){echo "bp1";
+		}elseif(!isset($_POST["fracao"])){echo "bp2";
+		}elseif(!isset($_POST["permilagem"])){echo "bp3";
+		}elseif(!isset($_POST["designacao"])){echo "bp4";
+		}elseif(!isset($_POST["tipo"])){echo "bp5";
+		}elseif(!isset($_POST["observacoes"])){echo "bp6";
+			//query de envio do formulario para a base de dados
+			echo "bp7";
+			mysqli_query($con,
+			"INSERT INTO fracoes (idcond, iuf, permilagem, andar, tipo, observacoes)
+			VALUES ('" . $_POST['condomino'] ."', '" . $_POST['fracao'] ."','" . $_POST['permilagem'] ."', '" . $_POST['designacao'] ."', '" . $_POST['tipo'] ."', '" . $_POST['observacoes'] ."');")
+				or die("Error4: ".mysqli_error($con));
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
+	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -31,22 +52,22 @@
 				<form method="post">
 				  <div class="form-group">
 				    <label for="ctf">Condómino Titular da Fração</label>
-				    <input type="text" class="form-control" placeholder="Nome" name="ctf">
+				    <input type="text" class="form-control" placeholder="Nome" name="condomino">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="iuf">Identificação Unica da Fração</label>
-				    <input type="text" class="form-control" placeholder="ID fração" name="iuf">
+				    <input type="text" class="form-control" placeholder="ID fração" name="fracao">
 				  </div>
 				  
 				 <div class="form-group">
 				    <label for="permi">Permilagem da Fração</label>
-				    <input type="text" class="form-control" placeholder="Permilagem" name="permi">
+				    <input type="text" class="form-control" placeholder="Permilagem" name="permilagem">
 				  </div>
 				  
 				   <div class="form-group">
 				    <label for="du">Designação Usual</label>
-				    <input type="text" class="form-control" placeholder="Andar" name="du">
+				    <input type="text" class="form-control" placeholder="Andar" name="designacao">
 				  </div>
 				  
 				  <div class="form-group">
@@ -60,7 +81,7 @@
 				  
 				  <div class="form-group">
 				    <label for="obs">Observações</label>
-				   	<textarea rows="1" cols="5" type="text" class="form-control" placeholder="Obervações" name="obs"></textarea>
+				    <textarea rows="1" cols="5" type="text" class="form-control" placeholder="Observações" name="observacoes"></textarea>
 				  </div>
 				  
 				  <br />
@@ -74,15 +95,6 @@
 <!-- /container -->
 
 <?php 
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-				"INSERT INTO fracoes (idcond, iuf, permilagem, andar, tipo, observacoes)
-				VALUES ('" . $_POST['ctf'] ."', '" . $_POST['iuf'] ."','" . $_POST['permi'] ."', '" . $_POST['du'] ."', '" . $_POST['tipo'] ."', '" . $_POST['obs'] ."');")
-				or die("Error4: ".mysqli_error($con));
-	}
-	
-
 	mysqli_close($con);
 	include "../footer.php";
 ?>

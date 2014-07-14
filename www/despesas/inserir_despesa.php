@@ -18,7 +18,7 @@
 		<div class="row">
 			<div class="col-xs-4">
 	
-				<form role="form">
+				<form method="post">
 				  <div class="form-group">
 				    <label for="dd">Descrição da Despesa</label>
 				    <input type="text" class="form-control" placeholder="Descrição" name="dd">

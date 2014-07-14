@@ -7,6 +7,17 @@
 
 	$title = "Nova Rubrica";
 	include "../header.php";
+	
+	//Validação do formulário sobre os campos vazios
+	if(isset($_POST['submit']))
+	{
+		if(!isset($_POST["rubrica"])){
+		}elseif(!isset($_POST["tipo"])){
+			//codigo para enviar para a db
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
+	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -19,10 +30,10 @@
 		<div class="row">
 			<div class="col-xs-4">
 	
-				<form role="form">
+				<form method="post">
 				  <div class="form-group">
 				    <label for="nomerub">Nome Rubrica</label>
-				    <input type="text" class="form-control" placeholder="Rubrica" name="nomerub">
+				    <input type="text" class="form-control" placeholder="Rubrica" name="rubrica">
 				  </div>
 				  
 				  <div class="form-group">
@@ -35,7 +46,7 @@
 				  </div>
 				  
 				  <br />
-				  <button type="submit" class="btn btn-default">Inserir</button>
+				  <button type="submit" name="submit" class="btn btn-default">Inserir</button>
 				</form>
 		
 			</div>

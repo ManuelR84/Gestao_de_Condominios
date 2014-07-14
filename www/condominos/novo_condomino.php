@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	//Validação da sessão
 	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
 	{
 		header("Location: ../index.php");
@@ -8,18 +9,16 @@
 	$title = "Novo Condomino";
 	include "../header.php";
 
+	//Validação do formulário sobre os campos vazios
 	if(isset($_POST['submit']))
 	{
-		if(!isset($_POST["nome"])){}
-		elseif(!isset($_POST["cc"])){}
-		elseif(!isset($_POST["morada"])){}
-		elseif(!isset($_POST["telefone"])){}
-		elseif(!isset($_POST["email"]))
-		{	echo "teste";
+		if(!isset($_POST["nome"])){
+		}elseif(!isset($_POST["cc"])){
+		}elseif(!isset($_POST["morada"])){
+		}elseif(!isset($_POST["telefone"])){
+		}elseif(!isset($_POST["email"])){
 			$novocondo = new Condominos($_POST["nome"], $_POST["cc"], $_POST["morada"], $_POST["tele"], $_POST["email"]);
-		}
-		else
-		{
+		}else{
 			echo "<div class='error_message'>Faltam campos por preencher</div>";
 		}
 	}
@@ -53,7 +52,7 @@
 				  
 				  <div class="form-group">
 				    <label for="telecondo">Telefone</label>
-				    <input type="text" class="form-control" placeholder="Telefone" name="tele" maxlength="9">
+				    <input type="text" class="form-control" placeholder="Telefone" name="telefone" maxlength="9">
 				  </div>
 				  
 				   <div class="form-group">
