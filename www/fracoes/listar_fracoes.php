@@ -1,13 +1,18 @@
 <?php
-//nova fração corresponde a listar condóminos que ainda nao tem sido registados com a sua fração
 	session_start();
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
-	{
-		header("Location: ../index.php");
-	}
+	//Validação da sessão
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
 
 	$title = "Listar Frações";
 	include "../header.php";
+	
+	//Estabelecimento da ligação à base de dados
+	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
+	or die("Error1: ".mysqli_error($con));
+	
+	if (mysqli_connect_errno()) {
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -30,13 +35,6 @@
 		</tr>
 		
 		<?php
-		$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-			or die("Error1: ".mysqli_error($con));
-		
-		if (mysqli_connect_errno()) {
-			echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		};
-			
 		$result = mysqli_query($con,"SELECT a.idfrac, b.nome, a.iuf, a.permilagem, a.andar, a.tipo, a.observacoes
 									FROM fracoes a, condominos b
 									WHERE a.idcond = b.idcond;") or die("Error2: ".mysqli_error($con));

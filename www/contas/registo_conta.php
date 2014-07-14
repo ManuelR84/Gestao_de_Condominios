@@ -1,9 +1,7 @@
 <?php
 	session_start();
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
-	{
-		header("Location: ../index.php");
-	}
+	//Validação da sessão
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
 
 	$title = "Registo de Conta";
 	include "../header.php";
@@ -57,5 +55,6 @@
 <!-- /container -->
 
 <?php 
+	mysqli_close($con);
 	include "../footer.php";
 ?>

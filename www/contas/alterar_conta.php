@@ -1,12 +1,18 @@
 <?php 
 	session_start();
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
-	{
-		header("Location: ../index.php");
-	}
+	//Validação da sessão
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
 
 	$title = "Alterar Conta";
 	include "../header.php";
+	
+	//Estabelecimento da ligação à base de dados
+	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
+	or die("Error1: ".mysqli_error($con));
+	
+	if (mysqli_connect_errno()) {
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -19,21 +25,13 @@
 		<div class="row">
 			<div class="col-xs-4">
 				<?php
-					$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-						or die("Error1: ".mysqli_error($con));
-					
-					if (mysqli_connect_errno()) {
-						echo "Failed to connect to MySQL: " . mysqli_connect_error();
-					}
-						
-					$result = mysqli_query($con,"SELECT descricaoconta, numeroconta
-												FROM contas
-												WHERE idconta = " . $_GET['id'] . ";") or die("Error2: ".mysqli_error($con));
-					
+					$result = mysqli_query($con,
+						"SELECT descricaoconta, numeroconta
+						FROM contas
+						WHERE idconta = " . $_GET['id'] . ";") 
+						or die("Error2: ".mysqli_error($con));
 					
 					$row = mysqli_fetch_array($result);
-					
-				  	
 				?>
 
 				<form method="post">
@@ -54,16 +52,15 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
 
 <?php
 
 	if(isset($_POST['submit'])){
 		mysqli_query($con,"UPDATE contas
-								SET descricaoconta = '" . $_POST['descconta'] ."', numeroconta = '" . $_POST['numconta'] ."'
-								WHERE idconta = " . $_GET['id'] . ";")
-								or die("Error2: ".mysqli_error($con));
+			SET descricaoconta = '" . $_POST['descconta'] ."', numeroconta = '" . $_POST['numconta'] ."'
+			WHERE idconta = " . $_GET['id'] . ";")
+			or die("Error2: ".mysqli_error($con));
 	}
 
 	mysqli_close($con);

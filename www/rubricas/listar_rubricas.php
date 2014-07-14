@@ -7,6 +7,14 @@
 
 	$title = "Listar Rubricas";
 	include "../header.php";
+	
+	//Estabelecimento da ligação à base de dados
+	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
+	or die("Error1: ".mysqli_error($con));
+	
+	if (mysqli_connect_errno()) {
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->

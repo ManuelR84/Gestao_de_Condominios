@@ -1,9 +1,7 @@
 <?php 
 	session_start();
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
-	{
-		header("Location: ../index.php");
-	}
+	//Validação da sessão
+	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
 
 	$title = "Transferências";
 	include "../header.php";
@@ -47,9 +45,9 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
 
 <?php 
+	mysqli_close($con);
 	include "../footer.php";
 ?>
