@@ -15,17 +15,6 @@
 	if (mysqli_connect_errno()) {
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-	
-	//Validação do formulário sobre os campos vazios
-	if(isset($_POST['submit']))
-	{
-		if(!isset($_POST["rubrica"])){
-		}elseif(!isset($_POST["tipo"])){
-			//codigo para enviar para a db
-		}else{
-			echo "<div class='error_message'>Faltam campos por preencher</div>";
-		}
-	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -63,6 +52,17 @@
 </div>
 <!-- /container -->
 
-<?php 
+<?php
+
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"INSERT INTO rubricas (rubrica, tipo)
+		VALUES ('" . $_POST['rubrica'] ."','" . $_POST['tipo'] ."');")
+		or die("Error3: ".mysqli_error($con));
+	}
+	
+	mysqli_close($con);
 	include "../footer.php";
+	
 ?>

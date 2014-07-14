@@ -14,19 +14,6 @@
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	//Validação do formulário sobre os campos vazios
-	if(isset($_POST['submit']))
-	{
-		if(!isset($_POST["nome"])){
-		}elseif(!isset($_POST["cc"])){
-		}elseif(!isset($_POST["morada"])){
-		}elseif(!isset($_POST["telefone"])){
-		}elseif(!isset($_POST["email"])){
-			$novocondo = new Condominos($_POST["nome"], $_POST["cc"], $_POST["morada"], $_POST["tele"], $_POST["email"]);
-		}else{
-			echo "<div class='error_message'>Faltam campos por preencher</div>";
-		}
-	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -41,7 +28,7 @@
 			
 				<form method="post">
 				  <div class="form-group">
-				    <label for="nomecondo">Nome do condómino</label>
+				    <label for="nomecondo">Nome</label>
 				    <input type="text" class="form-control" placeholder="Nome" name="nome" maxlength="45">
 				  </div>
 				  
@@ -51,13 +38,13 @@
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="moradacondo">Morada do condómino</label>
+				    <label for="moradacondo">Morada</label>
 				    <input type="text" class="form-control" placeholder="Morada" name="morada" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="telecondo">Telefone</label>
-				    <input type="text" class="form-control" placeholder="Telefone" name="telefone" maxlength="9">
+				    <input type="text" class="form-control" placeholder="Telefone" name="tele" maxlength="9">
 				  </div>
 				  
 				   <div class="form-group">
@@ -76,6 +63,19 @@
 <!-- /container -->
 
 <?php
+
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"INSERT INTO condominos (nome, cc, morada, contacto, email)
+				VALUES ('" . $_POST['nome'] ."',
+						'" . $_POST['cc'] ."',
+						'" . $_POST['morada'] ."',
+						'" . $_POST['tele'] ."',
+						'" . $_POST['email'] ."');")
+								or die("Error3: ".mysqli_error($con));
+	}
+
 	mysqli_close($con);
 	include "../footer.php";
 ?>
