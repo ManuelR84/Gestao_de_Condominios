@@ -3,6 +3,26 @@
 	$title = "Transferências";
 	include "../header.php";
 	session_validation();
+	
+	if(isset($_POST['submit']))
+	{
+		if(	$_POST["corigem"] != "" and
+		$_POST["cdestino"] != "" and
+		$_POST["valor"] != "" and
+		$_POST["data"] != "")
+		{
+			//query de envio do formulario para a base de dados
+			mysqli_query($con,
+			"INSERT INTO transferencias (xxx, xxx, xxx, xxx, xxx, xxx)
+			VALUES ('" . $_POST['corigem'] ."',
+					'" . $_POST['cdestino'] ."',
+					'" . $_POST['valor'] ."',
+					'" . $_POST['data'] ."');")
+			or error_validation($con);
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
+	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -17,23 +37,23 @@
 
 				<form role="form">
 				  <div class="form-group">
-				    <label for="idcontaori">Número Conta Origem</label>
-				    <input id="idcontaori" type="number" class="form-control" placeholder="Número Conta Origem" name="idcontaori">
+				    <label for="corigem">Número Conta Origem</label>
+				    <input id="corigem" type="number" class="form-control" placeholder="Número Conta Origem" name="corigem">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="idcontades">Número Conta Destino</label>
-				    <input id="idcontades" type="number" class="form-control" placeholder="Número Conta Destino" name="idcontades">
+				    <label for="cdestino">Número Conta Destino</label>
+				    <input id="cdestino" type="number" class="form-control" placeholder="Número Conta Destino" name="cdestino">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="valortrans">Valor Transferência</label>
-				    <input id="valortrans" type="text" class="form-control" placeholder="Valor Transferência" name="valortrans">
+				    <label for="valor">Valor Transferência</label>
+				    <input id="valor" type="text" class="form-control" placeholder="Valor Transferência" name="valor">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="datatrans">Data Transferência</label>
-				    <input id="datatrans" type="date" class="form-control" name="datatrans">
+				    <label for="data">Data Transferência</label>
+				    <input id="data" type="date" class="form-control" name="data">
 				  </div>
 				  
 				  <br />
