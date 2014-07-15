@@ -33,12 +33,12 @@
 				<form method="post">
 				  <div class="form-group">
 				    <label for="descconta">Descrição da Conta Bancária</label>
-				    <input type="text" class="form-control" placeholder="Descrição da Conta" value="<?php echo $row['descricaoconta'] ?>" name="descconta">
+				    <input id="descconta" type="text" class="form-control" placeholder="Descrição da Conta" value="<?php echo $row['descricaoconta'] ?>" name="descconta">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="numconta">Numero da Conta Bancária</label>
-				    <input type="number" class="form-control" placeholder="Número da Conta" value="<?php echo $row['numeroconta'] ?>" name="numconta">
+				    <input id="numconta" type="number" class="form-control" placeholder="Número da Conta" value="<?php echo $row['numeroconta'] ?>" name="numconta">
 				  </div>
 				  
 				  <br />

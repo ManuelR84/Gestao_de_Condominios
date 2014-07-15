@@ -51,17 +51,17 @@
 				  
 				  <div class="form-group">
 				    <label for="iuf">Identificação Unica da Fração</label>
-				    <input type="text" class="form-control" placeholder="ID fração" value="<?php echo $row['iuf']; ?>" name="iuf">
+				    <input id="iuf" type="text" class="form-control" placeholder="ID fração" value="<?php echo $row['iuf']; ?>" name="iuf">
 				  </div>
 				  
 				 <div class="form-group">
 				    <label for="permi">Permilagem da Fração</label>
-				    <input type="text" class="form-control" placeholder="Permilagem" value="<?php echo $row['permilagem']; ?>"  name="permi">
+				    <input id=permi"" type="text" class="form-control" placeholder="Permilagem" value="<?php echo $row['permilagem']; ?>"  name="permi">
 				  </div>
 				  
 				   <div class="form-group">
 				    <label for="du">Designação Usual</label>
-				    <input type="text" class="form-control" placeholder="Andar" value="<?php echo $row['andar']; ?>" name="du">
+				    <input id="du" type="text" class="form-control" placeholder="Andar" value="<?php echo $row['andar']; ?>" name="du">
 				  </div>
 				  
 				  <div class="form-group">

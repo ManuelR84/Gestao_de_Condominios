@@ -29,17 +29,17 @@
 				<form method="post">
 				  <div class="form-group">
 				    <label for="descconta">Descrição da Conta Bancária</label>
-				    <input type="text" class="form-control" placeholder="Descrição da Conta" name="descricao">
+				    <input id="descconta" type="text" class="form-control" placeholder="Descrição da Conta" name="descricao">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="numconta">Numero da Conta Bancária</label>
-				    <input type="number" class="form-control" placeholder="Número da Conta" name="numero">
+				    <input id="numconta" type="number" class="form-control" placeholder="Número da Conta" name="numero">
 				  </div>
 				  
 				 <div class="form-group">
 				    <label for="saldoini">Saldo Inicial</label>
-				    <input type="text" class="form-control" placeholder="Saldo Inicial" name="saldo">
+				    <input id="saldoini" type="text" class="form-control" placeholder="Saldo Inicial" name="saldo">
 				  </div>
 				  
 				  <br />

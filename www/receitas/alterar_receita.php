@@ -55,12 +55,12 @@
 				
 				 <div class="form-group">
 				   <label for="dr">Descrição</label>
-				   <input type="text" class="form-control" placeholder="Descrição" name="descricao" value="<?php echo $row3['descricao']; ?>">
+				   <input id="dr" type="text" class="form-control" placeholder="Descrição" name="descricao" value="<?php echo $row3['descricao']; ?>">
 				 </div>
 				  
 				  <div class="form-group">
 				    <label for="datapagrec">Data Pagamento</label>
-				    <input type="date" class="form-control" name="data" value="<?php echo $row3['datapagamento']; ?>">
+				    <input id="datapagrec" type="date" class="form-control" name="data" value="<?php echo $row3['datapagamento']; ?>">
 				  </div>
 
 				  <br />

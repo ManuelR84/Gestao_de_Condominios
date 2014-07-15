@@ -33,7 +33,7 @@
 				<form method="post">
 				  <div class="form-group">
 				    <label for="nomerub">Nome Rubrica</label>
-				    <input type="text" class="form-control" placeholder="Rubrica" value="<?php echo $row['rubrica']; ?>" name="nomerub">
+				    <input id="nomerub" type="text" class="form-control" placeholder="Rubrica" value="<?php echo $row['rubrica']; ?>" name="nomerub">
 				  </div>
 				  
 				  <div class="form-group">

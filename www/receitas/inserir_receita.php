@@ -44,45 +44,44 @@
 			<div class="col-xs-4">
 				
 				<form method="post">
-				
-				<div class="form-group">
-				    <label for="rub">Rubrica</label>
-				    <select class="form-control" name="rubrica">
-				    	<option value="">Escolha rubrica...</option>
-				    	<?php 
-				    		while($row = mysqli_fetch_array($result)){
-					   			echo "<option value=". $row['idrub'] .">". $row['rubrica'] ."</option>";
-				    		}
-						?>
-					</select>
-				  </div>
-				
-				 <div class="form-group">
-				   <label for="dr">Descrição</label>
-				   <input type="text" class="form-control" placeholder="Descrição" name="descricao">
-				 </div>
+					<div class="form-group">
+					    <label for="rub">Rubrica</label>
+					    <select class="form-control" name="rubrica">
+					    	<option value="">Escolha rubrica...</option>
+					    	<?php 
+					    		while($row = mysqli_fetch_array($result)){
+						   			echo "<option value=". $row['idrub'] .">". $row['rubrica'] ."</option>";
+					    		}
+							?>
+						</select>
+					  </div>
+					
+					 <div class="form-group">
+					   <label for="dr">Descrição</label>
+					   <input id="dr" type="text" class="form-control" placeholder="Descrição" name="descricao">
+					 </div>
+					  
+					 <div class="form-group">
+					    <label for="valor">Valor</label>
+					    <input id="valor" type="text" class="form-control" placeholder="Valor da Receita" name="valor">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="data">Data Pagamento</label>
+					    <input id="data" type="date" class="form-control" name="data">
+					  </div>
 				  
-				 <div class="form-group">
-				    <label for="valorres">Valor</label>
-				    <input type="text" class="form-control" placeholder="Valor da Receita" name="valor">
-				  </div>
-				  
-				  <div class="form-group">
-				    <label for="datapagrec">Data Pagamento</label>
-				    <input type="date" class="form-control" name="data">
-				  </div>
-				  
-				   <div class="form-group">
-				    <label for="contades">Conta destino</label>
-				    <select class="form-control" name="contadestino">
-				    	<option value="">Escolha conta...</option>
-				    	<?php 
-				    		while($row2 = mysqli_fetch_array($result2)){
-					   			echo "<option value=". $row2['idconta'] .">". $row2['descricaoconta'] ."</option>";
-				    		}
-						?>
-					</select>
-				  </div>
+					  <div class="form-group">
+					    <label for="contades">Conta destino</label>
+					    <select class="form-control" name="contadestino">
+					    	<option value="">Escolha conta...</option>
+					    	<?php 
+					    		while($row2 = mysqli_fetch_array($result2)){
+						   			echo "<option value=". $row2['idconta'] .">". $row2['descricaoconta'] ."</option>";
+					    		}
+							?>
+						</select>
+					 </div>
 				  
 				  <br />
 				  <button type="submit" name="submit" class="btn btn-default">Inserir</button>

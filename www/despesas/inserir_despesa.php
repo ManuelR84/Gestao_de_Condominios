@@ -48,6 +48,7 @@
 				<form method="post">
 				
 				  <div class="form-group">
+				  	<label for="rub">Rubrica</label>
 				    <select class="form-control" name="rubrica">
 				    	<option value="">Escolha rubrica...</option>
 				    	<?php 
@@ -60,22 +61,22 @@
 				
 				  <div class="form-group">
 				    <label for="dd">Descrição</label>
-				    <input type="text" class="form-control" placeholder="Descrição" name="dd">
+				    <input id="dd" type="text" class="form-control" placeholder="Descrição" name="dd">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="valordes">Valor</label>
-				    <input type="text" class="form-control" placeholder="Valor da Despesa" name="valordes">
+				    <label for="valor">Valor</label>
+				    <input id="valor" type="text" class="form-control" placeholder="Valor da Despesa" name="valordes">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="datapagdes">Data Pagamento</label>
-				    <input type="date" class="form-control" name="datapagdes">
+				    <label for="datap">Data Pagamento</label>
+				    <input id="datap" type="date" class="form-control" name="datapagdes">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="datavendes">Data Vencimento</label>
-				    <input type="date" class="form-control" name="datavendes">
+				    <label for="datav">Data Vencimento</label>
+				    <input id="datav" type="date" class="form-control" name="datavendes">
 				  </div>
 				  
 				   <div class="form-group">

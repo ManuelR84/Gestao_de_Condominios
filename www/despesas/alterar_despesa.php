@@ -56,17 +56,17 @@
 				
 				  <div class="form-group">
 				    <label for="dd">Descrição</label>
-				    <input type="text" class="form-control" placeholder="Descrição" name="dd" value="<?php echo $row3['descricao']; ?>">
+				    <input id="dd" type="text" class="form-control" placeholder="Descrição" name="dd" value="<?php echo $row3['descricao']; ?>">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="datapagdes">Data Pagamento</label>
-				    <input type="date" class="form-control" name="datapagdes" value="<?php echo $row3['datapagamento']; ?>">
+				    <input id="datapagdes" type="date" class="form-control" name="datapagdes" value="<?php echo $row3['datapagamento']; ?>">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="datavendes">Data Vencimento</label>
-				    <input type="date" class="form-control" name="datavendes" value="<?php echo $row3['datavencimento']; ?>">
+				    <input id="datavendes" type="date" class="form-control" name="datavendes" value="<?php echo $row3['datavencimento']; ?>">
 				  </div>
 				  
 				  <br />

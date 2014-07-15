@@ -18,22 +18,22 @@
 				<form role="form">
 				  <div class="form-group">
 				    <label for="idcontaori">Número Conta Origem</label>
-				    <input type="number" class="form-control" placeholder="Número Conta Origem" name="idcontaori">
+				    <input id="idcontaori" type="number" class="form-control" placeholder="Número Conta Origem" name="idcontaori">
 				  </div>
 				  
 				 <div class="form-group">
 				    <label for="idcontades">Número Conta Destino</label>
-				    <input type="number" class="form-control" placeholder="Número Conta Destino" name="idcontades">
+				    <input id="idcontades" type="number" class="form-control" placeholder="Número Conta Destino" name="idcontades">
 				  </div>
 				  
 				 <div class="form-group">
 				    <label for="valortrans">Valor Transferência</label>
-				    <input type="text" class="form-control" placeholder="Valor Transferência" name="valortrans">
+				    <input id="valortrans" type="text" class="form-control" placeholder="Valor Transferência" name="valortrans">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="datatrans">Data Transferência</label>
-				    <input type="date" class="form-control" name="datatrans">
+				    <input id="datatrans" type="date" class="form-control" name="datatrans">
 				  </div>
 				  
 				  <br />
