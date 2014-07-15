@@ -34,12 +34,6 @@
 			</tr>
 		
 			<?php
-				$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-					or die("Error1: ".mysqli_error($con));
-				
-				if (mysqli_connect_errno()) {
-					echo "Failed to connect to MySQL: " . mysqli_connect_error();
-				}
 					
 				$result = mysqli_query($con,
 						"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento, c.descricaoconta

@@ -38,7 +38,7 @@
 		$row = mysqli_fetch_array($result);
 	?>
 	
-	<p>Deseja apagar: <u><?php echo $row['rubrica']; ?></u> da lista de Rubricas?</p>
+	<p>Deseja apagar: "<u><?php echo $row['rubrica']; ?></u>" da lista de Rubricas?</p>
 	
 	<form method="post">
 		<input type="button" value="Não" name="nao" class="btn btn-default" onClick="javascript:history.back(1)">

@@ -21,8 +21,86 @@
 	<h2>Alterar Receita</h2>
 	<br />
 	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+	
+				<?php 
+				$result = mysqli_query($con,
+						"SELECT idrub, rubrica
+						FROM rubricas
+						WHERE tipo = 'Receita';")
+						or die("Error1: ".mysqli_error($con));
+
+				$result2 = mysqli_query($con,
+						"SELECT idconta, descricaoconta
+						FROM contas;")
+						or die("Error2: ".mysqli_error($con));
+
+				$result3 = mysqli_query($con,
+				"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento, c.descricaoconta, a.idrub, c.idconta
+				FROM receitas a, rubricas b, contas c
+				WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta and idreceita = 3;;")
+						or die("Error3: ".mysqli_error($con));
+
+				$row3 = mysqli_fetch_array($result3)
+							
+				?>
+				
+				<form method="post">
+				
+				<div class="form-group">
+				    <label for="rub">Rubrica</label>
+				    <select class="form-control" name="rubrica">
+				    	<option value="<?php echo $row3['idrub']; ?>"><?php echo $row3['rubrica']; ?></option>
+				    	<?php 
+				    		while($row = mysqli_fetch_array($result)){
+					   			echo "<option value=". $row['idrub'] .">". $row['rubrica'] ."</option>";
+				    		}
+						?>
+					</select>
+				  </div>
+				
+				 <div class="form-group">
+				   <label for="dr">Descrição</label>
+				   <input type="text" class="form-control" placeholder="Descrição" name="descricao" value="<?php echo $row3['descricao']; ?>">
+				 </div>
+				  
+				  <div class="form-group">
+				    <label for="datapagrec">Data Pagamento</label>
+				    <input type="date" class="form-control" name="data" value="<?php echo $row3['datapagamento']; ?>">
+				  </div>
+				  
+				   <div class="form-group">
+				    <label for="contades">Conta destino</label>
+				    <select class="form-control" name="contadestino">
+				    	<option value="<?php echo $row3['idconta']; ?>"><?php echo $row3['descricaoconta']; ?></option>
+				    	<?php 
+				    		while($row2 = mysqli_fetch_array($result2)){
+					   			echo "<option value=". $row2['idconta'] .">". $row2['descricaoconta'] ."</option>";
+				    		}
+						?>
+					</select>
+				  </div>
+				  
+				  <br />
+				  <button type="submit" name="submit" class="btn btn-default">Alterar</button>
+				</form>
+	
 </div>
 
-<?php 
+<?php
+
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+				"UPDATE receitas
+				SET idrub = '" . $_POST['rubrica'] ."', descricao = '" . $_POST['descricao'] ."', datapagamento = '" . $_POST['data'] ."', idcontadestino = '" . $_POST['contadestino'] ."'
+				WHERE idreceita = " . $_GET['id'] . ";")
+				or die("Error4: ".mysqli_error($con));
+	}
+	
+
+	mysqli_close($con);
 	include "../footer.php";
 ?>

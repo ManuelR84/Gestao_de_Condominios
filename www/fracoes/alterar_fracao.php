@@ -25,12 +25,6 @@
 		<div class="row">
 			<div class="col-xs-4">
 				<?php
-					$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-						or die("Error1: ".mysqli_error($con));
-					
-					if (mysqli_connect_errno()) {
-						echo "Failed to connect to MySQL: " . mysqli_connect_error();
-					}
 
 					$result = mysqli_query($con,
 								"SELECT a.idfrac, b.nome, a.iuf, a.permilagem, a.andar, a.tipo, a.observacoes, b.idcond
