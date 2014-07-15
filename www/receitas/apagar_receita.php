@@ -38,13 +38,14 @@
 				WHERE idreceita = " . $_GET['id'] . ";")
 						or die("Error2: ".mysqli_error($con));
 		
-		$row2 = mysqli_fetch_array($result2);
-		$_POST['valoraremover'] = $row2;*/
+		$row2 = mysqli_fetch_array($result2);*/
+		
 	?>
 	
 	<p>Deseja apagar: "<u><?php echo $row['descricao']; ?></u>" da lista de Receitas?</p>
 	
 	<form method="post">
+		<!-- /<input name="valoraremover" value="<?php/* $row2['valor']*/?>">-->
 		<input type="button" value="Não" name="nao" class="btn btn-default" onClick="javascript:history.back(1)">
 		<button type="submit" name="submit" class="btn btn-default">Sim</button>
 	</form
@@ -65,7 +66,7 @@
 		/*
 		mysqli_query($con,
 		"UPDATE contas
-		SET saldoatual = saldoatual - '" . $_POST['valoraremover'] ."'
+		SET saldoatual = saldoatual - '" . $_POST['valoraremover'] . "'
 		WHERE idconta = " . $_POST['idreceita'] . ";")
 		or die("Error4: ".mysqli_error($con));
 		*/

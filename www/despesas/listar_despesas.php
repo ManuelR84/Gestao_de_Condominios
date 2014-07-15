@@ -27,8 +27,8 @@
 				<th>Despesa</th>
 				<th>Descrição</th>
 				<th>Valor</th>
-				<th>Data Vencimento</th>
 				<th>Data Pagamento</th>
+				<th>Data Vencimento</th>
 				<th>Conta Destino</th>
 				<th></th>
 				<th></th>
@@ -43,7 +43,7 @@
 				}
 					
 				$result = mysqli_query($con,
-						"SELECT a.iddespesa, b.rubrica, a.descricao, a.valor, a.datavencimento, a.datapagamento, c.descricaoconta
+						"SELECT a.iddespesa, b.rubrica, a.descricao, a.valor, a.datapagamento, a.datavencimento, c.descricaoconta
 						FROM despesas a, rubricas b, contas c
 						WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta;")
 						or die("Error2: ".mysqli_error($con));
@@ -55,8 +55,8 @@
 					echo "<td>" . $row['rubrica'] . "</td>";
 					echo "<td>" . $row['descricao'] . "</td>";
 					echo "<td>" . $row['valor'] . "</td>";
-					echo "<td>" . $row['datavencimento'] . "</td>";
 					echo "<td>" . $row['datapagamento'] . "</td>";
+					echo "<td>" . $row['datavencimento'] . "</td>";
 					echo "<td>" . $row['descricaoconta'] . "</td>";
 					echo "<td><a href=alterar_despesa.php?id=" . $row['iddespesa'] . ">Alterar</a></td>";
 					echo "<td><a href=apagar_despesa.php?id=" . $row['iddespesa'] . ">Apagar</a></td>";

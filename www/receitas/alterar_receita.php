@@ -32,15 +32,11 @@
 						WHERE tipo = 'Receita';")
 						or die("Error1: ".mysqli_error($con));
 
-				$result2 = mysqli_query($con,
-						"SELECT idconta, descricaoconta
-						FROM contas;")
-						or die("Error2: ".mysqli_error($con));
 
 				$result3 = mysqli_query($con,
 				"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento, c.descricaoconta, a.idrub, c.idconta
 				FROM receitas a, rubricas b, contas c
-				WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta and idreceita = 3;;")
+				WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta and idreceita = " . $_GET['id'] . ";")
 						or die("Error3: ".mysqli_error($con));
 
 				$row3 = mysqli_fetch_array($result3)
@@ -70,19 +66,7 @@
 				    <label for="datapagrec">Data Pagamento</label>
 				    <input type="date" class="form-control" name="data" value="<?php echo $row3['datapagamento']; ?>">
 				  </div>
-				  
-				   <div class="form-group">
-				    <label for="contades">Conta destino</label>
-				    <select class="form-control" name="contadestino">
-				    	<option value="<?php echo $row3['idconta']; ?>"><?php echo $row3['descricaoconta']; ?></option>
-				    	<?php 
-				    		while($row2 = mysqli_fetch_array($result2)){
-					   			echo "<option value=". $row2['idconta'] .">". $row2['descricaoconta'] ."</option>";
-				    		}
-						?>
-					</select>
-				  </div>
-				  
+
 				  <br />
 				  <button type="submit" name="submit" class="btn btn-default">Alterar</button>
 				</form>
@@ -95,7 +79,7 @@
 	{
 		mysqli_query($con,
 				"UPDATE receitas
-				SET idrub = '" . $_POST['rubrica'] ."', descricao = '" . $_POST['descricao'] ."', datapagamento = '" . $_POST['data'] ."', idcontadestino = '" . $_POST['contadestino'] ."'
+				SET idrub = '" . $_POST['rubrica'] ."', descricao = '" . $_POST['descricao'] ."', datapagamento = '" . $_POST['data'] ."'
 				WHERE idreceita = " . $_GET['id'] . ";")
 				or die("Error4: ".mysqli_error($con));
 	}
