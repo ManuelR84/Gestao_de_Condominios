@@ -73,7 +73,7 @@
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="obs" <?php if(isset($_POST["observacoes"])) echo $redink;?>>Observações</label>
+				    <label for="obs" <?php form_validation("observacoes");?> >Observações</label>
 				    <textarea rows="1" cols="5" type="text" class="form-control" placeholder="Observações" name="observacoes"></textarea>
 				  </div>
 				  

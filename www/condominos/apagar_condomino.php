@@ -20,7 +20,7 @@
 		or error_validation($con);
 		
 		mysqli_close($con);
-		header("Location: /condominos/listar_condominos.php");
+		header("Location: listar_condominos.php");
 	}
 ?>
 

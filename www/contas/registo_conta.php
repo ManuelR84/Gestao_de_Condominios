@@ -7,9 +7,10 @@
 	//Validação do formulário sobre os campos vazios
 	if(isset($_POST['submit']))
 	{
-		if(!isset($_POST["descricao"])){
-		}elseif(!isset($_POST["numero"])){
-		}elseif(!isset($_POST["saldo"])){
+		if(	$_POST["descricao"] != "" and
+			$_POST["numero"] != "" and
+			$_POST["saldo"] != "")
+		{
 			//codigo para enviar para a db
 		}else{
 			echo "<div class='error_message'>Faltam campos por preencher</div>";
@@ -28,17 +29,17 @@
 
 				<form method="post">
 				  <div class="form-group">
-				    <label for="descconta">Descrição da Conta Bancária</label>
+				    <label for="descconta" <?php form_validation("descricao");?> >Descrição da Conta Bancária</label>
 				    <input id="descconta" type="text" class="form-control" placeholder="Descrição da Conta" name="descricao">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="numconta">Numero da Conta Bancária</label>
+				    <label for="numconta" <?php form_validation("numero");?> >Numero da Conta Bancária</label>
 				    <input id="numconta" type="number" class="form-control" placeholder="Número da Conta" name="numero">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="saldoini">Saldo Inicial</label>
+				    <label for="saldoini" <?php form_validation("saldo");?> >Saldo Inicial</label>
 				    <input id="saldoini" type="text" class="form-control" placeholder="Saldo Inicial" name="saldo">
 				  </div>
 				  

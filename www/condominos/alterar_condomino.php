@@ -14,15 +14,27 @@
 	
 	if(isset($_POST['submit']))
 	{
-		mysqli_query($con,
-		"UPDATE condominos
-		SET nome = '" . $_POST['nome'] ."',
-			cc = '" . $_POST['cc'] ."',
-			morada = '" . $_POST['morada'] ."',
-			contacto = '" . $_POST['tele'] ."',
-			email = '" . $_POST['email'] ."'
-		WHERE idcond = " . $_GET['id'] . ";")
-		or error_validation($con);
+		if(	$_POST["nome"] != "" and
+		$_POST["cc"] != "" and
+		$_POST["morada"] != "" and
+		$_POST["tele"] != "" and
+		$_POST["email"] != "")
+		{
+			mysqli_query($con,
+			"UPDATE condominos
+			SET nome = '" . $_POST['nome'] ."',
+				cc = '" . $_POST['cc'] ."',
+				morada = '" . $_POST['morada'] ."',
+				contacto = '" . $_POST['tele'] ."',
+				email = '" . $_POST['email'] ."'
+			WHERE idcond = " . $_GET['id'] . ";")
+			or error_validation($con);
+			
+			mysqli_close($con);
+			header("Location: listar_condominos.php");
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
 	}
 ?>
 
@@ -38,27 +50,27 @@
 
 				<form method="post">
 				  <div class="form-group">
-				    <label for="nome">Nome do condómino</label>
+				    <label for="nome" <?php form_validation("nome");?> >Nome do condómino</label>
 				    <input id="nome" type="text" class="form-control" placeholder="Nome" name="nome" value="<?php echo $row['nome']; ?>" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="cc">Cartão de cidadão</label>
+				    <label for="cc" <?php form_validation("cc");?> >Cartão de cidadão</label>
 				    <input id="cc" type="text" class="form-control" placeholder="CC" name="cc" value="<?php echo $row['cc']; ?>" maxlength="8">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="morada">Morada do condómino</label>
+				    <label for="morada" <?php form_validation("morada");?> >Morada do condómino</label>
 				    <input id="morada" type="text" class="form-control" placeholder="Morada" name="morada" value="<?php echo $row['morada']; ?>" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="tele">Telefone</label>
+				    <label for="tele" <?php form_validation("tele");?> >Telefone</label>
 				    <input id="tele" type="text" class="form-control" placeholder="Telefone" name="tele" value="<?php echo $row['contacto']; ?>" maxlength="9">
 				  </div>
 				  
 				   <div class="form-group">
-				    <label for="email">E-mail</label>
+				    <label for="email" <?php form_validation("email");?> >E-mail</label>
 				    <input id="email" type="email" class="form-control" placeholder="E-mail" name="email" value="<?php echo $row['email']; ?>" maxlength="50">
 				  </div>
 				  

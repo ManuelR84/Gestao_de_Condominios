@@ -12,11 +12,21 @@
 		
 	$row = mysqli_fetch_array($result);
 	
-	if(isset($_POST['submit'])){
-		mysqli_query($con,"UPDATE contas
-		SET descricaoconta = '" . $_POST['descconta'] ."', numeroconta = '" . $_POST['numconta'] ."'
-		WHERE idconta = " . $_GET['id'] . ";")
-		or error_validation($con);
+	if(isset($_POST['submit']))
+	{
+		if(	$_POST["descconta"] != "" and
+		$_POST["numconta"] != "")
+		{
+			mysqli_query($con,"UPDATE contas
+			SET descricaoconta = '" . $_POST['descconta'] ."', numeroconta = '" . $_POST['numconta'] ."'
+			WHERE idconta = " . $_GET['id'] . ";")
+			or error_validation($con);
+			
+			mysqli_close($con);
+			header("Location: listar_contas.php");
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
 	}
 ?>
 
@@ -32,12 +42,12 @@
 
 				<form method="post">
 				  <div class="form-group">
-				    <label for="descconta">Descrição da Conta Bancária</label>
+				    <label for="descconta" <?php form_validation("descconta");?> >Descrição da Conta Bancária</label>
 				    <input id="descconta" type="text" class="form-control" placeholder="Descrição da Conta" value="<?php echo $row['descricaoconta'] ?>" name="descconta">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="numconta">Numero da Conta Bancária</label>
+				    <label for="numconta" <?php form_validation("numconta");?> >Numero da Conta Bancária</label>
 				    <input id="numconta" type="number" class="form-control" placeholder="Número da Conta" value="<?php echo $row['numeroconta'] ?>" name="numconta">
 				  </div>
 				  
