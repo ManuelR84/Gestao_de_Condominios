@@ -1,17 +1,30 @@
 <?php 
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Alterar Receitas";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
+	$result = mysqli_query($con,
+			"SELECT idrub, rubrica
+			FROM rubricas
+			WHERE tipo = 'Receita';")
+			or error_validation($con);
 	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	$result3 = mysqli_query($con,
+			"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento, c.descricaoconta, a.idrub, c.idconta
+			FROM receitas a, rubricas b, contas c
+			WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta and idreceita = " . $_GET['id'] . ";")
+			or error_validation($con);
+	
+	$row3 = mysqli_fetch_array($result3);
+	
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"UPDATE receitas
+		SET idrub = '" . $_POST['rubrica'] ."', descricao = '" . $_POST['descricao'] ."', datapagamento = '" . $_POST['data'] ."'
+		WHERE idreceita = " . $_GET['id'] . ";")
+		or error_validation($con);
 	}
 ?>
 
@@ -25,24 +38,6 @@
 		<div class="row">
 			<div class="col-xs-4">
 	
-				<?php 
-				$result = mysqli_query($con,
-						"SELECT idrub, rubrica
-						FROM rubricas
-						WHERE tipo = 'Receita';")
-						or die("Error1: ".mysqli_error($con));
-
-
-				$result3 = mysqli_query($con,
-				"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento, c.descricaoconta, a.idrub, c.idconta
-				FROM receitas a, rubricas b, contas c
-				WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta and idreceita = " . $_GET['id'] . ";")
-						or die("Error3: ".mysqli_error($con));
-
-				$row3 = mysqli_fetch_array($result3)
-							
-				?>
-				
 				<form method="post">
 				
 				<div class="form-group">
@@ -50,7 +45,8 @@
 				    <select class="form-control" name="rubrica">
 				    	<option value="<?php echo $row3['idrub']; ?>"><?php echo $row3['rubrica']; ?></option>
 				    	<?php 
-				    		while($row = mysqli_fetch_array($result)){
+				    		while($row = mysqli_fetch_array($result))
+							{
 					   			echo "<option value=". $row['idrub'] .">". $row['rubrica'] ."</option>";
 				    		}
 						?>
@@ -74,17 +70,6 @@
 </div>
 
 <?php
-
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-				"UPDATE receitas
-				SET idrub = '" . $_POST['rubrica'] ."', descricao = '" . $_POST['descricao'] ."', datapagamento = '" . $_POST['data'] ."'
-				WHERE idreceita = " . $_GET['id'] . ";")
-				or die("Error4: ".mysqli_error($con));
-	}
-	
-
 	mysqli_close($con);
 	include "../footer.php";
 ?>

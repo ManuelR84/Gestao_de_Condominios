@@ -1,10 +1,8 @@
 <?php 
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Transferências";
 	include "../header.php";
+	session_validation();
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->

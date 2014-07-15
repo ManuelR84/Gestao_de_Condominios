@@ -1,19 +1,29 @@
 <?php
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-	
 	$title = "Novo Condomino";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
-	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	if(isset($_POST['submit']))
+	{	
+		if(	$_POST["nome"] != "" and
+		$_POST["cc"] != "" and
+		$_POST["morada"] != "" and
+		$_POST["tele"] != "" and
+		$_POST["email"] != "")
+		{
+			mysqli_query($con,
+			"INSERT INTO condominos (nome, cc, morada, contacto, email)
+			VALUES ('" . $_POST['nome'] ."',
+					'" . $_POST['cc'] ."',
+					'" . $_POST['morada'] ."',
+					'" . $_POST['tele'] ."',
+					'" . $_POST['email'] ."');")
+			or error_validation($con);
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
 	}
-
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -28,28 +38,28 @@
 			
 				<form method="post">
 				  <div class="form-group">
-				    <label for="nomecondo">Nome</label>
-				    <input type="text" class="form-control" placeholder="Nome" name="nome" maxlength="45">
+				    <label for="nome" <?php form_validation("nome");?> >Nome</label>
+				    <input id="nome" type="text" class="form-control" placeholder="Nome" name="nome" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="cccondo">Cartão de cidadão</label>
-				    <input type="text" class="form-control" placeholder="CC" name="cc" maxlength="8">
+				    <label for="cc" <?php form_validation("cc");?> >Cartão de cidadão</label>
+				    <input id="cc" type="text" class="form-control" placeholder="CC" name="cc" maxlength="8">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="moradacondo">Morada</label>
-				    <input type="text" class="form-control" placeholder="Morada" name="morada" maxlength="45">
+				    <label for="morada" <?php form_validation("morada");?> >Morada</label>
+				    <input id="morada" type="text" class="form-control" placeholder="Morada" name="morada" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="telecondo">Telefone</label>
-				    <input type="text" class="form-control" placeholder="Telefone" name="tele" maxlength="9">
+				    <label for="tele" <?php form_validation("tele");?> >Telefone</label>
+				    <input id="tele" type="text" class="form-control" placeholder="Telefone" name="tele" maxlength="9">
 				  </div>
 				  
 				   <div class="form-group">
-				    <label for="emailcondo">E-mail</label>
-				    <input type="email" class="form-control" placeholder="E-mail" name="email" maxlength="50">
+				    <label for="email" <?php form_validation("email");?> >E-mail</label>
+				    <input id="email" type="email" class="form-control" placeholder="E-mail" name="email" maxlength="50">
 				  </div>
 				  
 				  <br />
@@ -63,19 +73,6 @@
 <!-- /container -->
 
 <?php
-
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-		"INSERT INTO condominos (nome, cc, morada, contacto, email)
-				VALUES ('" . $_POST['nome'] ."',
-						'" . $_POST['cc'] ."',
-						'" . $_POST['morada'] ."',
-						'" . $_POST['tele'] ."',
-						'" . $_POST['email'] ."');")
-								or die("Error3: ".mysqli_error($con));
-	}
-
 	mysqli_close($con);
 	include "../footer.php";
 ?>

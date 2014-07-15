@@ -1,17 +1,38 @@
 <?php
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Inserir Despesa";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
+	$result = mysqli_query($con,
+			"SELECT idrub, rubrica
+			FROM rubricas
+			WHERE tipo = 'Despesa';")
+			or error_validation($con);
 	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	$result2 = mysqli_query($con,
+			"SELECT idconta, descricaoconta
+			FROM contas;")
+			or error_validation($con);
+	
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"INSERT INTO despesas (idrub, descricao, valor, datapagamento, datavencimento, idcontadestino)
+		VALUES ('" . $_POST['rubrica'] ."',
+				'" . $_POST['dd'] ."',
+				'" . $_POST['valordes'] ."',
+				'" . $_POST['datapagdes'] ."',
+				'" . $_POST['datavendes'] ."',
+				'" . $_POST['contadestino'] ."');")
+		or error_validation($con);
+	
+		mysqli_query($con,
+		"UPDATE contas
+		SET saldoatual = saldoatual - '" . $_POST['valordes'] ."'
+		WHERE idconta = " . $_POST['contadestino'] . ";")
+		or error_validation($con);
+	
 	}
 ?>
 
@@ -23,21 +44,6 @@
 <div class="container">
 		<div class="row">
 			<div class="col-xs-4">
-			
-			
-				<?php 
-				$result = mysqli_query($con,
-						"SELECT idrub, rubrica
-						FROM rubricas
-						WHERE tipo = 'Despesa';")
-						or die("Error1: ".mysqli_error($con));
-
-				$result2 = mysqli_query($con,
-						"SELECT idconta, descricaoconta
-						FROM contas;")
-						or die("Error2: ".mysqli_error($con));
-							
-				?>
 	
 				<form method="post">
 				
@@ -95,27 +101,6 @@
 <!-- /container -->
 
 <?php
-
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-		"INSERT INTO despesas (idrub, descricao, valor, datapagamento, datavencimento, idcontadestino)
-				VALUES ('" . $_POST['rubrica'] ."',
-						'" . $_POST['dd'] ."',
-						'" . $_POST['valordes'] ."',
-						'" . $_POST['datapagdes'] ."',
-						'" . $_POST['datavendes'] ."',
-						'" . $_POST['contadestino'] ."');")
-								or die("Error3: ".mysqli_error($con));
-								
-		mysqli_query($con,
-		"UPDATE contas
-		SET saldoatual = saldoatual - '" . $_POST['valordes'] ."'
-		WHERE idconta = " . $_POST['contadestino'] . ";")
-		or die("Error4: ".mysqli_error($con));
-		
-	}
-
 	mysqli_close($con);
 	include "../footer.php";
 ?>

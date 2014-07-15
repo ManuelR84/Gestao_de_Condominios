@@ -1,6 +1,6 @@
 <?php
 	//Classes
-	include "classes/db_connect.php";
+	include "classes/dbconnect.php";
 	include "classes/condominos.php";
 	include "classes/despesas.php";
 	include "classes/fracoes.php";
@@ -14,7 +14,34 @@
 	$dbpassword = "root";
 	$dbname = "gestao_condominios";
 	
-	$con = new DBConnect($dbhost, $dbusername, $dbpassword, $dbname);
+	//Estabelecimento da ligação à base de dados
+	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
+	or error_validation($con);
+		
+	if (mysqli_connect_errno()) 
+	{
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+	
+	function session_validation()
+	{
+		if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+			header("Location: ../login/novo_user.php");
+	}
+	
+	function form_validation($name)
+	{
+		if(isset($_POST[$name]) and $_POST[$name]=="")
+			echo "class= 'red_error'";
+	}
+	
+	function error_validation($con)
+	{
+		die(
+			'<div class="error_message">MySQL ERROR: '.mysqli_error($con).'</div>
+			<input type="button" value="Voltar" class="btn btn-default" onClick="javascript:history.back(1)">'
+		);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">

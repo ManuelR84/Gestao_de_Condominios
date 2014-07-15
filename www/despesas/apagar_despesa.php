@@ -1,18 +1,16 @@
 <?php
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Apagar Despesas";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
+	$result = mysqli_query($con,
+			"SELECT descricao
+			FROM despesas
+			WHERE iddespesa = " . $_GET['id'] . ";")
+			or error_validation($con);
 	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
+	$row = mysqli_fetch_array($result);
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -20,19 +18,6 @@
 
 		<h2>Apagar Despesas</h2>
 		<br />
-		
-		<?php
-			
-		$result = mysqli_query($con,
-				"SELECT descricao
-				FROM despesas
-				WHERE iddespesa = " . $_GET['id'] . ";")
-				or die("Error2: ".mysqli_error($con));
-		
-		$row = mysqli_fetch_array($result);
-		
-		
-	?>
 	
 	<p>Deseja apagar: "<u><?php echo $row['descricao']; ?></u>" da lista de Receitas?</p>
 	

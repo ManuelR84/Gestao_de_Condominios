@@ -1,34 +1,31 @@
 <?php 
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Nova Fração";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
-		
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
+	$nf = new Fracoes();
 	
 	//Validação do formulário sobre os campos vazios
 	if(isset($_POST['submit']))
-	{echo "bp0";
-		if(!isset($_POST["condomino"])){echo "bp1";
-		}elseif(!isset($_POST["fracao"])){echo "bp2";
-		}elseif(!isset($_POST["permilagem"])){echo "bp3";
-		}elseif(!isset($_POST["designacao"])){echo "bp4";
-		}elseif(!isset($_POST["tipo"])){echo "bp5";
-		}elseif(!isset($_POST["observacoes"])){echo "bp6";
+	{
+		if(	$_POST["condomino"] != "" and
+			$_POST["fracao"] != "" and
+			$_POST["permilagem"] != "" and
+			$_POST["designacao"] != "" and
+			$_POST["tipo"] != "" and
+			$_POST["observacoes"] != "")
+		{
 			//query de envio do formulario para a base de dados
-			echo "bp7";
 			mysqli_query($con,
 			"INSERT INTO fracoes (idcond, iuf, permilagem, andar, tipo, observacoes)
-			VALUES ('" . $_POST['condomino'] ."', '" . $_POST['fracao'] ."','" . $_POST['permilagem'] ."', '" . $_POST['designacao'] ."', '" . $_POST['tipo'] ."', '" . $_POST['observacoes'] ."');")
-				or die("Error4: ".mysqli_error($con));
+			VALUES ('" . $_POST['condomino'] ."',
+					'" . $_POST['fracao'] ."',
+					'" . $_POST['permilagem'] ."',
+					'" . $_POST['designacao'] ."',
+					'" . $_POST['tipo'] ."',
+					'" . $_POST['observacoes'] ."');")
+			or error_validation($con);
 		}else{
 			echo "<div class='error_message'>Faltam campos por preencher</div>";
 		}
@@ -47,27 +44,27 @@
 		
 				<form method="post">
 				  <div class="form-group">
-				    <label for="ctf">Condómino Titular da Fração</label>
-				    <input type="text" class="form-control" placeholder="Nome" name="condomino">
+				    <label for="ctf" <?php form_validation("condomino");?> >Condómino Titular da Fração</label>
+				    <input id="ctf" type="text" class="form-control" placeholder="Nome" name="condomino" maxlength="10">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="iuf">Identificação Unica da Fração</label>
-				    <input type="text" class="form-control" placeholder="ID fração" name="fracao">
+				    <label for="iuf" <?php form_validation("fracao");?> >Identificação Unica da Fração</label>
+				    <input id="iuf" type="text" class="form-control" placeholder="ID fração" name="fracao" maxlength="10">
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="permi">Permilagem da Fração</label>
-				    <input type="text" class="form-control" placeholder="Permilagem" name="permilagem">
+				    <label for="permi" <?php form_validation("permilagem");?> >Permilagem da Fração</label>
+				    <input id="permi" type="text" class="form-control" placeholder="Permilagem" name="permilagem">
 				  </div>
 				  
 				   <div class="form-group">
-				    <label for="du">Designação Usual</label>
-				    <input type="text" class="form-control" placeholder="Andar" name="designacao">
+				    <label for="du" <?php form_validation("designacao");?> >Designação Usual</label>
+				    <input id="du" type="text" class="form-control" placeholder="Andar" name="designacao" maxlength="45">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="tipo">Tipo de Fração</label>
+				    <label for="tipo" <?php form_validation("tipo");?> >Tipo de Fração</label>
 				    <select class="form-control" name="tipo">
 					    <option value="">Escolha tipo...</option>
 						<option value="Habitacional">Habitacional</option>
@@ -76,7 +73,7 @@
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="obs">Observações</label>
+				    <label for="obs" <?php if(isset($_POST["observacoes"])) echo $redink;?>>Observações</label>
 				    <textarea rows="1" cols="5" type="text" class="form-control" placeholder="Observações" name="observacoes"></textarea>
 				  </div>
 				  

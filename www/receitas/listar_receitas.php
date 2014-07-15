@@ -1,18 +1,14 @@
 <?php
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Listar Receita";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
-	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
+	$result = mysqli_query($con,
+			"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento, c.descricaoconta
+			FROM receitas a, rubricas b, contas c
+			WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta;")
+			or error_validation($con);
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
@@ -34,13 +30,6 @@
 			</tr>
 		
 			<?php
-					
-				$result = mysqli_query($con,
-						"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento, c.descricaoconta
-						FROM receitas a, rubricas b, contas c
-						WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta;")
-						or die("Error2: ".mysqli_error($con));
-				
 				while($row = mysqli_fetch_array($result)) 
 				{
 					echo "<tr>";
@@ -60,5 +49,6 @@
 <!-- /container -->
 
 <?php 
+	mysqli_close($con);
 	include "../footer.php";
 ?>

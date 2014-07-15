@@ -2,18 +2,14 @@
 	session_start();
 	$title = "Novo Utilizador";
 	include "../header.php";
-	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
-	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
+
+	<h2>Novo Utilizador</h2>
+	<br />
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
@@ -34,7 +30,7 @@
 				    <input type="text" class="form-control" placeholder="Password" name="password">
 				  </div>
 				  
-				  <button type="submit" class="btn btn-default">Submit</button>
+				  <button type="submit" class="btn btn-default">Registar</button>
 				</form>
 				
 			</div>

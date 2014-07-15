@@ -1,6 +1,6 @@
 <?php
 
-class Condominos extends DBConnect{
+class Condominos {
 
 	private $nome;
 	private $cc;

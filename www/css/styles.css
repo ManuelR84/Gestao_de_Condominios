@@ -19,3 +19,7 @@ body {
 .login {
 	margin: 0px 20px 10px 20px;
 }
+
+.red_error {
+	color: red;
+}

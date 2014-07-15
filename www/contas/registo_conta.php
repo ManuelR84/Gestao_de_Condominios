@@ -1,10 +1,8 @@
 <?php
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Registo de Conta";
 	include "../header.php";
+	session_validation();
 	
 	//Validação do formulário sobre os campos vazios
 	if(isset($_POST['submit']))

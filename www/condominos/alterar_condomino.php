@@ -1,17 +1,28 @@
 <?php 
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-	
 	$title = "Alterar Condominos";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
+	$result = mysqli_query($con,
+			"SELECT nome, cc, morada, contacto, email
+			FROM condominos
+			WHERE idcond = " . $_GET['id'] . ";")
+			or error_validation($con);
+		
+	$row = mysqli_fetch_array($result);
 	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"UPDATE condominos
+		SET nome = '" . $_POST['nome'] ."',
+			cc = '" . $_POST['cc'] ."',
+			morada = '" . $_POST['morada'] ."',
+			contacto = '" . $_POST['tele'] ."',
+			email = '" . $_POST['email'] ."'
+		WHERE idcond = " . $_GET['id'] . ";")
+		or error_validation($con);
 	}
 ?>
 
@@ -24,22 +35,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
-				<?php
-					$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-						or die("Error1: ".mysqli_error($con));
-					
-					if (mysqli_connect_errno()) {
-						echo "Failed to connect to MySQL: " . mysqli_connect_error();
-					}
-						
-					$result = mysqli_query($con,
-							"SELECT nome, cc, morada, contacto, email
-							FROM condominos
-							WHERE idcond = " . $_GET['id'] . ";")
-							or die("Error2: ".mysqli_error($con));
-					
-					$row = mysqli_fetch_array($result);
-				?>
 
 				<form method="post">
 				  <div class="form-group">
@@ -77,16 +72,6 @@
 </div>
 
 <?php
-
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-				"UPDATE condominos
-				SET nome = '" . $_POST['nome'] ."', cc = '" . $_POST['cc'] ."', morada = '" . $_POST['morada'] ."', contacto = '" . $_POST['tele'] ."', email = '" . $_POST['email'] ."'
-				WHERE idcond = " . $_GET['id'] . ";")
-				or die("Error3: ".mysqli_error($con));
-	}
-
 	mysqli_close($con);
 	include "../footer.php";
 ?>

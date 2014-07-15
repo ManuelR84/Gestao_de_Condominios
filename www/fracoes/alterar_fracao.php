@@ -1,17 +1,27 @@
 <?php
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-
 	$title = "Alterar Fração";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
+	$result = mysqli_query($con,
+			"SELECT a.idfrac, b.nome, a.iuf, a.permilagem, a.andar, a.tipo, a.observacoes, b.idcond
+			FROM fracoes a, condominos b
+			WHERE a.idcond = b.idcond and a.idfrac = " .$_GET['id']. ";")
+			or error_validation($con);
+		
+	$row = mysqli_fetch_array($result);
+		
+	$result2 = mysqli_query($con,"SELECT idcond, nome FROM condominos;")
+	or error_validation($con);
 	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"UPDATE fracoes
+		SET idcond = '" . $_POST['ctf'] ."', iuf = '" . $_POST['iuf'] ."', permilagem = '" . $_POST['permi'] ."', andar = '" . $_POST['du'] ."', tipo = '" . $_POST['tipo'] ."', observacoes = '" . $_POST['obs'] ."'
+		WHERE idfrac = " . $_GET['id'] . ";")
+		or error_validation($con);
 	}
 ?>
 
@@ -24,19 +34,6 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
-				<?php
-
-					$result = mysqli_query($con,
-								"SELECT a.idfrac, b.nome, a.iuf, a.permilagem, a.andar, a.tipo, a.observacoes, b.idcond
-								FROM fracoes a, condominos b
-								WHERE a.idcond = b.idcond and a.idfrac = " .$_GET['id']. ";")
-								or die("Error2: ".mysqli_error($con));
-					
-					$row = mysqli_fetch_array($result);
-					
-					$result2 = mysqli_query($con,"SELECT idcond, nome FROM condominos;")
-					or die("Error3: ".mysqli_error($con));
-				?>
 
 				<form method="post">
 				  <div class="form-group">
@@ -44,7 +41,8 @@
 				    <select class="form-control" name="ctf">
 				    	<option value="<?php echo $row['idcond']; ?>"><?php echo $row['nome']; ?></option>
 				    	<?php 
-				    		while($row2 = mysqli_fetch_array($result2)){
+				    		while($row2 = mysqli_fetch_array($result2))
+							{
 					   			echo "<option value=". $row2['idcond'] .">". $row2['nome'] ."</option>";
 				    		}
 						?>
@@ -90,17 +88,6 @@
 </div>
 
 <?php
-
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-				"UPDATE fracoes
-				SET idcond = '" . $_POST['ctf'] ."', iuf = '" . $_POST['iuf'] ."', permilagem = '" . $_POST['permi'] ."', andar = '" . $_POST['du'] ."', tipo = '" . $_POST['tipo'] ."', observacoes = '" . $_POST['obs'] ."'
-				WHERE idfrac = " . $_GET['id'] . ";")
-				or die("Error4: ".mysqli_error($con));
-	}
-	
-
 	mysqli_close($con);
 	include "../footer.php";
 ?>

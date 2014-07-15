@@ -1,19 +1,15 @@
 <?php
 	session_start();
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"])
-	{
-		header("Location: ../index.php");
-	}
-
 	$title = "Nova Rubrica";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
-	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"INSERT INTO rubricas (rubrica, tipo)
+		VALUES ('" . $_POST['rubrica'] ."','" . $_POST['tipo'] ."');")
+		or error_validation($con);
 	}
 ?>
 
@@ -53,16 +49,6 @@
 <!-- /container -->
 
 <?php
-
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-		"INSERT INTO rubricas (rubrica, tipo)
-		VALUES ('" . $_POST['rubrica'] ."','" . $_POST['tipo'] ."');")
-		or die("Error3: ".mysqli_error($con));
-	}
-	
 	mysqli_close($con);
 	include "../footer.php";
-	
 ?>

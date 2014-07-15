@@ -1,17 +1,26 @@
 <?php 
 	session_start();
-	//Validação da sessão
-	if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ header("Location: ../index.php"); }
-	
 	$title = "Apagar Condominos";
 	include "../header.php";
+	session_validation();
 	
-	//Estabelecimento da ligação à base de dados
-	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or die("Error1: ".mysqli_error($con));
+	$result = mysqli_query($con,
+			"SELECT nome
+			FROM condominos
+			WHERE idcond = " . $_GET['id'] . ";")
+			or error_validation($con);
 	
-	if (mysqli_connect_errno()) {
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	$row = mysqli_fetch_array($result);
+	
+	if(isset($_POST['submit']))
+	{
+		mysqli_query($con,
+		"DELETE FROM condominos
+		WHERE idcond = " . $_GET['id'] . ";")
+		or error_validation($con);
+		
+		mysqli_close($con);
+		header("Location: /condominos/listar_condominos.php");
 	}
 ?>
 
@@ -20,23 +29,6 @@
 
 	<h2>Apagar Condóminos</h2>
 	<br />
-	
-	<?php
-		$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-			or die("Error1: ".mysqli_error($con));
-		
-		if (mysqli_connect_errno()) {
-			echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		}
-			
-		$result = mysqli_query($con,
-				"SELECT nome
-				FROM condominos
-				WHERE idcond = " . $_GET['id'] . ";")
-				or die("Error2: ".mysqli_error($con));
-		
-		$row = mysqli_fetch_array($result);
-	?>
 	
 	<p>Deseja apagar: "<u><?php echo $row['nome']; ?></u>" da lista de Condominos?</p>
 	
@@ -48,16 +40,6 @@
 </div>
 
 <?php
-	if(isset($_POST['submit']))
-	{
-		mysqli_query($con,
-		"DELETE FROM condominos
-		WHERE idcond = " . $_GET['id'] . ";")
-		or die("Error3: ".mysqli_error($con));
-		
-		
-	}
-	
 	mysqli_close($con);
 	include "../footer.php";
 ?>
