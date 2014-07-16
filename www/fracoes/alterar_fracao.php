@@ -13,7 +13,7 @@
 	$row = mysqli_fetch_array($result);
 		
 	$result2 = mysqli_query($con,"SELECT idcond, nome FROM condominos;")
-	or error_validation($con);
+			or error_validation($con);
 	
 	if(isset($_POST['submit']))
 	{
@@ -61,7 +61,8 @@
 				    	<?php 
 				    		while($row2 = mysqli_fetch_array($result2))
 							{
-					   			echo "<option value=". $row2['idcond'] .">". $row2['nome'] ."</option>";
+								if($row['idcond'] != $row2['idcond'])
+					   				echo "<option value=". $row2['idcond'] .">". $row2['nome'] ."</option>";
 				    		}
 						?>
 					</select>
