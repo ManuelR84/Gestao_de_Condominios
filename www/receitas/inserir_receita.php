@@ -27,7 +27,7 @@
 			"INSERT INTO receitas (idrub, descricao, valor, datapagamento, idcontadestino)
 			VALUES ('" . $_POST['rubrica'] ."',
 					'" . $_POST['descricao'] ."',
-					'" . $_POST['valor'] ."',
+					'" . round($_POST['valor'], 2) /*Valor arredondado*/."',
 					'" . $_POST['data'] ."',
 					'" . $_POST['contadestino'] ."');")
 			or error_validation($con);

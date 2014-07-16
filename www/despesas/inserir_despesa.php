@@ -28,7 +28,7 @@
 			"INSERT INTO despesas (idrub, descricao, valor, datapagamento, datavencimento, idcontadestino)
 			VALUES ('" . $_POST['rubrica'] ."',
 					'" . $_POST['descricao'] ."',
-					'" . $_POST['valordes'] ."',
+					'" . round($_POST['valordes'], 2) /*Valor arredondado*/."',
 					'" . $_POST['datapagamento'] ."',
 					'" . $_POST['datavencimento'] ."',
 					'" . $_POST['contadestino'] ."');")

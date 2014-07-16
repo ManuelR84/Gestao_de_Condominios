@@ -122,7 +122,7 @@
 		<p>Total das Receitas:
 			<?php if(isset($_POST['submit'])){
 				$row2 = mysqli_fetch_array($result2);
-				echo $row2['sum(valor)']; }
+				echo round($row2['sum(valor)'], 2); }
 			?>
 			€
 		</p>
