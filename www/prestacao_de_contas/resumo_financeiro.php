@@ -128,9 +128,63 @@
 		</p>
 		
 		
+		<br /><br />
+		<div class="row">
+			<p>Despesas:</p>
+			<table class="table table table-hover">
+			<tr>
+				<th>Id</th>
+				<th>Rubrica</th>
+				<th>Descrição</th>
+				<th>Valor</th>
+				<th>Data Vencimento</th>
+				<th>Data Pagamento</th>
+			</tr>
+				
+			<?php 
+				if(isset($_POST['submit']))
+				{
+					$result3 = mysqli_query($con,
+							"SELECT a.iddespesa, b.rubrica, a.descricao, a.valor, a.datavencimento, a.datapagamento
+							FROM despesas a, rubricas b
+							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01';")
+							or error_validation($con);
+
+					$result4 = mysqli_query($con,
+							"SELECT sum(valor)
+							FROM despesas a, rubricas b
+							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01';")
+							or error_validation($con);
+				
+			
+					while($row3 = mysqli_fetch_array($result3)) {
+						echo "<tr>";
+						echo "<td>" . $row3['iddespesa'] . "</td>";
+						echo "<td>" . $row3['rubrica'] . "</td>";
+						echo "<td>" . $row3['descricao'] . "</td>";
+						echo "<td>" . $row3['valor'] . "</td>";
+						echo "<td>" . $row3['datavencimento'] . "</td>";
+						echo "<td>" . $row3['datapagamento'] . "</td>";
+						echo "</tr>";
+					}
+					
+				}
+			?>
+			</table>
+		</div>
 		
-	</div>
+		<p>Total das Despesas:
+			<?php if(isset($_POST['submit'])){
+				$row4 = mysqli_fetch_array($result4);
+				echo round($row4['sum(valor)'], 2); }
+			?>
+			€
+		</p>
+		
+		
+		
 </div>
+
 <!-- /container -->
 
 <?php 

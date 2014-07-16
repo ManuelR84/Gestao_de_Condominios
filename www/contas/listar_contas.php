@@ -16,8 +16,7 @@
 			<th>Id</th>
 			<th>Descrição Conta</th>
 			<th>Numero Conta</th>
-			<th>Saldo Inicial</th>
-			<th>Saldo Atual</th>
+			<th></th>
 			<th></th>
 		</tr>
 		
@@ -29,8 +28,6 @@
 		  		echo "<td>" . $row['idconta'] . "</td>";
 				echo "<td>" . $row['descricaoconta'] . "</td>";
 				echo "<td>" . $row['numeroconta'] . "</td>";
-				echo "<td>" . $row['saldoinicial'] . "</td>";
-				echo "<td>" . $row['saldoatual'] . "</td>";
 				echo "<td><a href=alterar_conta.php?id=" . $row['idconta'] . ">Alterar</a>";
 				echo "<td><a href=apagar_conta.php?id=" . $row['idconta'] . ">Apagar</a>";
 				echo "</td>";

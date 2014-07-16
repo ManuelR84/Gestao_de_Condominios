@@ -134,6 +134,7 @@
 						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/contas/listar_contas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Contas</a></li>
+								<li><a href="/contas/listar_transferencias.php"><span class="glyphicon glyphicon-sort"></span> Listar Transferências</a></li>
 								<li class="divider"></li>
 								<li><a href="/contas/registo_conta.php"><span class="glyphicon glyphicon-plus-sign"></span> Registo de Conta</a></li>
 								<li><a href="/contas/transferencias.php"><span class="glyphicon glyphicon-euro"></span> Transferências</a></li>
