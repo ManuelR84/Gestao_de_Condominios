@@ -84,7 +84,7 @@
 					<ul class="nav navbar-nav">
 		
 						<!-- Condóminos -->
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Condóminos <b class="caret"></b></a>
+						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Condóminos <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/condominos/listar_condominos.php"><span class="glyphicon glyphicon-eye-open"></span> Listar condónimos</a></li>
 								<li class="divider"></li>
@@ -102,7 +102,7 @@
 						</li>
 		
 						<!-- Rubricas -->
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Rubricas <b class="caret"></b></a>
+						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Rubricas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/rubricas/listar_rubricas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar rubricas</a></li>
 								<li class="divider"></li>
@@ -129,7 +129,7 @@
 						</li>
 		
 						<!-- Contas -->
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contas <b class="caret"></b></a>
+						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/contas/listar_contas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Contas</a></li>
 								<li class="divider"></li>

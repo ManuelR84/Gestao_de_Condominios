@@ -20,7 +20,6 @@
 		if(	$_POST["rubrica"] != "" and
 		$_POST["descricao"] != "" and
 		$_POST["valordes"] != "" and
-		$_POST["designacao"] != "" and
 		$_POST["datapagamento"] != "" and
 		$_POST["datavencimento"] != "" and 
 		$_POST["contadestino"] != "")
@@ -82,12 +81,12 @@
 				  
 				  <div class="form-group">
 				    <label for="datap" <?php form_validation("datapagamento");?> >Data Pagamento</label>
-				    <input id="datap" type="date" class="form-control" name="datapagamento">
+				    <input id="datap" type="date" class="form-control" placeholder="AAAA-MM-DD" name="datapagamento">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="datav" <?php form_validation("datavencimento");?> >Data Vencimento</label>
-				    <input id="datav" type="date" class="form-control" name="datavencimento">
+				    <input id="datav" type="date" class="form-control" placeholder="AAAA-MM-DD" name="datavencimento">
 				  </div>
 				  
 				   <div class="form-group">

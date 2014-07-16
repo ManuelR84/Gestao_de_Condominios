@@ -20,14 +20,25 @@
 	
 	if(isset($_POST['submit']))
 	{
-		mysqli_query($con,
-		"UPDATE despesas
-		SET idrub = '" . $_POST['rubrica'] ."',
-		descricao = '" . $_POST['dd'] ."',
-		datapagamento = '" . $_POST['datapagdes'] ."',
-		datavencimento = '" . $_POST['datavendes'] ."'
-		WHERE iddespesa = " . $_GET['id'] . ";")
-		or error_validation($con);
+		if(	$_POST["rubrica"] != "" and
+		$_POST["descricao"] != "" and
+		$_POST["datapagdes"] != "" and
+		$_POST["datavendes"] != "")
+		{
+			mysqli_query($con,
+			"UPDATE despesas
+			SET idrub = '" . $_POST['rubrica'] ."',
+			descricao = '" . $_POST['descricao'] ."',
+			datapagamento = '" . $_POST['datapagdes'] ."',
+			datavencimento = '" . $_POST['datavendes'] ."'
+			WHERE iddespesa = " . $_GET['id'] . ";")
+			or error_validation($con);
+			
+			mysqli_close($con);
+			header("Location: listar_despesas.php");
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
 	}
 ?>
 
@@ -55,17 +66,17 @@
 				  </div>
 				
 				  <div class="form-group">
-				    <label for="dd">Descrição</label>
-				    <input id="dd" type="text" class="form-control" placeholder="Descrição" name="dd" value="<?php echo $row3['descricao']; ?>">
+				    <label for="descricao" <?php form_validation("descricao");?> >Descrição</label>
+				    <input id="descricao" type="text" class="form-control" placeholder="Descrição" name="descricao" value="<?php echo $row3['descricao']; ?>">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="datapagdes">Data Pagamento</label>
+				    <label for="datapagdes" <?php form_validation("datapagdes");?> >Data Pagamento</label>
 				    <input id="datapagdes" type="date" class="form-control" name="datapagdes" value="<?php echo $row3['datapagamento']; ?>">
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="datavendes">Data Vencimento</label>
+				    <label for="datavendes" <?php form_validation("datavendes");?> >Data Vencimento</label>
 				    <input id="datavendes" type="date" class="form-control" name="datavendes" value="<?php echo $row3['datavencimento']; ?>">
 				  </div>
 				  
