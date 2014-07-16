@@ -5,18 +5,18 @@
 	session_validation();
 	
 	$result = mysqli_query($con,
-			"SELECT idrub, rubrica
-			FROM rubricas
-			WHERE tipo = 'Despesa';")
-			or error_validation($con);
+				"SELECT idrub, rubrica
+				FROM rubricas
+				WHERE tipo = 'Despesa';")
+				or error_validation($con);
 	
-	$result3 = mysqli_query($con,
+	$result2 = mysqli_query($con,
 				"SELECT a.iddespesa, b.rubrica, a.descricao, a.valor, a.datapagamento, datavencimento, c.descricaoconta, a.idrub, c.idconta
 				FROM despesas a, rubricas b, contas c
 				WHERE a.idrub = b.idrub and a.idcontadestino = c.idconta and iddespesa = " . $_GET['id'] . ";")
 				or error_validation($con);
 	
-	$row3 = mysqli_fetch_array($result3);
+	$row2 = mysqli_fetch_array($result2);
 	
 	if(isset($_POST['submit']))
 	{
@@ -53,35 +53,36 @@
 			<div class="col-xs-4">
 				
 				<form method="post">
-				  <div class="form-group">
-				    <select class="form-control" name="rubrica">
-				    	<option value="<?php echo $row3['idrub']; ?>"><?php echo $row3['rubrica']; ?></option>
-				    	<?php
-				    		while($row = mysqli_fetch_array($result))
-							{
-					   			echo "<option value=". $row['idrub'] .">". $row['rubrica'] ."</option>";
-				    		}
-						?>
-					</select>
-				  </div>
-				
-				  <div class="form-group">
-				    <label for="descricao" <?php form_validation("descricao");?> >Descrição</label>
-				    <input id="descricao" type="text" class="form-control" placeholder="Descrição" name="descricao" value="<?php echo $row3['descricao']; ?>">
-				  </div>
-				  
-				  <div class="form-group">
-				    <label for="datapagdes" <?php form_validation("datapagdes");?> >Data Pagamento</label>
-				    <input id="datapagdes" type="date" class="form-control" name="datapagdes" value="<?php echo $row3['datapagamento']; ?>">
-				  </div>
-				  
-				  <div class="form-group">
-				    <label for="datavendes" <?php form_validation("datavendes");?> >Data Vencimento</label>
-				    <input id="datavendes" type="date" class="form-control" name="datavendes" value="<?php echo $row3['datavencimento']; ?>">
-				  </div>
-				  
-				  <br />
-				  <button type="submit" name="submit" class="btn btn-default">Alterar</button>
+					  <div class="form-group">
+					    <select class="form-control" name="rubrica">
+					    	<option value="<?php echo $row2['idrub']; ?>"><?php echo $row2['rubrica']; ?></option>
+					    	<?php
+					    		while($row = mysqli_fetch_array($result))
+								{
+									if($row['idrub'] != $row2['idrub'])
+						   				echo "<option value=". $row['idrub'] .">". $row['rubrica'] ."</option>";
+					    		}
+							?>
+						</select>
+					  </div>
+					
+					  <div class="form-group">
+					    <label for="descricao" <?php form_validation("descricao");?> >Descrição</label>
+					    <input id="descricao" type="text" class="form-control" placeholder="Descrição" name="descricao" value="<?php echo $row2['descricao']; ?>">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="datapagdes" <?php form_validation("datapagdes");?> >Data Pagamento</label>
+					    <input id="datapagdes" type="date" class="form-control" name="datapagdes" value="<?php echo $row2['datapagamento']; ?>">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="datavendes" <?php form_validation("datavendes");?> >Data Vencimento</label>
+					    <input id="datavendes" type="date" class="form-control" name="datavendes" value="<?php echo $row2['datavencimento']; ?>">
+					  </div>
+					  
+					  <br />
+					  <button type="submit" name="submit" class="btn btn-default">Alterar</button>
 				</form>
 		
 			</div>
