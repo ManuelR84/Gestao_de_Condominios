@@ -6,10 +6,19 @@
 	
 	if(isset($_POST['submit']))
 	{
-		mysqli_query($con,
-		"INSERT INTO rubricas (rubrica, tipo)
-		VALUES ('" . $_POST['rubrica'] ."','" . $_POST['tipo'] ."');")
-		or error_validation($con);
+		if(	$_POST["rubrica"] != "" and
+		$_POST["tipo"] != "")
+		{
+			mysqli_query($con,
+			"INSERT INTO rubricas (rubrica, tipo)
+			VALUES ('" . $_POST['rubrica'] ."','" . $_POST['tipo'] ."');")
+			or error_validation($con);
+			
+			mysqli_close($con);
+			header("Location: listar_rubricas.php");
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
 	}
 ?>
 

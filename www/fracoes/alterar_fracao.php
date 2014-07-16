@@ -17,21 +17,39 @@
 	
 	if(isset($_POST['submit']))
 	{
-		mysqli_query($con,
-		"UPDATE fracoes
-		SET idcond = '" . $_POST['ctf'] ."', iuf = '" . $_POST['iuf'] ."', permilagem = '" . $_POST['permi'] ."', andar = '" . $_POST['du'] ."', tipo = '" . $_POST['tipo'] ."', observacoes = '" . $_POST['obs'] ."'
-		WHERE idfrac = " . $_GET['id'] . ";")
-		or error_validation($con);
+		if(	$_POST["ctf"] != "" and
+		$_POST["iuf"] != "" and
+		$_POST["permi"] != "" and
+		$_POST["du"] != "" and
+		$_POST["tipo"] != "" and
+		$_POST["obs"] != "")
+		{
+			mysqli_query($con,
+			"UPDATE fracoes
+			SET idcond = '" . $_POST['ctf'] ."',
+				iuf = '" . $_POST['iuf'] ."',
+				permilagem = '" . $_POST['permi'] ."',
+				andar = '" . $_POST['du'] ."',
+				tipo = '" . $_POST['tipo'] ."',
+				observacoes = '" . $_POST['obs'] ."'
+			WHERE idfrac = " . $_GET['id'] . ";")
+			or error_validation($con);
+			
+			mysqli_close($con);
+			header("Location: listar_fracoes.php");
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
 	}
 ?>
 
 <!-- Main component for a primary marketing message or call to action -->
-	<div class="jumbotron">
+<div class="jumbotron">
 
-		<h2>Alterar Fração</h2>
-		<br />
+	<h2>Alterar Fração</h2>
+	<br />
 		
-		<div class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">
 
@@ -68,8 +86,13 @@
 				    <label for="tipo">Tipo de Fração</label>
 				    <select class="form-control" name="tipo">
 					    <option value="<?php echo $row['tipo']; ?>"><?php echo $row['tipo']; ?></option>
-						<option value="Habitacional">Habitacional</option>
-						<option value="Loja">Loja</option>
+						<?php 
+				    		if($row['tipo'] == 'Habitacional'){
+				    			echo '<option value="Loja">Loja</option>';
+				    		}else{
+				    			echo '<option value="Habitacional">Habitacional</option>';
+				    		}
+				    	?>
 					</select>
 				  </div>
 				  

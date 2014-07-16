@@ -18,6 +18,9 @@
 		"DELETE FROM rubricas
 		WHERE idrub = " . $_GET['id'] . ";")
 		or error_validation($con);
+		
+		mysqli_close($con);
+		header("Location: listar_rubricas.php");
 	}
 ?>
 

@@ -12,11 +12,21 @@
 	
 	if(isset($_POST['submit']))
 	{
-		mysqli_query($con,
-		"UPDATE rubricas
-		SET rubrica = '" . $_POST['nomerub'] ."', tipo = '" . $_POST['tipo'] ."'
-		WHERE idrub = " . $_GET['id'] . ";")
-		or error_validation($con);
+		if(	$_POST["nome"] != "" and
+		$_POST["tipo"] != "")
+		{
+			mysqli_query($con,
+			"UPDATE rubricas
+			SET rubrica = '" . $_POST['nome'] ."',
+				tipo = '" . $_POST['tipo'] ."'
+			WHERE idrub = " . $_GET['id'] . ";")
+			or error_validation($con);
+			
+			mysqli_close($con);
+			header("Location: listar_rubricas.php");
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
 	}
 ?>
 
@@ -32,16 +42,21 @@
 				
 				<form method="post">
 				  <div class="form-group">
-				    <label for="nomerub">Nome Rubrica</label>
-				    <input id="nomerub" type="text" class="form-control" placeholder="Rubrica" value="<?php echo $row['rubrica']; ?>" name="nomerub">
+				    <label for="nome" <?php form_validation("nome");?> >Nome Rubrica</label>
+				    <input id="nome" type="text" class="form-control" placeholder="Rubrica" value="<?php echo $row['rubrica']; ?>" name="nome">
 				  </div>
 				  
 				  <div class="form-group">
 				    <label for="tipo">Tipo de Rubrica</label>
-				    <select class="form-control" name="tipo">
-					    <option value="<?php echo $row['tipo']; ?>"><?php echo $row['tipo']; ?></option>
-						<option value="Despesa">Despesa</option>
-						<option value="Receita">Receita</option>
+				    <select id="tipo" class="form-control" name="tipo">
+				    	 <option value="<?php echo $row['tipo']; ?>"><?php echo $row['tipo']; ?></option>
+				    	<?php 
+				    		if($row['tipo'] == 'Receita'){
+				    			echo '<option value="Despesa">Despesa</option>';
+				    		}else{
+				    			echo '<option value="Receita">Receita</option>';
+				    		}
+				    	?>
 					</select>
 				  </div>
 				  
@@ -54,8 +69,6 @@
 	</div>
 </div>
 	
-</div>
-
 <?php 
 	mysqli_close($con);
 	include "../footer.php";

@@ -18,9 +18,9 @@
 	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 	or error_validation($con);
 		
-	if (mysqli_connect_errno()) 
+	if(mysqli_connect_errno()) 
 	{
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		echo "Erro de ligação à Base de Dados: " . mysqli_connect_error();
 	}
 	
 	function session_validation()
@@ -37,8 +37,10 @@
 	
 	function error_validation($con)
 	{
+		include "footer.php"; //Para se poder usar os menus depois da mensagem de erro
+		
 		die(
-			'<div class="error_message">MySQL ERROR: '.mysqli_error($con).'</div>
+			'<div class="error_message">MySQL ERRO: '.mysqli_error($con).'</div>
 			<input type="button" value="Voltar" class="btn btn-default" onClick="javascript:history.back(1)">'
 		);
 	}

@@ -6,6 +6,11 @@
 	
 	$nf = new Fracoes();
 	
+	$result = mysqli_query($con,
+			"SELECT idcond, nome
+			FROM condominos;")
+			or error_validation($con);
+	
 	//Validação do formulário sobre os campos vazios
 	if(isset($_POST['submit']))
 	{
@@ -26,6 +31,9 @@
 					'" . $_POST['tipo'] ."',
 					'" . $_POST['observacoes'] ."');")
 			or error_validation($con);
+			
+			mysqli_close($con);
+			header("Location: listar_fracoes.php");
 		}else{
 			echo "<div class='error_message'>Faltam campos por preencher</div>";
 		}
@@ -45,8 +53,16 @@
 		
 				<form method="post">
 				  <div class="form-group">
-				    <label for="ctf" <?php form_validation("condomino");?> >Condómino Titular da Fração</label>
-				    <input id="ctf" type="text" class="form-control" placeholder="Nome" name="condomino" maxlength="10">
+				    <label for="condomino" <?php form_validation("condomino");?> >Condómino Titular da Fração</label>
+					<select id="condomino" class="form-control" name="condomino">
+						<option value="">Escolha Condomino...</option>
+						<?php 
+							while($row = mysqli_fetch_array($result))
+							{
+								echo "<option value=". $row['idcond'] .">". $row['nome'] ."</option>";
+							}
+						?>
+					</select>
 				  </div>
 				  
 				  <div class="form-group">
