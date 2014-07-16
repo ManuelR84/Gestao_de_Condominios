@@ -23,8 +23,8 @@
 				<th>Despesa</th>
 				<th>Descrição</th>
 				<th>Valor</th>
-				<th>Data Pagamento</th>
 				<th>Data Vencimento</th>
+				<th>Data Pagamento</th>
 				<th>Conta Destino</th>
 				<th></th>
 				<th></th>
@@ -38,8 +38,8 @@
 					echo "<td>" . $row['rubrica'] . "</td>";
 					echo "<td>" . $row['descricao'] . "</td>";
 					echo "<td>" . $row['valor'] . "</td>";
-					echo "<td>" . $row['datapagamento'] . "</td>";
 					echo "<td>" . $row['datavencimento'] . "</td>";
+					echo "<td>" . $row['datapagamento'] . "</td>";
 					echo "<td>" . $row['descricaoconta'] . "</td>";
 					echo "<td><a href=alterar_despesa.php?id=" . $row['iddespesa'] . ">Alterar</a></td>";
 					echo "<td><a href=apagar_despesa.php?id=" . $row['iddespesa'] . ">Apagar</a></td>";

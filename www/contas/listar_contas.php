@@ -32,6 +32,7 @@
 				echo "<td>" . $row['saldoinicial'] . "</td>";
 				echo "<td>" . $row['saldoatual'] . "</td>";
 				echo "<td><a href=alterar_conta.php?id=" . $row['idconta'] . ">Alterar</a>";
+				echo "<td><a href=apagar_conta.php?id=" . $row['idconta'] . ">Apagar</a>";
 				echo "</td>";
 			}
 		?>
