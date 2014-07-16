@@ -11,7 +11,14 @@
 			$_POST["numero"] != "" and
 			$_POST["saldo"] != "")
 		{
-			//codigo para enviar para a db
+			//query de envio do formulario para a base de dados
+			mysqli_query($con,
+			"INSERT INTO contas (descricaoconta, numeroconta, saldoinicial, saldoatual)
+			VALUES ('" . $_POST['descricao'] ."',
+					'" . $_POST['numero'] ."',
+					'" . $_POST['saldo'] ."',
+					'" . $_POST['saldo'] ."');")
+								or error_validation($con);
 		}else{
 			echo "<div class='error_message'>Faltam campos por preencher</div>";
 		}

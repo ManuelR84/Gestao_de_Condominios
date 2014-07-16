@@ -2,7 +2,18 @@
 	session_start();
 	$title = "Transferências";
 	include "../header.php";
-	session_validation();
+	session_validation();	
+	
+	//query obter contas
+	$result = mysqli_query($con,
+			"SELECT idconta, descricaoconta
+			FROM contas;")
+			or error_validation($con);
+	
+	$result2 = mysqli_query($con,
+			"SELECT idconta, descricaoconta
+			FROM contas;")
+	or error_validation($con);
 	
 	if(isset($_POST['submit']))
 	{
@@ -11,14 +22,28 @@
 		$_POST["valor"] != "" and
 		$_POST["data"] != "")
 		{
+						
 			//query de envio do formulario para a base de dados
 			mysqli_query($con,
-			"INSERT INTO transferencias (xxx, xxx, xxx, xxx, xxx, xxx)
+			"INSERT INTO transferencias (idcontaorigem, idcontadestino, valor, data)
 			VALUES ('" . $_POST['corigem'] ."',
 					'" . $_POST['cdestino'] ."',
 					'" . $_POST['valor'] ."',
 					'" . $_POST['data'] ."');")
 			or error_validation($con);
+			
+			mysqli_query($con,
+			"UPDATE contas
+			SET saldoatual = saldoatual + '" . $_POST['valor'] ."'
+			WHERE idconta = '" . $_POST['cdestino'] ."';")
+			or error_validation($con);
+			
+			mysqli_query($con,
+			"UPDATE contas
+			SET saldoatual = saldoatual - '" . $_POST['valor'] ."'
+			WHERE idconta = '" . $_POST['corigem'] ."';")
+			or error_validation($con);
+			
 		}else{
 			echo "<div class='error_message'>Faltam campos por preencher</div>";
 		}
@@ -35,15 +60,29 @@
 		<div class="row">
 			<div class="col-xs-4">
 
-				<form role="form">
+				<form method="post">
 				  <div class="form-group">
-				    <label for="corigem">Número Conta Origem</label>
-				    <input id="corigem" type="number" class="form-control" placeholder="Número Conta Origem" name="corigem">
+				    <label for="corigem">Conta Origem</label>
+				     <select class="form-control" name="corigem">
+					    	<option value="">Escolha conta...</option>
+					    	<?php 
+					    		while($row = mysqli_fetch_array($result)){
+						   			echo "<option value=". $row['idconta'] .">". $row['descricaoconta'] ."</option>";
+					    		}
+							?>
+					 </select>
 				  </div>
 				  
 				 <div class="form-group">
-				    <label for="cdestino">Número Conta Destino</label>
-				    <input id="cdestino" type="number" class="form-control" placeholder="Número Conta Destino" name="cdestino">
+				    <label for="cdestino">Conta Destino</label>
+				    <select class="form-control" name="cdestino">
+					    	<option value="">Escolha conta...</option>
+					    	<?php 
+					    		while($row2 = mysqli_fetch_array($result2)){
+						   			echo "<option value=". $row2['idconta'] .">". $row2['descricaoconta'] ."</option>";
+					    		}
+							?>
+					 </select>
 				  </div>
 				  
 				 <div class="form-group">
@@ -57,7 +96,7 @@
 				  </div>
 				  
 				  <br />
-				  <button type="submit" class="btn btn-default">Transferir</button>
+				  <button type="submit" name="submit" class="btn btn-default">Transferir</button>
 				</form>
 	
 			</div>
