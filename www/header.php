@@ -1,5 +1,5 @@
 <?php
-	//Classes
+//Chamamento das Classes
 	include "classes/dbconnect.php";
 	include "classes/condominos.php";
 	include "classes/despesas.php";
@@ -9,15 +9,16 @@
 	include "classes/rubricas.php";
 	include "classes/transferencias.php";
 	
+//Estabelecimento da ligação à base de dados
 	$dbhost = "localhost";
 	$dbusername = "root";
 	$dbpassword = "root";
 	$dbname = "gestao_condominios";
 	
-	//Estabelecimento da ligação à base de dados
 	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
 	or error_validation($con);
-		
+	
+//Funções de Validações
 	if(mysqli_connect_errno()) 
 	{
 		echo "Erro de ligação à Base de Dados: " . mysqli_connect_error();
@@ -26,7 +27,7 @@
 	function session_validation()
 	{
 		if(!isset($_SESSION["login"]) or !$_SESSION["login"])
-			header("Location: ../login/novo_user.php");
+			header("Location: ../utilizadores/novo_utilizador.php");
 	}
 	
 	function form_validation($name)
@@ -71,6 +72,7 @@
 </head>
 
 <body>
+	<!-- START Container -->
 	<div class="container">
 		<!-- Static navbar -->
 		<div class="navbar navbar-default" role="navigation">
@@ -83,9 +85,11 @@
 				</div>
 		
 				<div class="navbar-collapse collapse">
+				
+					<!-- *** Lado Esquerdo *** -->
 					<ul class="nav navbar-nav">
 		
-						<!-- Condóminos -->
+						<!-- Menu dos Condóminos -->
 						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Condóminos <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/condominos/listar_condominos.php"><span class="glyphicon glyphicon-eye-open"></span> Listar condónimos</a></li>
@@ -94,7 +98,7 @@
 							</ul>
 						</li>
 		
-						<!-- Frações -->
+						<!-- Menu das Frações -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Frações <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/fracoes/listar_fracoes.php"><span class="glyphicon glyphicon-eye-open"></span> Listar frações</a></li>
@@ -103,7 +107,7 @@
 							</ul>
 						</li>
 		
-						<!-- Rubricas -->
+						<!-- Menu das Rubricas -->
 						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Rubricas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/rubricas/listar_rubricas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar rubricas</a></li>
@@ -112,7 +116,7 @@
 							</ul>
 						</li>
 		
-						<!-- Receitas -->
+						<!-- Menu das Receitas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Receitas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/receitas/listar_receitas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar receitas</a></li>
@@ -121,7 +125,7 @@
 							</ul>
 						</li>
 		
-						<!-- Despesas -->
+						<!-- Menu das Despesas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Despesas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/despesas/listar_despesas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Despesas</a></li>
@@ -130,7 +134,7 @@
 							</ul>
 						</li>
 		
-						<!-- Contas -->
+						<!-- Menu das Contas -->
 						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Contas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/contas/listar_contas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Contas</a></li>
@@ -141,7 +145,7 @@
 							</ul>
 						</li>
 		
-						<!-- Prestação de Contas -->
+						<!-- Menu das Prestação de Contas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestação de Contas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/prestacao_de_contas/resumo_financeiro.php"><span class="glyphicon glyphicon-eye-open"></span> Resumo Financeiro</a></li>
@@ -154,11 +158,13 @@
 							</ul>
 						</li>
 					</ul>
-		
+					
+					<!-- *** Lado Direito *** -->
 					<ul class="nav navbar-nav navbar-right">
+					
+						<!-- Menu do Login -->
 						<li class="active dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								
 								<?php 
 									if(!isset($_SESSION["login"]) or !$_SESSION["login"])
 									{
@@ -176,7 +182,27 @@
 						</li>
 					</ul>
 				</div>
-				<!--/.nav-collapse -->
 			</div>
-			<!--/.container-fluid -->
 		</div>
+<?php 
+	if(isset($_POST['submit']))
+	{
+		if(	$_POST["nome"] != "" and
+		$_POST["password"] != "")
+		{
+			$result = mysqli_query($con,
+					"SELECT nomeconta, password
+					FROM utilizadores
+					WHERE nomeconta = '123' and password = '123';")
+					or error_validation($con);
+
+			$count = mysqli_num_rows($result);
+			if($count == 1)
+				$_SESSION["login"] = true;
+			else
+				echo "<div class='error_message'>Login errado</div>";
+		}else{
+			echo "<div class='error_message'>Login inválido</div>";
+		}
+	}
+?>

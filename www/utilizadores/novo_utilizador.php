@@ -4,7 +4,7 @@
 	include "../header.php";
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
+<!-- Conteudo da Pagina -->
 <div class="jumbotron">
 
 	<h2>Novo Utilizador</h2>
@@ -37,7 +37,7 @@
 		</div>
 	</div>
 </div>
-<!-- /container -->
+<!-- FIM Conteudo da Pagina -->
 
 <?php 
 	include "../footer.php";
