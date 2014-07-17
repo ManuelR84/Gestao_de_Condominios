@@ -44,7 +44,6 @@
 				<p>Receitas:</p>
 				<table class="table table table-hover">
 				<tr>
-					<th>Id</th>
 					<th>Rubrica</th>
 					<th>Descrição</th>
 					<th>Valor</th>
@@ -53,8 +52,8 @@
 				
 				<?php 
 					if(isset($_POST['submit'])){
-						$result = mysqli_query($con,
-								"SELECT a.idrub, rubrica, descricao, valor, datapagamento
+						$result1 = mysqli_query($con,
+								"SELECT rubrica, descricao, valor, datapagamento
 								FROM rubricas a, receitas b
 								WHERE a.idrub = b.idrub and a.idrub = " . $_POST['rubrica'] . ";")
 								or error_validation($con);
@@ -67,13 +66,12 @@
 
 			
 				
-						while($row = mysqli_fetch_array($result)) {
+						while($row1 = mysqli_fetch_array($result1)) {
 							echo "<tr>";
-							echo "<td>" . $row['idrub'] . "</td>";
-							echo "<td>" . $row['rubrica'] . "</td>";
-							echo "<td>" . $row['descricao'] . "</td>";
-							echo "<td>" . $row['valor'] . "</td>";
-							echo "<td>" . $row['datapagamento'] . "</td>";
+							echo "<td>" . $row1['rubrica'] . "</td>";
+							echo "<td>" . $row1['descricao'] . "</td>";
+							echo "<td>" . $row1['valor'] . "</td>";
+							echo "<td>" . $row1['datapagamento'] . "</td>";
 							echo "</tr>";
 						}
 						
@@ -96,7 +94,6 @@
 				<p>Despesas:</p>
 				<table class="table table table-hover">
 				<tr>
-					<th>Id</th>
 					<th>Rubrica</th>
 					<th>Descrição</th>
 					<th>Valor</th>
@@ -106,7 +103,7 @@
 				<?php 
 					if(isset($_POST['submit'])){
 						$result3 = mysqli_query($con,
-								"SELECT a.idrub, rubrica, descricao, valor, datapagamento
+								"SELECT rubrica, descricao, valor, datapagamento
 								FROM rubricas a, despesas b
 								WHERE a.idrub = b.idrub and a.idrub = " . $_POST['rubrica'] . ";")
 								or error_validation($con);
@@ -121,7 +118,6 @@
 				
 						while($row3 = mysqli_fetch_array($result3)) {
 							echo "<tr>";
-							echo "<td>" . $row3['idrub'] . "</td>";
 							echo "<td>" . $row3['rubrica'] . "</td>";
 							echo "<td>" . $row3['descricao'] . "</td>";
 							echo "<td>" . $row3['valor'] . "</td>";

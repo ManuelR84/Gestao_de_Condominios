@@ -81,20 +81,19 @@
 			<p>Receitas:</p>
 			<table class="table table table-hover">
 			<tr>
-				<th>Id</th>
+				<th>Id Rubrica</th>
 				<th>Rubrica</th>
-				<th>Descrição</th>
 				<th>Valor</th>
-				<th>Data Pagamento</th>
 			</tr>
 				
 			<?php 
 				if(isset($_POST['submit']))
 				{
 					$result = mysqli_query($con,
-							"SELECT a.idreceita, b.rubrica, a.descricao, a.valor, a.datapagamento
+							"SELECT a.idrub, rubrica, sum(valor)
 							FROM receitas a, rubricas b
-							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01';")
+							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01'
+							GROUP BY idrub;")
 							or error_validation($con);
 
 					$result2 = mysqli_query($con,
@@ -106,11 +105,9 @@
 			
 					while($row = mysqli_fetch_array($result)) {
 						echo "<tr>";
-						echo "<td>" . $row['idreceita'] . "</td>";
+						echo "<td>" . $row['idrub'] . "</td>";
 						echo "<td>" . $row['rubrica'] . "</td>";
-						echo "<td>" . $row['descricao'] . "</td>";
-						echo "<td>" . $row['valor'] . "</td>";
-						echo "<td>" . $row['datapagamento'] . "</td>";
+						echo "<td>" . round($row['sum(valor)'], 2) . "</td>";
 						echo "</tr>";
 					}
 					
@@ -133,21 +130,19 @@
 			<p>Despesas:</p>
 			<table class="table table table-hover">
 			<tr>
-				<th>Id</th>
+				<th>Id Rubrica</th>
 				<th>Rubrica</th>
-				<th>Descrição</th>
 				<th>Valor</th>
-				<th>Data Vencimento</th>
-				<th>Data Pagamento</th>
 			</tr>
 				
 			<?php 
 				if(isset($_POST['submit']))
 				{
 					$result3 = mysqli_query($con,
-							"SELECT a.iddespesa, b.rubrica, a.descricao, a.valor, a.datavencimento, a.datapagamento
+							"SELECT a.idrub, rubrica, sum(valor)
 							FROM despesas a, rubricas b
-							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01';")
+							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01'
+							GROUP BY idrub;")
 							or error_validation($con);
 
 					$result4 = mysqli_query($con,
@@ -159,12 +154,9 @@
 			
 					while($row3 = mysqli_fetch_array($result3)) {
 						echo "<tr>";
-						echo "<td>" . $row3['iddespesa'] . "</td>";
+						echo "<td>" . $row3['idrub'] . "</td>";
 						echo "<td>" . $row3['rubrica'] . "</td>";
-						echo "<td>" . $row3['descricao'] . "</td>";
-						echo "<td>" . $row3['valor'] . "</td>";
-						echo "<td>" . $row3['datavencimento'] . "</td>";
-						echo "<td>" . $row3['datapagamento'] . "</td>";
+						echo "<td>" . round($row3['sum(valor)'], 2) . "</td>";
 						echo "</tr>";
 					}
 					

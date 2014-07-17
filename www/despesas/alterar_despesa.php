@@ -72,14 +72,16 @@
 					  </div>
 					  
 					  <div class="form-group">
+					    <label for="datavendes" <?php form_validation("datavendes");?> >Data Vencimento</label>
+					    <input id="datavendes" type="date" class="form-control" name="datavendes" value="<?php echo $row2['datavencimento']; ?>">
+					  </div>
+					  
+					  <div class="form-group">
 					    <label for="datapagdes" <?php form_validation("datapagdes");?> >Data Pagamento</label>
 					    <input id="datapagdes" type="date" class="form-control" name="datapagdes" value="<?php echo $row2['datapagamento']; ?>">
 					  </div>
 					  
-					  <div class="form-group">
-					    <label for="datavendes" <?php form_validation("datavendes");?> >Data Vencimento</label>
-					    <input id="datavendes" type="date" class="form-control" name="datavendes" value="<?php echo $row2['datavencimento']; ?>">
-					  </div>
+					  
 					  
 					  <br />
 					  <button type="submit" name="submit" class="btn btn-default">Alterar</button>

@@ -80,14 +80,14 @@
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="datap" <?php form_validation("datapagamento");?> >Data Pagamento</label>
-				    <input id="datap" type="date" class="form-control" placeholder="AAAA-MM-DD" name="datapagamento">
-				  </div>
-				  
-				  <div class="form-group">
 				    <label for="datav" <?php form_validation("datavencimento");?> >Data Vencimento</label>
 				    <input id="datav" type="date" class="form-control" placeholder="AAAA-MM-DD" name="datavencimento">
 				  </div>
+				  
+				  <div class="form-group">
+				    <label for="datap" <?php form_validation("datapagamento");?> >Data Pagamento</label>
+				    <input id="datap" type="date" class="form-control" placeholder="AAAA-MM-DD" name="datapagamento">
+				  </div>				  
 				  
 				   <div class="form-group">
 				    <label for="contades" <?php form_validation("contadestino");?> >Conta destino</label>
