@@ -20,6 +20,7 @@
 			<th>Nome Conta Destino</th>
 			<th>Valor</th>
 			<th>Data</th>
+			<th></th>
 		</tr>
 		
 		<?php
@@ -46,6 +47,7 @@
 		  		echo "<td>" . $row2['descricaoconta'] . "</td>";
 				echo "<td>" . $row2['valor'] . "</td>";
 				echo "<td>" . $row2['data'] . "</td>";
+				echo "<td><a href=apagar_transferencias.php?id=" . $row['idtransf'] . ">Cancelar</a></td>";
 				echo "</td>";
 			}
 		?>
