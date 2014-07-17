@@ -40,7 +40,7 @@
 			
 			mysqli_query($con,
 			"UPDATE contas
-			SET saldoatual = saldoatual - '" . $_POST['valor'] ."
+			SET saldoatual = saldoatual - '" . $_POST['valor'] ."'
 			WHERE idconta = '" . $_POST['corigem'] ."';")
 			or error_validation($con);
 			
