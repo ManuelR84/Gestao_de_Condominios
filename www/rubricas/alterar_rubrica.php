@@ -12,13 +12,11 @@
 	
 	if(isset($_POST['submit']))
 	{
-		if(	$_POST["nome"] != "" and
-		$_POST["tipo"] != "")
+		if(	$_POST["nome"])
 		{
 			mysqli_query($con,
 			"UPDATE rubricas
-			SET rubrica = '" . $_POST['nome'] ."',
-				tipo = '" . $_POST['tipo'] ."'
+			SET rubrica = '" . $_POST['nome'] ."'
 			WHERE idrub = " . $_GET['id'] . ";")
 			or error_validation($con);
 			
@@ -44,20 +42,6 @@
 				  <div class="form-group">
 				    <label for="nome" <?php form_validation("nome");?> >Nome Rubrica</label>
 				    <input id="nome" type="text" class="form-control" placeholder="Rubrica" value="<?php echo $row['rubrica']; ?>" name="nome">
-				  </div>
-				  
-				  <div class="form-group">
-				    <label for="tipo">Tipo de Rubrica</label>
-				    <select id="tipo" class="form-control" name="tipo">
-				    	 <option value="<?php echo $row['tipo']; ?>"><?php echo $row['tipo']; ?></option>
-				    	<?php 
-				    		if($row['tipo'] == 'Receita'){
-				    			echo '<option value="Despesa">Despesa</option>';
-				    		}else{
-				    			echo '<option value="Receita">Receita</option>';
-				    		}
-				    	?>
-					</select>
 				  </div>
 				  
 				  <br />

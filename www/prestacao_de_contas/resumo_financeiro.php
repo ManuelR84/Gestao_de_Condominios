@@ -81,7 +81,7 @@
 			<p>Receitas:</p>
 			<table class="table table table-hover">
 			<tr>
-				<th>Id Rubrica</th>
+				<th>Quantidade</th>
 				<th>Rubrica</th>
 				<th>Valor</th>
 			</tr>
@@ -90,7 +90,7 @@
 				if(isset($_POST['submit']))
 				{
 					$result = mysqli_query($con,
-							"SELECT a.idrub, rubrica, sum(valor)
+							"SELECT a.idrub, rubrica, sum(valor), count(rubrica)
 							FROM receitas a, rubricas b
 							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01'
 							GROUP BY idrub;")
@@ -105,7 +105,7 @@
 			
 					while($row = mysqli_fetch_array($result)) {
 						echo "<tr>";
-						echo "<td>" . $row['idrub'] . "</td>";
+						echo "<td>" . $row['count(rubrica)'] . "</td>";
 						echo "<td>" . $row['rubrica'] . "</td>";
 						echo "<td>" . round($row['sum(valor)'], 2) . "</td>";
 						echo "</tr>";
@@ -130,7 +130,7 @@
 			<p>Despesas:</p>
 			<table class="table table table-hover">
 			<tr>
-				<th>Id Rubrica</th>
+				<th>Quantidade</th>
 				<th>Rubrica</th>
 				<th>Valor</th>
 			</tr>
@@ -139,7 +139,7 @@
 				if(isset($_POST['submit']))
 				{
 					$result3 = mysqli_query($con,
-							"SELECT a.idrub, rubrica, sum(valor)
+							"SELECT a.idrub, rubrica, sum(valor), count(rubrica)
 							FROM despesas a, rubricas b
 							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01'
 							GROUP BY idrub;")
@@ -154,7 +154,7 @@
 			
 					while($row3 = mysqli_fetch_array($result3)) {
 						echo "<tr>";
-						echo "<td>" . $row3['idrub'] . "</td>";
+						echo "<td>" . $row3['count(rubrica)'] . "</td>";
 						echo "<td>" . $row3['rubrica'] . "</td>";
 						echo "<td>" . round($row3['sum(valor)'], 2) . "</td>";
 						echo "</tr>";
