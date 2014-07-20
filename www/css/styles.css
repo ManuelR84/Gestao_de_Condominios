@@ -36,4 +36,6 @@ body {
 	border-width: 1px;
 }
 
-
+.table-rubricas {
+	width: 70% !important;
+}

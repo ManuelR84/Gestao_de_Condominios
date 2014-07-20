@@ -1,4 +1,7 @@
 <?php
+//Disable error reporting
+	error_reporting(0);
+
 //Chamamento das Classes
 	include "classes/dbconnect.php";
 	include "classes/condominos.php";
@@ -16,36 +19,10 @@
 	$dbname = "gestao_condominios";
 	
 	$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-	or error_validation($con);
-	
-//Funções de Validações
-	if(mysqli_connect_errno()) 
-	{
-		echo "Erro de ligação à Base de Dados: " . mysqli_connect_error();
-	}
-	
-	function session_validation()
-	{
-		if(!isset($_SESSION["login"]) or !$_SESSION["login"])
-			header("Location: ../utilizadores/novo_utilizador.php");
-	}
-	
-	function form_validation($name)
-	{
-		if(isset($_POST[$name]) and $_POST[$name]=="")
-			echo "class= 'red_error'";
-	}
-	
-	function error_validation($con)
-	{
-		include "footer.php"; //Para se poder usar os menus depois da mensagem de erro
-		
-		die(
-			'<div class="error_message">MySQL ERRO: '.mysqli_error($con).'</div>
-			<input type="button" value="Voltar" class="btn btn-default" onClick="javascript:history.back(1)">'
-		);
-	}
+	or 
+	die	("<h2>Nao foi possivel estabelecer a ligacao ao MySQL!</h2>"); //mensagem de erro sobre a ligação
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +58,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 					</button>
-					<a href="http://localhost" class="navbar-brand">GCO</a>
+					<a href="/index.php" class="navbar-brand">GCO</a>
 				</div>
 		
 				<div class="navbar-collapse collapse">
@@ -161,17 +138,24 @@
 					
 					<!-- *** Lado Direito *** -->
 					<ul class="nav navbar-nav navbar-right">
-					
+						
+						<?php if(!isset($_SESSION["login"]) or !$_SESSION["login"]){ ?>
+								<!-- Botão de Registo de Contas de Utilizadores -->
+								<div class="navbar-header">
+									<a href="/utilizadores/novo_utilizador.php" class="navbar-brand l-vline">Nova Conta</a>
+								</div>
+						<?php } ?>
+						
 						<!-- Menu do Login -->
 						<li class="active dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<?php 
 									if(!isset($_SESSION["login"]) or !$_SESSION["login"])
 									{
-										echo "Login";
+										echo "<b>Login</b>";
 									}else{
 										echo '<span class="glyphicon glyphicon-user"></span> ';
-										echo "Nome"; //nome do user enquanto o login
+										echo "<b>".$_SESSION['username']."</b>"; //Nome do utilizador durante a sessão
 									}
 								?>
 								<b class="caret"></b>
@@ -184,25 +168,43 @@
 				</div>
 			</div>
 		</div>
+		
 <?php 
-	if(isset($_POST['submit']))
+//DIV para mensagens de avisos 
+	if(isset($_SESSION['warning']) and !$_SESSION['warning']=='')
 	{
-		if(	$_POST["nome"] != "" and
-		$_POST["password"] != "")
-		{
-			$result = mysqli_query($con,
-					"SELECT nomeconta, password
-					FROM utilizadores
-					WHERE nomeconta = '123' and password = '123';")
-					or error_validation($con);
-
-			$count = mysqli_num_rows($result);
-			if($count == 1)
-				$_SESSION["login"] = true;
-			else
-				echo "<div class='error_message'>Login errado</div>";
-		}else{
-			echo "<div class='error_message'>Login inválido</div>";
-		}
+		echo "<div class='error_message'>".$_SESSION['warning']."</div>";
+		$_SESSION['warning'] = '';
+	}
+	
+//DIV para mensagens de erros
+	if(isset($_SESSION['error']) and !$_SESSION['error']=='')
+	{
+		echo "<div class='error_message'>".$_SESSION['error']."</div>";
+		$_SESSION['error'] = '';
+	}
+	
+//Funções de Validações
+	function session_validation()
+	{
+		//Verifica se a sessão de login foi validada
+		if(!isset($_SESSION["login"]) or !$_SESSION["login"])
+			header("Location: ../utilizadores/novo_utilizador.php"); //caso contrário envia para a página de registo
+	}
+	
+	function form_validation($name)
+	{
+		if(isset($_POST[$name]) and $_POST[$name]=="")
+			echo "class= 'red_error'"; //aviso de erro sobre os campos de formulário
+	}
+	
+	function error_validation($con)
+	{
+		include "footer.php"; //Para se poder usar os menus depois da mensagem de erro
+	
+		die(
+			'<div class="error_message">ERRO de MySQL: '.mysqli_error($con).'</div>
+			<input type="button" value="Voltar" class="btn btn-default" onClick="javascript:history.back(1)">'
+		);
 	}
 ?>
