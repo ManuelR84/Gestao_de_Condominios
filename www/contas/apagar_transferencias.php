@@ -8,13 +8,12 @@
 	{
 		//obter as transferencias
 		$result = mysqli_query($con,
-		"SELECT idcontaorigem, idcontadestino, valor
-		FROM transferencias
-		WHERE idtransf = " . $_GET['id'] . ";")
-		or die("Error2: ".mysqli_error($con));
+			"SELECT idcontaorigem, idcontadestino, valor
+			FROM transferencias
+			WHERE idtransf = " . $_GET['id'] . ";")
+			or error_validation($con);
 		
 		$row = mysqli_fetch_array($result);
-		
 		
 		//retirar o valor da conta que recebeu transferencia
 		mysqli_query($con,

@@ -65,12 +65,21 @@
 						'" . $_POST['password'] ."');")
 				or error_validation($con); //mensagem de erro sobre SQL
 				
+				$_SESSION['user_name'] = $_POST['username'];
+				$_SESSION['user_email'] = $_POST['email'];
+				$_SESSION['login'] = true; //Valida a sessão
+				
 				mysqli_close($con);
 				header("Location: /index.php");
-			}else
+			}else{
 				$_SESSION['warning'] = "Um <b>email</b> idêntico já existente registado";
+				mysqli_close($con);
+				header("Location: /index.php");
+			}
 		}else{
 			$_SESSION['warning'] = "Faltam campos por preencher";
+			mysqli_close($con);
+			header("Location: /index.php");
 		}
 	}
 	

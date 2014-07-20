@@ -45,7 +45,6 @@
 	<h2>Inserir Fração</h2>
 	<br />
 	
-	
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4">

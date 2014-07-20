@@ -179,13 +179,6 @@
 		$_SESSION['warning'] = '';
 	}
 	
-//DIV para mensagens de erros
-	if(isset($_SESSION['error']) and !$_SESSION['error']=='')
-	{
-		echo "<div class='error_message'>".$_SESSION['error']."</div>";
-		$_SESSION['error'] = '';
-	}
-	
 //Funções de Validações
 	function session_validation()
 	{

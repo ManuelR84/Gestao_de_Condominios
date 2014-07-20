@@ -24,11 +24,13 @@
 				codigopostal = '" . $_POST['codigopostal'] ."'
 			WHERE email='".$_SESSION['user_email']."';")
 			or error_validation($con);
-				
+						
+			$_SESSION['user_name'] = $_POST['nomeconta'];
+
 			mysqli_close($con);
 			header("Location: profile.php");
 		}else{
-			$_SESSION['warning'] = "Faltam campos por preencher";
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
 		}
 	}
 ?>

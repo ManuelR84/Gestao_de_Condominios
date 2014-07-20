@@ -13,7 +13,7 @@
 	$result2 = mysqli_query($con,
 			"SELECT idconta, descricaoconta
 			FROM contas;")
-	or error_validation($con);
+			or error_validation($con);
 	
 	if(isset($_POST['submit']))
 	{

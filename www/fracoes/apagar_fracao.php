@@ -8,7 +8,7 @@
 			"SELECT iuf
 			FROM fracoes
 			WHERE idfrac = " . $_GET['id'] . ";")
-				or error_validation($con);
+			or error_validation($con);
 	
 	$row = mysqli_fetch_array($result);
 	
@@ -17,10 +17,10 @@
 		mysqli_query($con,
 		"DELETE FROM fracoes
 		WHERE idfrac = " . $_GET['id'] . ";")
-			or error_validation($con);
+		or error_validation($con);
 	
-			mysqli_close($con);
-			header("Location: listar_fracoes.php");
+		mysqli_close($con);
+		header("Location: listar_fracoes.php");
 	}
 ?>
 
