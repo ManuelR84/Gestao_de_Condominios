@@ -5,8 +5,8 @@
 	session_validation();
 	
 	$result2 = mysqli_query($con,
-	"SELECT sum(saldoatual) FROM contas;")
-	or error_validation($con);
+				"SELECT sum(saldoatual) FROM contas;")
+				or error_validation($con);
 ?>
 
 <!-- Página de <?php echo $title?> -->
@@ -51,6 +51,5 @@
 <!-- END Página de <?php echo $title?> -->
 
 <?php 
-	mysqli_close($con);
 	include "../footer.php";
 ?>

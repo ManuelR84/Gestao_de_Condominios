@@ -7,3 +7,5 @@
 	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<?php mysqli_close($con); ?>

@@ -3,7 +3,6 @@
 	$title = "Resumo Financeiro";
 	include "../header.php";
 	session_validation();
-	
 ?>
 
 <!-- Página de <?php echo $title?> -->
@@ -170,6 +169,5 @@
 <!-- END Página de <?php echo $title?> -->
 
 <?php 
-	mysqli_close($con);
 	include "../footer.php";
 ?>

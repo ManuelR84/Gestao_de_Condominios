@@ -7,7 +7,7 @@
 	$result = mysqli_query($con,
 			"SELECT *
 			FROM rubricas")
-	or error_validation($con);
+			or error_validation($con);
 ?>
 
 <!-- Página de <?php echo $title?> -->
@@ -136,6 +136,5 @@
 <!-- END Página de <?php echo $title?> -->
 
 <?php 
-	mysqli_close($con);
 	include "../footer.php";
 ?>

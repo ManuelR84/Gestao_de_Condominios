@@ -63,6 +63,5 @@
 
 <?php
 	
-	mysqli_close($con);
 	include "../footer.php";
 ?>

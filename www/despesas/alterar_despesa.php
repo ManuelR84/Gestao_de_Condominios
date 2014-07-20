@@ -94,6 +94,5 @@
 <!-- END Página de <?php echo $title?> -->
 
 <?php
-	mysqli_close($con);
 	include "../footer.php";
 ?>
