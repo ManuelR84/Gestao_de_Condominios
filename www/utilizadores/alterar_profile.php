@@ -21,14 +21,14 @@
 				nomegestor = '" . $_POST['nomegestor'] ."',
 				nomecondominio = '" . $_POST['nomecondominio'] ."',
 				morada = '" . $_POST['morada'] ."',
-				codigopostal = '" . $_POST['codigopostal'] ."',
+				codigopostal = '" . $_POST['codigopostal'] ."'
 			WHERE email='".$_SESSION['user_email']."';")
 			or error_validation($con);
 				
 			mysqli_close($con);
 			header("Location: profile.php");
 		}else{
-			echo "<div class='error_message'>Faltam campos por preencher</div>";
+			$_SESSION['warning'] = "Faltam campos por preencher";
 		}
 	}
 ?>
@@ -61,12 +61,12 @@
 				  
 				  <div class="form-group">
 				    <label for="morada">Morada</label>
-				    <input id="morada" type="number" class="form-control" placeholder="Morada" value="<?php echo $row['morada']; ?>" name="morada">
+				    <input id="morada" type="text" class="form-control" placeholder="Morada" value="<?php echo $row['morada']; ?>" name="morada">
 				  </div>
 				  
 				   <div class="form-group">
 				    <label for="codigopostal">Codigo Postal</label>
-				    <input id="codigopostal" type="text" class="form-control" placeholder="Codigo Postal" value="<?php echo $row['codigopostal']; ?>" name="codigopostal">
+				    <input id="codigopostal" type="number" class="form-control" placeholder="Codigo Postal" value="<?php echo $row['codigopostal']; ?>" name="codigopostal">
 				  </div>
 				  
 				  <br />

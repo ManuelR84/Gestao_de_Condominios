@@ -24,7 +24,6 @@
 			<th>Morada</th>
 			<th>Código Postal</th>
 		</tr>
-	</table>
 	
 	<?php
 		while($row = mysqli_fetch_array($result))
@@ -39,6 +38,7 @@
 			echo "</tr>";
 		}
 	?>
+	</table>
 	
 	<br />
 	<a href="alterar_profile.php" class="btn btn-default">Alterar</a>
