@@ -12,7 +12,7 @@
 	
 	if(isset($_POST['submit']))
 	{
-		if(	$_POST["nome"])
+		if($_POST["nome"] != "")
 		{
 			mysqli_query($con,
 			"UPDATE rubricas

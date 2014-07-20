@@ -51,26 +51,28 @@
 			//Query de verificação se já existe um utilizador idêntico
 			$result = mysqli_query($con,
 					"SELECT nomeconta
-						FROM utilizadores
-						WHERE nomeconta = '".$_POST['nome']."';")
-						or error_validation($con);
+					FROM utilizadores
+					WHERE email = '".$_POST['email']."';")
+					or error_validation($con);
 				
 			//Verifica quantos utilizadores existem com o mesmo nome
 			if(mysqli_num_rows($result)<1)
 			{
 				mysqli_query($con,
 				"INSERT INTO utilizadores (nomeconta, email, password)
-					VALUES ('" . $_POST['username'] ."',
-							'" . $_POST['email'] ."',
-							'" . $_POST['password'] ."');")
-							or error_validation($con); //mensagem de erro sobre SQL
+				VALUES ('" . $_POST['username'] ."',
+						'" . $_POST['email'] ."',
+						'" . $_POST['password'] ."');")
+				or error_validation($con); //mensagem de erro sobre SQL
+				
+				mysqli_close($con);
+				header("Location: /index.php");
 			}else
-				echo "<div class='error_message'>Um utilizador idêntico já existente. Use outro nome.</div>";
+				$_SESSION['warning'] = "Um <b>email</b> idêntico já existente registado";
 		}else{
-			echo "<div class='error_message'>Faltam campos por preencher</div>";
+			$_SESSION['warning'] = "Faltam campos por preencher";
 		}
 	}
 	
-	mysqli_close($con);
 	include "../footer.php";
 ?>

@@ -13,14 +13,15 @@
 	
 	if(isset($_POST['submit']))
 	{
-		if(	$_POST["nome"])
+		if( $_POST["nomeconta"] != "")
 		{
 			mysqli_query($con,
 			"UPDATE utilizadores
-			SET rubrica = '" . $_POST['nomeconta'] ."',
-						'" . $_POST['nomeconta'] ."',
-						'" . $_POST['nomeconta'] ."',
-						'" . $_POST['nomeconta'] ."',
+			SET nomeconta = '" . $_POST['nomeconta'] ."',
+				nomegestor = '" . $_POST['nomegestor'] ."',
+				nomecondominio = '" . $_POST['nomecondominio'] ."',
+				morada = '" . $_POST['morada'] ."',
+				codigopostal = '" . $_POST['codigopostal'] ."',
 			WHERE email='".$_SESSION['user_email']."';")
 			or error_validation($con);
 				
@@ -44,7 +45,7 @@
 				
 				<form method="post">
 				  <div class="form-group">
-				    <label for="nomeconta">Nome de Conta</label>
+				    <label for="nomeconta" <?php form_validation("nomeconta");?> >Nome de Conta</label>
 				    <input id="nomeconta" type="text" class="form-control" placeholder="Nome de Conta" value="<?php echo $row['nomeconta']; ?>" name="nomeconta">
 				  </div>
 				  
