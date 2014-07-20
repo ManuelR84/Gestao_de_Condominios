@@ -1,6 +1,8 @@
 <?php
 //Disable error reporting
 	//error_reporting(0);
+	
+	ob_start();
 
 //Chamamento das Classes
 	include "classes/dbconnect.php";
