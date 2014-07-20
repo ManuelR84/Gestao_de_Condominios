@@ -69,6 +69,13 @@
 				$_SESSION['user_email'] = $_POST['email'];
 				$_SESSION['login'] = true; //Valida a sessão
 				
+				/* Módulo para o envio de mensagens para o mail do utilizador
+				 $subject = "";
+				$message = "";
+				$from = "";
+				mail($_SESSION['user_email'],$subject,$message,"From: $from\n");
+				*/
+				
 				mysqli_close($con);
 				header("Location: /index.php");
 			}else{

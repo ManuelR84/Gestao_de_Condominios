@@ -26,6 +26,13 @@
 			or error_validation($con);
 						
 			$_SESSION['user_name'] = $_POST['nomeconta'];
+			
+			/* Módulo para o envio de mensagens para o mail do utilizador
+			$subject = "";
+			$message = "";
+			$from = "";
+			mail($_SESSION['user_email'],$subject,$message,"From: $from\n");
+			*/
 
 			mysqli_close($con);
 			header("Location: profile.php");

@@ -4,8 +4,6 @@
 	include "../header.php";
 	session_validation();
 	
-	$nf = new Fracoes();
-	
 	$result = mysqli_query($con,
 			"SELECT idcond, nome
 			FROM condominos;")
