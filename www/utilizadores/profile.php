@@ -19,7 +19,10 @@
 			<th>Morada</th>
 			<th>Código Postal</th>
 		</tr>
-	</table>	
+	</table>
+	
+	<br />
+	<a class="btn btn-default">Alterar</a>
 </div>
 
 <?php 

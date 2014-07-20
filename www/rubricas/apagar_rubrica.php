@@ -38,7 +38,7 @@
 	</form
 	
 </div>
-<!-- Página de <?php echo $title?> -->
+<!-- END Página de <?php echo $title?> -->
 
 <?php
 	mysqli_close($con);

@@ -44,23 +44,22 @@
 	}
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
-	<div class="jumbotron">
+<!-- Página de <?php echo $title?> -->
+<div class="jumbotron">
 
-		<h2>Apagar Despesas</h2>
-		<br />
-	
+	<h2>Apagar Despesas</h2>
+	<br />
+
 	<p>Deseja apagar: "<u><?php echo $row['descricao']; ?></u>" da lista de Receitas?</p>
-	
+
 	<form method="post">
 		<input type="button" value="Não" name="nao" class="btn btn-default" onClick="javascript:history.back(1)">
 		<button type="submit" name="submit" class="btn btn-default">Sim</button>
 	</form
 		
 	</div>
-
 </div>
-<!-- /container -->
+<!-- END Página de <?php echo $title?> -->
 
 <?php
 	

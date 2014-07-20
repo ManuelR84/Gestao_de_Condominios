@@ -5,7 +5,7 @@
 	session_validation();
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
+<!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
 	<h2>Lista de Contas Bancárias</h2>
@@ -35,6 +35,7 @@
 		?>
 	</table>
 </div>
+<!-- END Página de <?php echo $title?> -->
 
 <?php 
 	mysqli_close($con);

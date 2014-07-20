@@ -25,6 +25,7 @@
 	}
 ?>
 
+<!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
 	<h2>Registo de Contas Bancárias</h2>
@@ -58,7 +59,7 @@
 		</div>
 	</div>
 </div>
-<!-- /container -->
+<!-- END Página de <?php echo $title?> -->
 
 <?php 
 	mysqli_close($con);

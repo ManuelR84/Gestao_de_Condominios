@@ -1,32 +1,39 @@
 <?php
 	session_start();
-	$title = "Listar Condominos";
+	$title = "Alterar Profile";
 	include "../header.php";
 	session_validation();
-	
-	$result = mysqli_query($con, "SELECT * FROM condominos")
-	or error_validation($con);
 ?>
 
 <!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
-	<h2>Lista de Condóminos</h2>
+	<h2>Alterar Profile</h2>
 	<br />
 	
 	<table class="table table table-hover">
+			<table class="table table table-hover">
 		<tr>
-			<th>Id</th>
-			<th>Nome</th>
-			<th>Cartão Cidadão</th>
-			<th>Morada</th>
-			<th>Contacto</th>
+			<th>Nome Conta</th>
 			<th>E-mail</th>
-			<th></th>
-			<th></th>
+			<th>Nome do Gestor</th>
+			<th>Nome do Condómino</th>
+			<th>Morada</th>
+			<th>Código Postal</th>
 		</tr>
+	</table>
 		
 			<?php
+				$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
+					or die("Error1: ".mysqli_error($con));
+				
+				if (mysqli_connect_errno()) {
+					echo "Failed to connect to MySQL: " . mysqli_connect_error();
+				}
+					
+				$result = mysqli_query($con, "SELECT * FROM condominos")
+				or die("Error2: ".mysqli_error($con));
+				
 				while($row = mysqli_fetch_array($result)) 
 				{
 					echo "<tr>";

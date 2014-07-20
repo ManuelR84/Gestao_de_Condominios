@@ -11,44 +11,44 @@
 			or error_validation($con);
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
-	<div class="jumbotron">
+<!-- Página de <?php echo $title?> -->
+<div class="jumbotron">
 
-		<h2>Lista de Despesas</h2>
-		<br />
+	<h2>Lista de Despesas</h2>
+	<br />
 
-		<table class="table table table-hover">
-			<tr>
-				<th>Id</th>
-				<th>Despesa</th>
-				<th>Descrição</th>
-				<th>Valor</th>
-				<th>Data Vencimento</th>
-				<th>Data Pagamento</th>
-				<th>Conta Destino</th>
-				<th></th>
-				<th></th>
-			</tr>
-			
-			<?php 
-				while($row = mysqli_fetch_array($result)) 
-				{
-					echo "<tr>";
-			  		echo "<td>" . $row['iddespesa'] . "</td>";
-					echo "<td>" . $row['rubrica'] . "</td>";
-					echo "<td>" . $row['descricao'] . "</td>";
-					echo "<td>" . $row['valor'] . "</td>";
-					echo "<td>" . $row['datavencimento'] . "</td>";
-					echo "<td>" . $row['datapagamento'] . "</td>";
-					echo "<td>" . $row['descricaoconta'] . "</td>";
-					echo "<td><a href=alterar_despesa.php?id=" . $row['iddespesa'] . ">Alterar</a></td>";
-					echo "<td><a href=apagar_despesa.php?id=" . $row['iddespesa'] . ">Apagar</a></td>";
-					echo "</tr>";
-				}
-				?>
-		</table>
+	<table class="table table table-hover">
+		<tr>
+			<th>Id</th>
+			<th>Despesa</th>
+			<th>Descrição</th>
+			<th>Valor</th>
+			<th>Data Vencimento</th>
+			<th>Data Pagamento</th>
+			<th>Conta Destino</th>
+			<th></th>
+			<th></th>
+		</tr>
+		
+		<?php 
+			while($row = mysqli_fetch_array($result)) 
+			{
+				echo "<tr>";
+		  		echo "<td>" . $row['iddespesa'] . "</td>";
+				echo "<td>" . $row['rubrica'] . "</td>";
+				echo "<td>" . $row['descricao'] . "</td>";
+				echo "<td>" . $row['valor'] . "</td>";
+				echo "<td>" . $row['datavencimento'] . "</td>";
+				echo "<td>" . $row['datapagamento'] . "</td>";
+				echo "<td>" . $row['descricaoconta'] . "</td>";
+				echo "<td><a href=alterar_despesa.php?id=" . $row['iddespesa'] . ">Alterar</a></td>";
+				echo "<td><a href=apagar_despesa.php?id=" . $row['iddespesa'] . ">Apagar</a></td>";
+				echo "</tr>";
+			}
+			?>
+	</table>
 </div>
-<!-- /container -->
+<!-- END Página de <?php echo $title?> -->
 
 <?php 
 	mysqli_close($con);
