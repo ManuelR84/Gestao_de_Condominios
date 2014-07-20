@@ -5,7 +5,7 @@
 	session_validation();
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
+<!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
 	<h2>Prestação de Contas por Despesas</h2>
@@ -15,7 +15,6 @@
 		<div class="form-inline">
 	
 				<form method="post">
-				
 					<div class="form-group">
 						<label for="mesi">Mês</label>
 						<select class="form-control" name="mesi">
@@ -71,7 +70,6 @@
 					<button type="submit" name="submit" class="btn btn-default">Visualizar</button>
 					
 				</form>
-	
 			</div>
 		</div>
 		
@@ -103,7 +101,6 @@
 							WHERE a.idrub = b.idrub and datapagamento between '" . $_POST['anoi']. "-" . $_POST['mesi']. "-01' and '". $_POST['anof']."-". $_POST['mesf']."-01';")
 							or error_validation($con);
 				
-			
 					while($row3 = mysqli_fetch_array($result3)) {
 						echo "<tr>";
 						echo "<td>" . $row3['iddespesa'] . "</td>";
@@ -114,7 +111,6 @@
 						echo "<td>" . $row3['datapagamento'] . "</td>";
 						echo "</tr>";
 					}
-					
 				}
 			?>
 			</table>
@@ -127,9 +123,8 @@
 			?>
 			€
 		</p>
-
 </div>
-<!-- /container -->
+<!-- END Página de <?php echo $title?> -->
 
 <?php 
 	mysqli_close($con);

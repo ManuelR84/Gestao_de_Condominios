@@ -5,7 +5,7 @@
 	session_validation();
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
+<!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
 	<h2>Prestação de Contas por Receitas</h2>
@@ -15,7 +15,6 @@
 		<div class="form-inline">
 	
 				<form method="post">
-				
 					<div class="form-group">
 						<label for="mesi">Mês</label>
 						<select class="form-control" name="mesi">
@@ -71,7 +70,6 @@
 					<button type="submit" name="submit" class="btn btn-default">Visualizar</button>
 					
 				</form>
-	
 			</div>
 		</div>
 		
@@ -125,12 +123,8 @@
 			?>
 			€
 		</p>
-	
-	
-	
-	
 </div>
-<!-- /container -->
+<!-- END Página de <?php echo $title?> -->
 
 <?php 
 	mysqli_close($con);

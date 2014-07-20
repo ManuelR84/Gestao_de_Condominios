@@ -44,7 +44,7 @@
 	}
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
+<!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
 	<h2>Apagar Receitas</h2>
@@ -59,7 +59,7 @@
 	</form
 		
 </div>
-<!-- /container -->
+<!-- END Página de <?php echo $title?> -->
 
 <?php
 	mysqli_close($con);

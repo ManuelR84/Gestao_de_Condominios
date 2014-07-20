@@ -9,7 +9,7 @@
 	or error_validation($con);
 ?>
 
-<!-- Main component for a primary marketing message or call to action -->
+<!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
 	<h2>Saldo de Contas</h2>
@@ -25,29 +25,30 @@
 			<th></th>
 		</tr>
 		
-			<?php
-				$result = mysqli_query($con,"SELECT * FROM contas") or die("Error2: ".mysqli_error($con));
-				
-				while($row = mysqli_fetch_array($result)) {
-			  		echo "<tr>";
-			  		echo "<td>" . $row['idconta'] . "</td>";
-					echo "<td>" . $row['descricaoconta'] . "</td>";
-					echo "<td>" . $row['numeroconta'] . "</td>";
-					echo "<td>" . $row['saldoinicial'] . "</td>";
-					echo "<td>" . $row['saldoatual'] . "</td>";
-					echo "</td>";
-				}
-			?>
-		</table>
+		<?php
+			$result = mysqli_query($con,"SELECT * FROM contas") or die("Error2: ".mysqli_error($con));
+			
+			while($row = mysqli_fetch_array($result)) {
+		  		echo "<tr>";
+		  		echo "<td>" . $row['idconta'] . "</td>";
+				echo "<td>" . $row['descricaoconta'] . "</td>";
+				echo "<td>" . $row['numeroconta'] . "</td>";
+				echo "<td>" . $row['saldoinicial'] . "</td>";
+				echo "<td>" . $row['saldoatual'] . "</td>";
+				echo "</td>";
+			}
+		?>
+	</table>
 		
-		<p>Valor total das contas:
-			<?php
-				$row2 = mysqli_fetch_array($result2);
-				echo round($row2['sum(saldoatual)'], 2);
-			?>
-			€
-		</p>
+	<p>Valor total das contas:
+		<?php
+			$row2 = mysqli_fetch_array($result2);
+			echo round($row2['sum(saldoatual)'], 2);
+		?>
+		€
+	</p>
 </div>
+<!-- END Página de <?php echo $title?> -->
 
 <?php 
 	mysqli_close($con);
