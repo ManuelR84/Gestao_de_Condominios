@@ -48,9 +48,9 @@
 				mysqli_close($con); //Fecha a ligação à base de dados
 				header("Location: /index.php"); //Faz 'refresh' à página do index
 			}else
-				$_SESSION['error'] = "Login não existente!";
+				$_SESSION['warning'] = "Login não existente!";
 		}else{
-			$_SESSION['error'] = "Campos de Login vazios!";
+			$_SESSION['warning'] = "Campos de Login vazios!";
 		}
 	}
 ?>
