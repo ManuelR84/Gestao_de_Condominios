@@ -3,6 +3,11 @@
 	$title = "Profile";
 	include "../header.php";
 	session_validation();
+	
+	$result = mysqli_query($con,
+			"SELECT * FROM utilizadores
+			WHERE email='".$_SESSION['user_mail']."';")
+			or error_validation($con);
 ?>
 
 <div class="jumbotron">
@@ -21,11 +26,25 @@
 		</tr>
 	</table>
 	
+	<?php
+		while($row = mysqli_fetch_array($result))
+		{
+			echo "<tr>";
+	  		echo "<td>" . $row['nomeconta'] . "</td>";
+			echo "<td>" . $row['password'] . "</td>";
+			echo "<td>" . $row['email'] . "</td>";
+			echo "<td>" . $row['nomegestor'] . "</td>";
+			echo "<td>" . $row['nomecondominio'] . "</td>";
+			echo "<td>" . $row['morada'] . "</td>";
+			echo "<td>" . $row['codigopostal'] . "</td>";
+			echo "</tr>";
+		}
+	?>
+	
 	<br />
-	<a class="btn btn-default">Alterar</a>
+	<a href="alterar_profile.php" class="btn btn-default">Alterar</a>
 </div>
 
 <?php 
-	mysqli_close($con);
 	include "../footer.php";
 ?>

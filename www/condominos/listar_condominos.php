@@ -4,7 +4,7 @@
 	include "../header.php";
 	session_validation();
 	
-	$result = mysqli_query($con, "SELECT * FROM condominos")
+	$result = mysqli_query($con, "SELECT * FROM condominos order by idcond;")
 	or error_validation($con);
 ?>
 

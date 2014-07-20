@@ -18,8 +18,7 @@
 			$_POST["fracao"] != "" and
 			$_POST["permilagem"] != "" and
 			$_POST["designacao"] != "" and
-			$_POST["tipo"] != "" and
-			$_POST["observacoes"] != "")
+			$_POST["tipo"] != "")
 		{
 			//query de envio do formulario para a base de dados
 			mysqli_query($con,
@@ -85,12 +84,12 @@
 				    <select class="form-control" name="tipo">
 					    <option value="">Escolha tipo...</option>
 						<option value="Habitacional">Habitacional</option>
-						<option value="Loja">Loja</option>
+						<option value="Comercial">Comercial</option>
 					</select>
 				  </div>
 				  
 				  <div class="form-group">
-				    <label for="obs" <?php form_validation("observacoes");?> >Observações</label>
+				    <label for="obs">Observações</label>
 				    <textarea rows="1" cols="5" type="text" class="form-control" placeholder="Observações" name="observacoes"></textarea>
 				  </div>
 				  

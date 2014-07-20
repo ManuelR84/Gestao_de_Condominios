@@ -21,8 +21,7 @@
 		$_POST["iuf"] != "" and
 		$_POST["permi"] != "" and
 		$_POST["du"] != "" and
-		$_POST["tipo"] != "" and
-		$_POST["obs"] != "")
+		$_POST["tipo"] != "")
 		{
 			mysqli_query($con,
 			"UPDATE fracoes
@@ -89,7 +88,7 @@
 					    <option value="<?php echo $row['tipo']; ?>"><?php echo $row['tipo']; ?></option>
 						<?php 
 				    		if($row['tipo'] == 'Habitacional'){
-				    			echo '<option value="Loja">Loja</option>';
+				    			echo '<option value="Comercial">Comercial</option>';
 				    		}else{
 				    			echo '<option value="Habitacional">Habitacional</option>';
 				    		}
@@ -104,6 +103,7 @@
 				  
 				  <br />
 				  <button type="submit" name="submit" class="btn btn-default">Alterar</button>
+				  <input type="button" value="Voltar" class="btn btn-default" onClick="javascript:history.back(1)">
 				</form>
 	
 			</div>

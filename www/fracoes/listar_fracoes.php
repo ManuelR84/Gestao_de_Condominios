@@ -7,7 +7,8 @@
 	$result = mysqli_query($con,
 			"SELECT a.idfrac, b.nome, a.iuf, a.permilagem, a.andar, a.tipo, a.observacoes
 			FROM fracoes a, condominos b
-			WHERE a.idcond = b.idcond;")
+			WHERE a.idcond = b.idcond
+			order by idfrac;")
 			or error_validation($con);
 ?>
 
