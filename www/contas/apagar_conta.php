@@ -27,7 +27,7 @@
 <!-- Página de <?php echo $title?> -->
 <div class="jumbotron">
 
-	<h2>Apagar Condóminos</h2>
+	<h2>Apagar Conta</h2>
 	<br />
 	
 	<p>Deseja apagar: "<u><?php echo $row['descricaoconta']; ?></u>" da lista de Contas?</p>
