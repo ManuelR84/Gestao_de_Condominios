@@ -76,6 +76,7 @@
 				  
 				  <br />
 				  <button type="submit" name="submit" class="btn btn-default">Alterar</button>
+				  <input type="button" value="Voltar" class="btn btn-default" onClick="javascript:history.back(1)">
 				</form>
 	
 			</div>

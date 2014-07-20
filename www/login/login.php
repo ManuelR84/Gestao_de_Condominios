@@ -41,7 +41,8 @@
 			if(mysqli_num_rows($result) == 1)
 			{
 				$row = mysqli_fetch_array($result);
-				$_SESSION['username'] = $row['nomeconta'];
+				$_SESSION['user_name'] = $row['nomeconta'];
+				$_SESSION['user_email'] = $row['email'];
 				$_SESSION['login'] = true; //Valida a sessão
 	
 				mysqli_close($con); //Fecha a ligação à base de dados

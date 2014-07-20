@@ -6,7 +6,7 @@
 	
 	$result = mysqli_query($con,
 			"SELECT * FROM utilizadores
-			WHERE email='".$_SESSION['user_mail']."';")
+			WHERE email='".$_SESSION['user_email']."';")
 			or error_validation($con);
 ?>
 
@@ -17,10 +17,10 @@
 	
 	<table class="table table table-hover">
 		<tr>
-			<th>Nome Conta</th>
+			<th>Nome de Conta</th>
 			<th>E-mail</th>
 			<th>Nome do Gestor</th>
-			<th>Nome do Condómino</th>
+			<th>Nome do Condominio</th>
 			<th>Morada</th>
 			<th>Código Postal</th>
 		</tr>
@@ -31,7 +31,6 @@
 		{
 			echo "<tr>";
 	  		echo "<td>" . $row['nomeconta'] . "</td>";
-			echo "<td>" . $row['password'] . "</td>";
 			echo "<td>" . $row['email'] . "</td>";
 			echo "<td>" . $row['nomegestor'] . "</td>";
 			echo "<td>" . $row['nomecondominio'] . "</td>";

@@ -1,6 +1,6 @@
 <?php
 //Disable error reporting
-	error_reporting(0);
+	//error_reporting(0);
 
 //Chamamento das Classes
 	include "classes/dbconnect.php";
@@ -69,36 +69,36 @@
 						<!-- Menu dos Condóminos -->
 						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Condóminos <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/condominos/listar_condominos.php"><span class="glyphicon glyphicon-eye-open"></span> Listar condónimos</a></li>
+								<li><a href="/condominos/listar_condominos.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Condónimos</a></li>
 								<li class="divider"></li>
-								<li><a href="/condominos/novo_condomino.php"><span class="glyphicon glyphicon-plus-sign"></span> Novo condónimo</a></li>
+								<li><a href="/condominos/novo_condomino.php"><span class="glyphicon glyphicon-plus-sign"></span> Novo Condónimo</a></li>
 							</ul>
 						</li>
 		
 						<!-- Menu das Frações -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Frações <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/fracoes/listar_fracoes.php"><span class="glyphicon glyphicon-eye-open"></span> Listar frações</a></li>
+								<li><a href="/fracoes/listar_fracoes.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Frações</a></li>
 								<li class="divider"></li>
-								<li><a href="/fracoes/nova_fracao.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova fração</a></li>
+								<li><a href="/fracoes/nova_fracao.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova Fração</a></li>
 							</ul>
 						</li>
 		
 						<!-- Menu das Rubricas -->
 						<li class="dropdown l-vline"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Rubricas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/rubricas/listar_rubricas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar rubricas</a></li>
+								<li><a href="/rubricas/listar_rubricas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Rubricas</a></li>
 								<li class="divider"></li>
-								<li><a href="/rubricas/nova_rubrica.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova rubrica</a></li>
+								<li><a href="/rubricas/nova_rubrica.php"><span class="glyphicon glyphicon-plus-sign"></span> Nova Rubrica</a></li>
 							</ul>
 						</li>
 		
 						<!-- Menu das Receitas -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Receitas <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="/receitas/listar_receitas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar receitas</a></li>
+								<li><a href="/receitas/listar_receitas.php"><span class="glyphicon glyphicon-eye-open"></span> Listar Receitas</a></li>
 								<li class="divider"></li>
-								<li><a href="/receitas/inserir_receita.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir receita</a></li>
+								<li><a href="/receitas/inserir_receita.php"><span class="glyphicon glyphicon-plus-sign"></span> Inserir Receita</a></li>
 							</ul>
 						</li>
 		
@@ -155,7 +155,7 @@
 										echo "<b>Login</b>";
 									}else{
 										echo '<span class="glyphicon glyphicon-user"></span> ';
-										echo "<b>".$_SESSION['username']."</b>"; //Nome do utilizador durante a sessão
+										echo "<b>".$_SESSION['user_name']."</b>"; //Nome do utilizador durante a sessão
 									}
 								?>
 								<b class="caret"></b>

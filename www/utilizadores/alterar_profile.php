@@ -3,6 +3,33 @@
 	$title = "Alterar Profile";
 	include "../header.php";
 	session_validation();
+	
+	$result = mysqli_query($con,
+			"SELECT * FROM utilizadores
+			WHERE email='".$_SESSION['user_email']."';")
+			or error_validation($con);
+	
+	$row = mysqli_fetch_array($result);
+	
+	if(isset($_POST['submit']))
+	{
+		if(	$_POST["nome"])
+		{
+			mysqli_query($con,
+			"UPDATE utilizadores
+			SET rubrica = '" . $_POST['nomeconta'] ."',
+						'" . $_POST['nomeconta'] ."',
+						'" . $_POST['nomeconta'] ."',
+						'" . $_POST['nomeconta'] ."',
+			WHERE email='".$_SESSION['user_email']."';")
+			or error_validation($con);
+				
+			mysqli_close($con);
+			header("Location: profile.php");
+		}else{
+			echo "<div class='error_message'>Faltam campos por preencher</div>";
+		}
+	}
 ?>
 
 <!-- Página de <?php echo $title?> -->
@@ -11,49 +38,47 @@
 	<h2>Alterar Profile</h2>
 	<br />
 	
-	<table class="table table table-hover">
-			<table class="table table table-hover">
-		<tr>
-			<th>Nome Conta</th>
-			<th>E-mail</th>
-			<th>Nome do Gestor</th>
-			<th>Nome do Condómino</th>
-			<th>Morada</th>
-			<th>Código Postal</th>
-		</tr>
-	</table>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+				
+				<form method="post">
+				  <div class="form-group">
+				    <label for="nomeconta">Nome de Conta</label>
+				    <input id="nomeconta" type="text" class="form-control" placeholder="Nome de Conta" value="<?php echo $row['nomeconta']; ?>" name="nomeconta">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="nomegestor">Nome do Gestor</label>
+				    <input id="nomegestor" type="text" class="form-control" placeholder="Nome do Gestor" value="<?php echo $row['nomegestor']; ?>" name="nomegestor">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="nomecondominio">Nome do Condominio</label>
+				    <input id="nomecondominio" type="text" class="form-control" placeholder="Rubrica" value="<?php echo $row['nomecondominio']; ?>" name="nomecondominio">
+				  </div>
+				  
+				  <div class="form-group">
+				    <label for="morada">Morada</label>
+				    <input id="morada" type="number" class="form-control" placeholder="Morada" value="<?php echo $row['morada']; ?>" name="morada">
+				  </div>
+				  
+				   <div class="form-group">
+				    <label for="codigopostal">Codigo Postal</label>
+				    <input id="codigopostal" type="text" class="form-control" placeholder="Codigo Postal" value="<?php echo $row['codigopostal']; ?>" name="codigopostal">
+				  </div>
+				  
+				  <br />
+				  <button type="submit" name="submit" class="btn btn-default">Alterar</button>
+				  <input type="button" value="Voltar" class="btn btn-default" onClick="javascript:history.back(1)">
+				</form>
 		
-			<?php
-				$con = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname)
-					or die("Error1: ".mysqli_error($con));
-				
-				if (mysqli_connect_errno()) {
-					echo "Failed to connect to MySQL: " . mysqli_connect_error();
-				}
-					
-				$result = mysqli_query($con, "SELECT * FROM condominos")
-				or die("Error2: ".mysqli_error($con));
-				
-				while($row = mysqli_fetch_array($result)) 
-				{
-					echo "<tr>";
-			  		echo "<td>" . $row['idcond'] . "</td>";
-					echo "<td>" . $row['nome'] . "</td>";
-					echo "<td>" . $row['cc'] . "</td>";
-					echo "<td>" . $row['morada'] . "</td>";
-					echo "<td>" . $row['contacto'] . "</td>";
-					echo "<td>" . $row['email'] . "</td>";
-					echo "<td><a href=alterar_condomino.php?id=" . $row['idcond'] . ">Alterar</a></td>";
-					echo "<td><a href=apagar_condomino.php?id=" . $row['idcond'] . ">Apagar</a></td>";
-					echo "</tr>";
-				}
-			?>
-			
-		</table>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- END Página de <?php echo $title?> -->
 
 <?php 
-	mysqli_close($con);
 	include "../footer.php";
 ?>
